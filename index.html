@@ -1,154 +1,377 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light dark">
-  <meta name="description" content="Law, Courts, and Constitutions: comparative legal history, doctrine, primary sources, and leading cases.">
-  <title>Law, Courts, and Constitutions</title>
-  <script>
-(function () {
-  var theme = "dark";
-  try {
-    var saved = localStorage.getItem("law-theme");
-    if (saved === "light" || saved === "dark") theme = saved;
-  } catch (e) {}
-  document.documentElement.setAttribute("data-theme", theme);
-})();
-</script>
-  <style>
-    @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:wght@300;400;500&display=swap");
-    :root,[data-theme="light"]{
-      --bg:#f3eee3;--bg2:#e8dfd0;--panel:rgba(255,255,255,.34);
-      --text:#28231e;--text2:#4e463d;--muted:#7d7264;--line:rgba(57,45,33,.18);
-      --roman:#9b532f;--contract:#8b3f50;--india:#9b6b1f;--tax:#6f6650;--bar:rgba(243,238,227,.9);
-      --focus:#6f3d1a;
-    }
-    [data-theme="dark"]{
-      --bg:#101113;--bg2:#18191c;--panel:rgba(255,250,240,.035);
-      --text:#ece5d8;--text2:#c9c0b1;--muted:#989080;--line:rgba(236,229,216,.15);
-      --roman:#d18d60;--contract:#d78398;--india:#d2ad63;--tax:#c8b98e;--bar:rgba(16,17,19,.88);
-      --focus:#f1c88d;
-    }
-    *{box-sizing:border-box} html{scroll-behavior:smooth}
-    body{
-      margin:0;min-height:100vh;color:var(--text);
-      background:radial-gradient(100% 55% at 50% -10%,var(--bg2),transparent 70%),var(--bg);
-      font-family:"Spectral",Georgia,serif;font-size:1.03rem;line-height:1.68;
-      -webkit-font-smoothing:antialiased;
-    }
-    a{color:inherit;text-underline-offset:.18em} button{font:inherit;color:inherit}
-    :focus-visible{outline:2px solid var(--focus);outline-offset:3px}
-    .masthead{
-      position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:1rem;
-      padding:.78rem clamp(1rem,4vw,3rem);border-bottom:1px solid var(--line);
-      background:var(--bar);backdrop-filter:blur(10px);
-    }
-    .brand{font-family:"Cormorant Garamond",serif;font-size:1.45rem;font-weight:600;text-decoration:none;line-height:1}
-    .nav{display:flex;align-items:center;gap:.9rem;margin-left:auto}
-    .nav a{color:var(--muted);font-size:.64rem;letter-spacing:.15em;text-decoration:none;text-transform:uppercase}
-    .nav a:hover{color:var(--text)}
-    .theme-toggle{border:1px solid var(--line);background:none;padding:.42rem .7rem;cursor:pointer;color:var(--contract);font-size:.63rem;letter-spacing:.16em;text-transform:uppercase}
-    .wrap{width:min(100% - 2rem,1040px);margin:0 auto;padding:clamp(2.4rem,6vw,5.6rem) 0}
-    .eyebrow{margin:0 0 .9rem;color:var(--contract);font-size:.68rem;letter-spacing:.27em;text-transform:uppercase}
-    h1,h2{font-family:"Cormorant Garamond",serif;font-weight:500}
-    h1{max-width:850px;margin:0;font-size:clamp(3rem,8vw,5.8rem);line-height:.96}
-    .rule{width:70px;height:1px;margin:2rem 0;background:linear-gradient(90deg,var(--roman),var(--contract),var(--india),var(--tax))}
-    .lede{max-width:35em;margin:0;color:var(--text2);font-family:"Cormorant Garamond",serif;font-size:clamp(1.32rem,2.5vw,1.72rem);font-style:italic;line-height:1.43}
-    .lede em{font-style:normal}
-    .projects{margin-top:3.5rem;border-top:1px solid var(--line)}
-    .project{
-      display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2rem;align-items:start;
-      padding:1.7rem .2rem;border-bottom:1px solid var(--line);text-decoration:none;
-    }
-    .project h2{margin:0 0 .35rem;font-size:clamp(1.75rem,4vw,2.45rem);line-height:1.05}
-    .project p{max-width:690px;margin:0;color:var(--muted);font-size:.94rem}
-    .project span{padding-top:.45rem;color:var(--muted);white-space:nowrap}
-    .project:hover span{color:var(--text)}
-    .project--roman:hover h2{color:var(--roman)}
-    .project--contract:hover h2{color:var(--contract)}
-    .project--india:hover h2{color:var(--india)}
-    .project--tax:hover h2{color:var(--tax)}
-    .note{margin-top:2.5rem;padding:1rem 1.1rem;border:1px solid var(--line);background:var(--panel);color:var(--muted);font-size:.88rem}
-    footer{border-top:1px solid var(--line);padding:2rem 1rem 3rem;color:var(--muted);font-size:.78rem;text-align:center}
-    @media(max-width:680px){
-      .nav a{display:none} .brand{font-size:1.23rem}
-      .wrap{width:min(100% - 1.4rem,1040px);padding:2.5rem 0 3.5rem}
-      .project{grid-template-columns:1fr;gap:.65rem} .project span{padding-top:0}
-    }
-  </style>
-</head>
-<body>
-  <header class="masthead">
-    <a class="brand" href="index.html">Law, Courts, and Constitutions</a>
-    <nav class="nav" aria-label="Main navigation">
-      <a href="roman-law-common-law.html">Legal traditions</a>
-      <a href="english-contract-law.html">Contract</a>
-      <a href="fundamental-rights-india.html">Fundamental rights</a>
-      <a href="history-of-tax-law.html">Tax law</a>
-      <a href="https://naniwadekar.com/">All projects</a>
-      <button class="theme-toggle" id="themeBtn" type="button">Light</button>
-    </nav>
-  </header>
-  <main class="wrap">
-    <p class="eyebrow">Legal traditions · doctrine · institutions · leading cases</p>
-    <h1>Law, Courts,<br>and Constitutions</h1>
-    <div class="rule"></div>
-    <p class="lede">
-      Studies in the institutions and arguments through which law is made:
-      <em>texts, courts, remedies, doctrines, statutes, dissents, and constitutional change.</em>
-    </p>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="Law, Courts, and Constitutions" />
+        <title>Law, Courts, and Constitutions</title>
+        <script>
+            (function () {
+                var theme = "dark";
+                try {
+                    var saved = localStorage.getItem("law-theme");
+                    if (saved === "light" || saved === "dark") theme = saved;
+                } catch (e) {}
+                document.documentElement.setAttribute("data-theme", theme);
+            })();
+        </script>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Spectral:wght@300;400;500&display=swap");
+            :root,
+            [data-theme="light"] {
+                --bg: #f3eee3;
+                --bg2: #e8dfd0;
+                --panel: rgba(255, 255, 255, 0.34);
+                --text: #28231e;
+                --text2: #4e463d;
+                --muted: #7d7264;
+                --line: rgba(57, 45, 33, 0.18);
+                --roman: #9b532f;
+                --contract: #8b3f50;
+                --india: #9b6b1f;
+                --tax: #6f6650;
+                --bar: rgba(243, 238, 227, 0.9);
+                --focus: #6f3d1a;
+            }
+            [data-theme="dark"] {
+                --bg: #101113;
+                --bg2: #18191c;
+                --panel: rgba(255, 250, 240, 0.035);
+                --text: #ece5d8;
+                --text2: #c9c0b1;
+                --muted: #989080;
+                --line: rgba(236, 229, 216, 0.15);
+                --roman: #d18d60;
+                --contract: #d78398;
+                --india: #d2ad63;
+                --tax: #c8b98e;
+                --bar: rgba(16, 17, 19, 0.88);
+                --focus: #f1c88d;
+            }
+            * {
+                box-sizing: border-box;
+            }
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                margin: 0;
+                min-height: 100vh;
+                color: var(--text);
+                background:
+                    radial-gradient(
+                        100% 55% at 50% -10%,
+                        var(--bg2),
+                        transparent 70%
+                    ),
+                    var(--bg);
+                font-family: "Spectral", Georgia, serif;
+                font-size: 1.03rem;
+                line-height: 1.68;
+                -webkit-font-smoothing: antialiased;
+            }
+            a {
+                color: inherit;
+                text-underline-offset: 0.18em;
+            }
+            button {
+                font: inherit;
+                color: inherit;
+            }
+            :focus-visible {
+                outline: 2px solid var(--focus);
+                outline-offset: 3px;
+            }
+            .masthead {
+                position: sticky;
+                top: 0;
+                z-index: 20;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                padding: 0.78rem clamp(1rem, 4vw, 3rem);
+                border-bottom: 1px solid var(--line);
+                background: var(--bar);
+                backdrop-filter: blur(10px);
+            }
+            .brand {
+                font-family: "Cormorant Garamond", serif;
+                font-size: 1.45rem;
+                font-weight: 600;
+                text-decoration: none;
+                line-height: 1;
+            }
+            .nav {
+                display: flex;
+                align-items: center;
+                gap: 0.9rem;
+                margin-left: auto;
+            }
+            .nav a {
+                color: var(--muted);
+                font-size: 0.64rem;
+                letter-spacing: 0.15em;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+            .nav a:hover {
+                color: var(--text);
+            }
+            .theme-toggle {
+                border: 1px solid var(--line);
+                background: none;
+                padding: 0.42rem 0.7rem;
+                cursor: pointer;
+                color: var(--contract);
+                font-size: 0.63rem;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+            }
+            .wrap {
+                width: min(100% - 2rem, 1040px);
+                margin: 0 auto;
+                padding: clamp(2.4rem, 6vw, 5.6rem) 0;
+            }
+            .eyebrow {
+                margin: 0 0 0.9rem;
+                color: var(--contract);
+                font-size: 0.68rem;
+                letter-spacing: 0.27em;
+                text-transform: uppercase;
+            }
+            h1,
+            h2 {
+                font-family: "Cormorant Garamond", serif;
+                font-weight: 500;
+            }
+            h1 {
+                max-width: 850px;
+                margin: 0;
+                font-size: clamp(3rem, 8vw, 5.8rem);
+                line-height: 0.96;
+            }
+            .rule {
+                width: 70px;
+                height: 1px;
+                margin: 2rem 0;
+                background: linear-gradient(
+                    90deg,
+                    var(--roman),
+                    var(--contract),
+                    var(--india),
+                    var(--tax)
+                );
+            }
+            .lede {
+                max-width: 35em;
+                margin: 0;
+                color: var(--text2);
+                font-family: "Cormorant Garamond", serif;
+                font-size: clamp(1.32rem, 2.5vw, 1.72rem);
+                font-style: italic;
+                line-height: 1.43;
+            }
+            .lede em {
+                font-style: normal;
+            }
+            .projects {
+                margin-top: 3.5rem;
+                border-top: 1px solid var(--line);
+            }
+            .project {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) auto;
+                gap: 2rem;
+                align-items: start;
+                padding: 1.7rem 0.2rem;
+                border-bottom: 1px solid var(--line);
+                text-decoration: none;
+            }
+            .project h2 {
+                margin: 0 0 0.35rem;
+                font-size: clamp(1.75rem, 4vw, 2.45rem);
+                line-height: 1.05;
+            }
+            .project p {
+                max-width: 690px;
+                margin: 0;
+                color: var(--muted);
+                font-size: 0.94rem;
+            }
+            .project span {
+                padding-top: 0.45rem;
+                color: var(--muted);
+                white-space: nowrap;
+            }
+            .project:hover span {
+                color: var(--text);
+            }
+            .project--roman:hover h2 {
+                color: var(--roman);
+            }
+            .project--contract:hover h2 {
+                color: var(--contract);
+            }
+            .project--india:hover h2 {
+                color: var(--india);
+            }
+            .project--tax:hover h2 {
+                color: var(--tax);
+            }
+            .note {
+                margin-top: 2.5rem;
+                padding: 1rem 1.1rem;
+                border: 1px solid var(--line);
+                background: var(--panel);
+                color: var(--muted);
+                font-size: 0.88rem;
+            }
+            footer {
+                border-top: 1px solid var(--line);
+                padding: 2rem 1rem 3rem;
+                color: var(--muted);
+                font-size: 0.78rem;
+                text-align: center;
+            }
+            @media (max-width: 680px) {
+                .nav a {
+                    display: none;
+                }
+                .brand {
+                    font-size: 1.23rem;
+                }
+                .wrap {
+                    width: min(100% - 1.4rem, 1040px);
+                    padding: 2.5rem 0 3.5rem;
+                }
+                .project {
+                    grid-template-columns: 1fr;
+                    gap: 0.65rem;
+                }
+                .project span {
+                    padding-top: 0;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header class="masthead">
+            <a class="brand" href="index.html"
+                >Law, Courts, and Constitutions</a
+            >
+            <nav class="nav" aria-label="Main navigation">
+                <a href="roman-law-common-law.html">Legal traditions</a>
+                <a href="english-contract-law.html">Contract</a>
+                <a href="fundamental-rights-india.html">Fundamental rights</a>
+                <a href="history-of-tax-law.html">Tax law</a>
+                <a href="https://naniwadekar.com/">All projects</a>
+                <button class="theme-toggle" id="themeBtn" type="button">
+                    Light
+                </button>
+            </nav>
+        </header>
+        <main class="wrap">
+            <p class="eyebrow">
+                Legal traditions · doctrine · institutions · leading cases
+            </p>
+            <h1>Law, Courts,<br />and Constitutions</h1>
+            <div class="rule"></div>
 
-    <section class="projects" aria-label="Legal studies">
-      <a class="project project--roman" href="roman-law-common-law.html">
-        <div>
-          <h2>Roman Law and the English Common Law</h2>
-          <p>A comparative study of sources, procedure, property, obligations, legal status, equity, jurists, judges, precedent, compilation, and legal transmission.</p>
-        </div>
-        <span aria-hidden="true">Open →</span>
-      </a>
-      <a class="project project--contract" href="english-contract-law.html">
-        <div>
-          <h2>The Common Law of Bargain</h2>
-          <p>A doctrinal and historical reader on English contract law, from forms of action and consideration to modern interpretation, variation, statutory controls, and remedies.</p>
-        </div>
-        <span aria-hidden="true">Open →</span>
-      </a>
-      <a class="project project--india" href="fundamental-rights-india.html">
-        <div>
-          <h2>Fundamental Rights in the Supreme Court of India</h2>
-          <p>Part III through constitutional text, doctrinal tests, amendments, leading decisions, dissents, later treatment, and links to primary judgments.</p>
-        </div>
-        <span aria-hidden="true">Open →</span>
-      </a>
-      <a class="project project--tax" href="history-of-tax-law.html">
-        <div>
-          <h2>A History of Tax Law</h2>
-          <p>An interactive timeline from constitutional consent and the invention of income tax to Indian direct taxation, treaties, transfer pricing, BEPS, digital taxation, and the global minimum tax.</p>
-        </div>
-        <span aria-hidden="true">Open →</span>
-      </a>
-    </section>
+            <section class="projects" aria-label="Legal studies">
+                <a
+                    class="project project--roman"
+                    href="roman-law-common-law.html"
+                >
+                    <div>
+                        <h2>Roman Law and the English Common Law</h2>
+                        <p>
+                            A comparative study of sources, procedure, property,
+                            obligations, legal status, equity, jurists, judges,
+                            precedent, compilation, and legal transmission.
+                        </p>
+                    </div>
+                    <span aria-hidden="true">Open →</span>
+                </a>
+                <a
+                    class="project project--contract"
+                    href="english-contract-law.html"
+                >
+                    <div>
+                        <h2>The Common Law of Bargain</h2>
+                        <p>
+                            A doctrinal and historical reader on English
+                            contract law, from forms of action and consideration
+                            to modern interpretation, variation, statutory
+                            controls, and remedies.
+                        </p>
+                    </div>
+                    <span aria-hidden="true">Open →</span>
+                </a>
+                <a
+                    class="project project--india"
+                    href="fundamental-rights-india.html"
+                >
+                    <div>
+                        <h2>
+                            Fundamental Rights in the Supreme Court of India
+                        </h2>
+                        <p>
+                            Part III through constitutional text, doctrinal
+                            tests, amendments, leading decisions, dissents,
+                            later treatment, and links to primary judgments.
+                        </p>
+                    </div>
+                    <span aria-hidden="true">Open →</span>
+                </a>
+                <a class="project project--tax" href="history-of-tax-law.html">
+                    <div>
+                        <h2>A History of Tax Law</h2>
+                        <p>
+                            An interactive timeline from constitutional consent
+                            and the invention of income tax to Indian direct
+                            taxation, treaties, transfer pricing, BEPS, digital
+                            taxation, and the global minimum tax.
+                        </p>
+                    </div>
+                    <span aria-hidden="true">Open →</span>
+                </a>
+            </section>
 
-    <div class="note">This landing page is deliberately modular. New studies can be added as additional HTML pages and listed here without reorganising the existing material.</div>
-  </main>
-  <footer><a href="https://naniwadekar.com/">Curiosities</a> · Maps, Birds, and Law</footer>
-  <script>
-    (function(){
-      var b=document.getElementById("themeBtn");
-      function label(){
-        var dark=document.documentElement.getAttribute("data-theme")==="dark";
-        b.textContent=dark?"Light":"Dark";
-        b.setAttribute("aria-pressed",String(dark));
-      }
-      b.addEventListener("click",function(){
-        var next=document.documentElement.getAttribute("data-theme")==="dark"?"light":"dark";
-        document.documentElement.setAttribute("data-theme",next);
-        try{localStorage.setItem("law-theme",next)}catch(e){}
-        label();
-      });
-      label();
-    })();
-  </script>
-</body>
+            <div class="note">
+                This landing page is deliberately modular. New studies can be
+                added as additional HTML pages and listed here without
+                reorganising the existing material.
+            </div>
+        </main>
+        <footer>
+            <a href="https://naniwadekar.com/">Curiosities</a> · Maps, Birds,
+            and Law
+        </footer>
+        <script>
+            (function () {
+                var b = document.getElementById("themeBtn");
+                function label() {
+                    var dark =
+                        document.documentElement.getAttribute("data-theme") ===
+                        "dark";
+                    b.textContent = dark ? "Light" : "Dark";
+                    b.setAttribute("aria-pressed", String(dark));
+                }
+                b.addEventListener("click", function () {
+                    var next =
+                        document.documentElement.getAttribute("data-theme") ===
+                        "dark"
+                            ? "light"
+                            : "dark";
+                    document.documentElement.setAttribute("data-theme", next);
+                    try {
+                        localStorage.setItem("law-theme", next);
+                    } catch (e) {}
+                    label();
+                });
+                label();
+            })();
+        </script>
+    </body>
 </html>
