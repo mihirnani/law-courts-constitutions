@@ -1,0 +1,977 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Roman Law and the English Common Law: a comparative legal-history site built around concepts, institutions and primary sources.">
+  <title>Roman Law and the English Common Law · Law, Courts, and Constitutions</title>
+
+  <script>
+    (function () {
+      var theme = "dark";
+      try {
+        var saved = localStorage.getItem("law-theme");
+        if (saved === "light" || saved === "dark") theme = saved;
+      } catch (e) {}
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap");
+
+    :root,
+    [data-theme="light"] {
+      --bg: #f3eee3;
+      --bg-deep: #e8dfd0;
+      --panel: rgba(255,255,255,.34);
+      --text: #28231e;
+      --text-2: #4e463d;
+      --muted: #7d7264;
+      --line: rgba(57,45,33,.18);
+      --roman: #9b532f;
+      --roman-soft: rgba(155,83,47,.09);
+      --english: #315d78;
+      --english-soft: rgba(49,93,120,.09);
+      --bridge: #6e654b;
+      --bridge-soft: rgba(110,101,75,.09);
+      --bar: rgba(243,238,227,.9);
+      --shadow: rgba(45,33,20,.15);
+      --focus: #7a3e1f;
+    }
+
+    [data-theme="dark"] {
+      --bg: #101113;
+      --bg-deep: #18191c;
+      --panel: rgba(255,250,240,.035);
+      --text: #ece5d8;
+      --text-2: #c9c0b1;
+      --muted: #989080;
+      --line: rgba(236,229,216,.15);
+      --roman: #d18d60;
+      --roman-soft: rgba(209,141,96,.09);
+      --english: #8cb5cf;
+      --english-soft: rgba(140,181,207,.09);
+      --bridge: #b4a77c;
+      --bridge-soft: rgba(180,167,124,.09);
+      --bar: rgba(16,17,19,.88);
+      --shadow: rgba(0,0,0,.65);
+      --focus: #f1c88d;
+    }
+
+    :root {
+      --max: 1180px;
+      --measure: 43rem;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(100% 55% at 50% -10%, var(--bg-deep), transparent 70%),
+        var(--bg);
+      color: var(--text);
+      font-family: "Spectral", Georgia, serif;
+      font-size: 1.03rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    body.drawer-open { overflow: hidden; }
+    a { color: inherit; text-underline-offset: .18em; }
+    button, input { font: inherit; }
+    button { color: inherit; }
+    :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+    .masthead {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      min-height: 3.7rem;
+      padding: .72rem clamp(1rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--line);
+      background: var(--bar);
+      backdrop-filter: blur(10px);
+    }
+    .brand {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.42rem;
+      font-weight: 600;
+      line-height: 1;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      margin-left: auto;
+    }
+    .nav a {
+      color: var(--muted);
+      font-size: .66rem;
+      letter-spacing: .17em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .nav a:hover { color: var(--text); }
+    .theme-toggle {
+      border: 1px solid var(--line);
+      background: none;
+      padding: .42rem .7rem;
+      cursor: pointer;
+      color: var(--roman);
+      font-size: .64rem;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+    .theme-toggle:hover { border-color: currentColor; }
+
+    .wrap {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 4.6rem) clamp(1rem, 5vw, 4rem);
+    }
+    .eyebrow {
+      margin: 0 0 .85rem;
+      color: var(--roman);
+      font-size: .68rem;
+      letter-spacing: .27em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+    }
+    .hero h1 {
+      max-width: 900px;
+      margin: 0;
+      font-size: clamp(2.8rem, 7vw, 5.3rem);
+      line-height: .98;
+      letter-spacing: .002em;
+    }
+    .hero-line {
+      width: 66px;
+      height: 1px;
+      margin: 2rem 0;
+      background: linear-gradient(90deg, var(--roman) 0 48%, transparent 48% 52%, var(--english) 52%);
+    }
+    .lede {
+      max-width: 34em;
+      margin: 0;
+      color: var(--text-2);
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.3rem, 2.4vw, 1.67rem);
+      font-style: italic;
+      line-height: 1.45;
+    }
+    .lede em { font-style: normal; }
+    .scope-note {
+      max-width: 56rem;
+      margin-top: 2.5rem;
+      padding: 1rem 1.1rem;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text-2);
+      font-size: .92rem;
+    }
+    .scope-note strong { color: var(--text); font-weight: 500; }
+
+    .section {
+      border-top: 1px solid var(--line);
+      scroll-margin-top: 5rem;
+    }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) minmax(240px, 34rem);
+      gap: 2rem;
+      align-items: end;
+      margin-bottom: 2rem;
+    }
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4.8vw, 3.4rem);
+      line-height: 1;
+    }
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .94rem;
+    }
+
+    .matrix {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+    }
+    .matrix table {
+      width: 100%;
+      min-width: 730px;
+      border-collapse: collapse;
+      background: var(--panel);
+    }
+    .matrix th, .matrix td {
+      padding: .85rem 1rem;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+    .matrix tr:last-child td { border-bottom: 0; }
+    .matrix th {
+      font-size: .64rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .matrix th:nth-child(2) { color: var(--roman); }
+    .matrix th:nth-child(3) { color: var(--english); }
+    .matrix td:first-child {
+      width: 18%;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+    .matrix td { font-size: .9rem; line-height: 1.52; }
+
+    .tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem;
+      align-items: center;
+      margin-bottom: 1.4rem;
+    }
+    .filter {
+      border: 1px solid var(--line);
+      background: none;
+      padding: .43rem .7rem;
+      cursor: pointer;
+      color: var(--muted);
+      font-size: .63rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .filter[aria-pressed="true"] {
+      color: var(--text);
+      border-color: currentColor;
+      background: var(--panel);
+    }
+    .search {
+      margin-left: auto;
+      width: min(100%, 300px);
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: .48rem .7rem;
+      color: var(--text);
+    }
+    .search::placeholder { color: var(--muted); }
+
+    .concept-list {
+      display: grid;
+      gap: 1rem;
+    }
+    .concept {
+      border: 1px solid var(--line);
+      background: var(--panel);
+    }
+    .concept > summary {
+      display: grid;
+      grid-template-columns: 3.2rem minmax(0,1fr) auto;
+      gap: 1rem;
+      align-items: center;
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      list-style: none;
+    }
+    .concept > summary::-webkit-details-marker { display: none; }
+    .concept-no {
+      color: var(--muted);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.35rem;
+    }
+    .concept-title {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.6rem;
+      line-height: 1.1;
+    }
+    .concept-question {
+      display: block;
+      margin-top: .18rem;
+      color: var(--muted);
+      font-size: .83rem;
+    }
+    .concept-mark {
+      color: var(--muted);
+      font-size: 1.2rem;
+      transition: transform .15s ease;
+    }
+    .concept[open] .concept-mark { transform: rotate(45deg); }
+    .concept-body {
+      padding: 0 1.1rem 1.2rem 5.3rem;
+      border-top: 1px solid var(--line);
+    }
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      margin: 1.1rem 0;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .column {
+      min-width: 0;
+      padding: 1.05rem 1.1rem;
+      background: var(--bg);
+    }
+    .column.roman { box-shadow: inset 3px 0 0 var(--roman); }
+    .column.english { box-shadow: inset 3px 0 0 var(--english); }
+    .column h3 {
+      margin: 0 0 .7rem;
+      font-size: 1.25rem;
+    }
+    .column.roman h3 { color: var(--roman); }
+    .column.english h3 { color: var(--english); }
+    .column p {
+      margin: 0 0 .8rem;
+      color: var(--text-2);
+      font-size: .92rem;
+    }
+    .column p:last-child { margin-bottom: 0; }
+    .contrast {
+      max-width: var(--measure);
+      margin: 1rem 0;
+      padding-left: 1rem;
+      border-left: 3px solid var(--bridge);
+      color: var(--text-2);
+    }
+    .contrast strong {
+      display: block;
+      margin-bottom: .2rem;
+      color: var(--bridge);
+      font-size: .62rem;
+      font-weight: 500;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .cautions {
+      max-width: var(--measure);
+      margin: 1rem 0;
+      padding-left: 1.1rem;
+      color: var(--muted);
+      font-size: .87rem;
+    }
+    .source-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+      margin-top: 1.1rem;
+    }
+    .source-button {
+      border: 1px solid var(--line);
+      background: none;
+      padding: .38rem .58rem;
+      cursor: pointer;
+      color: var(--muted);
+      font-size: .62rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .source-button:hover { color: var(--text); border-color: currentColor; }
+    .empty {
+      padding: 1rem;
+      border: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: .3rem;
+      bottom: .3rem;
+      left: 50%;
+      width: 1px;
+      background: var(--line);
+    }
+    .tl-row {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 5.2rem;
+    }
+    .tl-card {
+      position: relative;
+      width: calc(100% - 2rem);
+      margin-bottom: 1rem;
+      padding: .7rem .9rem;
+      border: 1px solid var(--line);
+      background: var(--panel);
+    }
+    .tl-row.roman .tl-card { grid-column: 1; justify-self: start; text-align: right; }
+    .tl-row.english .tl-card, .tl-row.bridge .tl-card { grid-column: 2; justify-self: end; }
+    .tl-card::after {
+      content: "";
+      position: absolute;
+      top: 1rem;
+      width: 11px;
+      height: 11px;
+      border: 2px solid;
+      border-radius: 50%;
+      background: var(--bg);
+    }
+    .tl-row.roman .tl-card::after { right: -2.38rem; border-color: var(--roman); }
+    .tl-row.english .tl-card::after { left: -2.38rem; border-color: var(--english); }
+    .tl-row.bridge .tl-card::after { left: -2.38rem; border-color: var(--bridge); }
+    .tl-date {
+      color: var(--muted);
+      font-size: .62rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    .tl-card h3 {
+      margin: .08rem 0 .15rem;
+      font-size: 1.3rem;
+      line-height: 1.08;
+    }
+    .tl-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .83rem;
+      line-height: 1.48;
+    }
+
+    .sources-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 1rem;
+    }
+    .source-card {
+      padding: 1rem;
+      border: 1px solid var(--line);
+      background: var(--panel);
+    }
+    .source-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem .8rem;
+      margin-bottom: .55rem;
+      color: var(--muted);
+      font-size: .62rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .source-card.roman { box-shadow: inset 3px 0 0 var(--roman); }
+    .source-card.english { box-shadow: inset 3px 0 0 var(--english); }
+    .source-card h3 {
+      margin: 0 0 .55rem;
+      font-size: 1.35rem;
+      line-height: 1.1;
+    }
+    .source-card blockquote {
+      margin: .8rem 0;
+      padding-left: .9rem;
+      border-left: 1px solid var(--line);
+      color: var(--text-2);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.13rem;
+      font-style: italic;
+      line-height: 1.35;
+    }
+    .source-card p {
+      margin: 0 0 .8rem;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+    .source-card a {
+      color: var(--text);
+      font-size: .72rem;
+    }
+
+    .glossary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 1px;
+      border: 1px solid var(--line);
+      background: var(--line);
+    }
+    .term {
+      padding: .9rem 1rem;
+      background: var(--bg);
+    }
+    .term dt {
+      color: var(--text);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.2rem;
+      font-style: italic;
+    }
+    .term dd {
+      margin: .25rem 0 0;
+      color: var(--muted);
+      font-size: .82rem;
+      line-height: 1.5;
+    }
+
+    .backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      background: rgba(0,0,0,.52);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease;
+    }
+    .backdrop.open { opacity: 1; pointer-events: auto; }
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 50;
+      width: min(560px, 94vw);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid var(--line);
+      background: var(--bg);
+      box-shadow: -12px 0 50px var(--shadow);
+      transform: translateX(100%);
+      transition: transform .24s ease;
+    }
+    .drawer.open { transform: translateX(0); }
+    .drawer-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .9rem 1rem;
+      border-bottom: 1px solid var(--line);
+      background: var(--bar);
+    }
+    .drawer-head span {
+      color: var(--muted);
+      font-size: .64rem;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+    .drawer-close {
+      border: 1px solid var(--line);
+      background: none;
+      padding: .4rem .65rem;
+      cursor: pointer;
+      color: var(--muted);
+      font-size: .62rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .drawer-body { overflow-y: auto; padding: 1.2rem; }
+    .drawer-body h2 {
+      margin: 0 0 .3rem;
+      font-size: 2.1rem;
+      line-height: 1;
+    }
+    .drawer-body .source-card { margin-top: 1rem; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 2rem 1rem 3rem;
+      color: var(--muted);
+      font-size: .78rem;
+      text-align: center;
+    }
+
+    @media (max-width: 850px) {
+      .nav a { display: none; }
+      .section-head { grid-template-columns: 1fr; gap: .8rem; }
+      .comparison { grid-template-columns: 1fr; }
+      .sources-grid { grid-template-columns: 1fr; }
+      .glossary { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+
+    @media (max-width: 650px) {
+      .masthead { flex-wrap: wrap; gap: .55rem .8rem; }
+      .brand { flex: 1 1 auto; font-size: 1.25rem; }
+      .nav { margin-left: 0; }
+      .wrap { padding: 2.2rem .9rem 3rem; }
+      .tools { align-items: stretch; }
+      .filter { flex: 1 1 auto; min-height: 2.5rem; }
+      .search { width: 100%; margin-left: 0; }
+      .concept > summary { grid-template-columns: 2.4rem minmax(0,1fr) auto; gap: .65rem; padding: .9rem; }
+      .concept-title { font-size: 1.4rem; }
+      .concept-body { padding: 0 .9rem 1rem; }
+      .timeline::before { left: 8px; }
+      .tl-row { grid-template-columns: 1fr; padding-left: 2rem; min-height: auto; }
+      .tl-row .tl-card, .tl-row.roman .tl-card, .tl-row.english .tl-card, .tl-row.bridge .tl-card {
+        grid-column: 1;
+        width: 100%;
+        justify-self: stretch;
+        text-align: left;
+      }
+      .tl-row .tl-card::after, .tl-row.roman .tl-card::after, .tl-row.english .tl-card::after, .tl-row.bridge .tl-card::after {
+        left: -2.02rem;
+        right: auto;
+      }
+      .glossary { grid-template-columns: 1fr; }
+      .drawer { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .drawer, .backdrop, .concept-mark { transition: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="masthead">
+    <a class="brand" href="index.html">Law, Courts, and Constitutions</a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html">Studies</a>
+      <a href="english-contract-law.html">English contract</a>
+      <a href="fundamental-rights-india.html">Fundamental rights</a>
+      <a href="#comparison">Compare</a>
+      <a href="#sources">Sources</a>
+      <a href="https://naniwadekar.com/">All projects</a>
+      <button class="theme-toggle" id="themeBtn" type="button">Light</button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="wrap hero">
+      <p class="eyebrow">Concepts · institutions · primary texts</p>
+      <h1>Roman Law and the<br>English Common Law</h1>
+      <div class="hero-line"></div>
+      <p class="lede">
+        A comparison of two long, changing legal traditions:
+        <em>not code against cases, and not two sealed worlds.</em>
+        The useful questions concern sources, remedies, property,
+        obligation, status, legal reasoning and the institutions that made doctrine possible.
+      </p>
+      <div class="scope-note">
+        <strong>Scope.</strong> The Roman side concentrates on classical juristic law and Justinian’s compilation.
+        The English side begins with the central royal courts of the twelfth century and follows common law,
+        equity and later reform. Short extracts are linked to full primary texts. Historical comparison is not legal advice.
+      </div>
+      <div class="scope-note">
+        <strong>Related studies.</strong>
+        Continue to <a href="english-contract-law.html">The Common Law of Bargain</a>
+        or <a href="fundamental-rights-india.html">Fundamental Rights in the Supreme Court of India</a>.
+      </div>
+    </section>
+
+    <section class="wrap section" aria-labelledby="matrix-title">
+      <div class="section-head">
+        <h2 id="matrix-title">At a glance</h2>
+        <p>A compact orientation only. Each contrast is qualified in the detailed modules below.</p>
+      </div>
+      <div class="matrix">
+        <table>
+          <thead>
+            <tr><th>Question</th><th>Roman law</th><th>English common law</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Characteristic archive</td><td>Statutes, edicts, juristic writings, imperial constitutions and compilations</td><td>Writs, pleadings, statutes, reports, treatises and institutional practice</td></tr>
+            <tr><td>Private-law map</td><td>Persons, things and actions; obligations and delicts</td><td>Forms of action, property estates, contract, tort and equity</td></tr>
+            <tr><td>Land</td><td>Ownership and possession, servitudes and usucapion</td><td>Tenure, seisin, estates, trusts and possessory remedies</td></tr>
+            <tr><td>Flexibility</td><td>Praetorian remedies, exceptions and good-faith actions</td><td>New writs, action on the case and Chancery equity</td></tr>
+            <tr><td>Expert authority</td><td>Jurists, magistrates and imperial enactment</td><td>Judges, professional argument, reports, precedent and statute</td></tr>
+            <tr><td>Later survival</td><td>Justinianic texts, medieval ius commune and civil-law scholarship</td><td>Courts, profession, reporting, statute and imperial transplantation</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="wrap section" id="comparison" aria-labelledby="comparison-title">
+      <div class="section-head">
+        <h2 id="comparison-title">Concepts compared</h2>
+        <p>Open a module for the detailed comparison. “Primary texts” opens the source reader.</p>
+      </div>
+      <div class="tools">
+        <button class="filter concept-filter" type="button" data-group="all" aria-pressed="true">All</button>
+        <button class="filter concept-filter" type="button" data-group="foundations" aria-pressed="false">Foundations</button>
+        <button class="filter concept-filter" type="button" data-group="courts" aria-pressed="false">Courts</button>
+        <button class="filter concept-filter" type="button" data-group="private" aria-pressed="false">Private law</button>
+        <button class="filter concept-filter" type="button" data-group="authority" aria-pressed="false">Authority</button>
+        <input class="search" id="conceptSearch" type="search" placeholder="Search concepts…" aria-label="Search concepts">
+      </div>
+      <div class="concept-list" id="conceptList"></div>
+    </section>
+
+    <section class="wrap section" id="timeline" aria-labelledby="timeline-title">
+      <div class="section-head">
+        <h2 id="timeline-title">A selective chronology</h2>
+        <p>The dates mark institutional and textual turning points, not a claim that either tradition developed in a straight line.</p>
+      </div>
+      <div class="timeline" id="timelineList"></div>
+    </section>
+
+    <section class="wrap section" id="sources" aria-labelledby="sources-title">
+      <div class="section-head">
+        <h2 id="sources-title">Primary-source reader</h2>
+        <p>Short extracts follow the linked translations or reports and are deliberately brief. Use the links for the full text, editorial context and variant translations.</p>
+      </div>
+      <div class="tools">
+        <button class="filter source-filter" type="button" data-tradition="all" aria-pressed="true">All</button>
+        <button class="filter source-filter" type="button" data-tradition="roman" aria-pressed="false">Roman</button>
+        <button class="filter source-filter" type="button" data-tradition="english" aria-pressed="false">English</button>
+        <input class="search" id="sourceSearch" type="search" placeholder="Search sources…" aria-label="Search primary sources">
+      </div>
+      <div class="sources-grid" id="sourcesGrid"></div>
+    </section>
+
+    <section class="wrap section" id="glossary" aria-labelledby="glossary-title">
+      <div class="section-head">
+        <h2 id="glossary-title">Working glossary</h2>
+        <p>Terms are defined for this comparison. Each carries a longer and sometimes contested history.</p>
+      </div>
+      <dl class="glossary" id="glossaryList"></dl>
+    </section>
+  </main>
+
+  <footer>
+    Part of <a href="index.html">Law, Courts, and Constitutions</a>.
+    Continue with <a href="english-contract-law.html">English contract law</a>
+    or <a href="fundamental-rights-india.html">Indian fundamental rights</a>.
+  </footer>
+
+  <div class="backdrop" id="backdrop"></div>
+  <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Primary-source reader">
+    <div class="drawer-head">
+      <span id="drawerLabel">Primary text</span>
+      <button class="drawer-close" id="drawerClose" type="button">Close</button>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </aside>
+
+  <script>
+    const SOURCES = [{"id": "twelve-tables", "tradition": "roman", "date": "traditionally 451–450 BCE", "title": "The Twelve Tables", "type": "statutory fragments", "excerpt": "If the plaintiff summons the defendant to court the defendant shall go.", "note": "The surviving text is reconstructed from later quotations, not preserved on the original tablets. It foregrounds procedure, debt, family, property and delict.", "url": "https://avalon.law.yale.edu/ancient/twelve_tables.asp"}, {"id": "gaius", "tradition": "roman", "date": "c. 160 CE", "title": "Gaius, Institutes", "type": "juristic textbook", "excerpt": "The whole of the law by which we are governed relates either to persons, or to things, or to actions.", "note": "Gaius supplies the institutional scheme later reused by Justinian. The text survives chiefly through a palimpsest discovered in 1816.", "url": "https://droitromain.univ-grenoble-alpes.fr/Anglica/gai1_Poste.htm"}, {"id": "justinian-institutes", "tradition": "roman", "date": "533 CE", "title": "Justinian, Institutes", "type": "imperial textbook with legislative force", "excerpt": "The precepts of the law are these: to live honestly, to injure no one, and to give every man his due.", "note": "The Institutes formed one part of Justinian’s sixth-century compilation alongside the Code, Digest and later Novels.", "url": "https://amesfoundation.law.harvard.edu/digital/CJCiv/JInst.pdf"}, {"id": "digest-justice", "tradition": "roman", "date": "533 CE compilation", "title": "Digest 1.1: Justice and the sources of law", "type": "compiled juristic writings", "excerpt": "Justice is the constant and perpetual desire to give to every one that to which he is entitled.", "note": "The Digest preserves edited extracts from classical jurists. It is a compilation, not a verbatim archive of every original work.", "url": "https://droitromain.univ-grenoble-alpes.fr/Anglica/D1_Scott.htm"}, {"id": "digest-aquilia", "tradition": "roman", "date": "533 CE compilation of older law", "title": "Digest 9.2: The Lex Aquilia", "type": "juristic analysis of wrongful damage", "excerpt": "It is not sufficient for it to be merely killed, but this must be done in violation of law.", "note": "The title tests causation, fault, valuation and available actions through highly specific factual problems.", "url": "https://droitromain.univ-grenoble-alpes.fr/Anglica/D9_Scott.htm"}, {"id": "glanvill", "tradition": "english", "date": "c. 1187–1189", "title": "Glanvill, Treatise on the Laws and Customs of England", "type": "royal-court treatise", "excerpt": "The Regal Power should not merely be decorated with Arms, but ought likewise to be adorned with Laws.", "note": "Usually called Glanvill, though authorship is uncertain. Its practical centre is the royal writ and the procedure of the king’s courts.", "url": "https://www.gutenberg.org/ebooks/71142"}, {"id": "magna-carta", "tradition": "english", "date": "1215", "title": "Magna Carta, clauses 39–40", "type": "royal charter", "excerpt": "No free man is to be arrested or imprisoned except by the lawful judgment of his peers or by the law of the land.", "note": "The 1215 charter was annulled and reissued in altered forms. Later constitutional meanings should not be read back mechanically into its feudal setting.", "url": "https://magnacarta.cmp.uea.ac.uk/read/magna_carta_1215/Clause_39?com=gen"}, {"id": "bracton", "tradition": "english", "date": "c. 1220s–1260s", "title": "Bracton, On the Laws and Customs of England", "type": "common-law treatise using court records and learned law", "excerpt": "The king is under God and under the law, because law makes the king.", "note": "Bracton attempts to explain English material using concepts and vocabulary drawn in part from Roman and canon law.", "url": "https://amesfoundation.law.harvard.edu/Bracton/Unframed/English/v2/33.htm"}, {"id": "westminster-ii", "tradition": "english", "date": "1285", "title": "Statute of Westminster II", "type": "statute", "excerpt": "The clerks of the Chancery shall agree in making the writ.", "note": "Chapter 24 authorised writs in similar cases, but did not create an unrestricted judicial power to invent remedies. Chapter 1, De Donis, shaped the estate tail.", "url": "https://www.legislation.gov.uk/aep/Edw1/13/1"}, {"id": "earl-oxford", "tradition": "english", "date": "1615", "title": "The Earl of Oxford’s Case", "type": "Chancery report", "excerpt": "Men’s actions are so diverse and infinite, that it is impossible to make any general law which may aptly meet with every particular act.", "note": "The report is central to the conventional account of conflict between common law and Chancery. Equity’s priority was later expressed by statute.", "url": "https://www.oxford-shakespeare.com/MagdaleneCollege/Eng_Rep_21_Magdalene_1615.pdf"}, {"id": "blackstone", "tradition": "english", "date": "1765–1769", "title": "Blackstone, Commentaries on the Laws of England", "type": "systematic legal treatise", "excerpt": "The judge is not delegated to pronounce a new law, but to maintain and expound the old one.", "note": "Blackstone systematised English law for readers at home and across the empire. His declaratory account of judging should not be taken as a complete description of legal change.", "url": "https://avalon.law.yale.edu/subject_menus/blackstone.asp"}, {"id": "entick", "tradition": "english", "date": "1765", "title": "Entick v Carrington", "type": "King’s Bench judgment", "excerpt": "If this is law, it would be found in our books.", "note": "The court held state messengers liable in trespass because no lawful authority justified entry, search and seizure.", "url": "https://lawlibrarycollections.umn.edu/classic-cases-constitutional-entick-v-carrington"}, {"id": "judicature", "tradition": "english", "date": "1873–1875", "title": "Supreme Court of Judicature Acts", "type": "court-reorganisation statutes", "excerpt": "There shall be transferred to and vested in the said High Court of Justice the jurisdiction.", "note": "The Acts fused administration of law and equity, not every substantive doctrine. In conflict, equitable rules were to prevail.", "url": "https://www.legislation.gov.uk/ukpga/Vict/36-37/66/pdfs/ukpga_18730066_en.pdf"}, {"id": "donoghue", "tradition": "english", "date": "1932", "title": "Donoghue v Stevenson", "type": "House of Lords judgment", "excerpt": "You must take reasonable care to avoid acts or omissions which you can reasonably foresee would be likely to injure your neighbour.", "note": "The speeches helped articulate a general duty of care in negligence, while leaving later courts to define its scope.", "url": "https://www.bailii.org/uk/cases/UKHL/1932/100.html"}];
+    const CONCEPTS = [{"id": "scope", "group": "foundations", "title": "What is being compared?", "question": "Two legal traditions, or several historical layers?", "roman": ["“Roman law” covers more than a millennium: archaic statutes and custom, republican legislation, praetorian administration, classical juristic writing, imperial constitutions and Justinian’s sixth-century compilation. The site therefore uses late-republican, classical and Justinianic materials selectively rather than pretending that Rome possessed one unchanging code.", "In Roman texts, ius civile means law particular to a civic community—most often the law of Roman citizens. It does not mean the modern civil-law family."], "english": ["“English common law” can mean the law common to the king’s realm, law developed in the common-law courts, judge-made law as distinct from statute, or law as distinct from equity. The meaning changes with period and context.", "The comparison begins with the central royal courts of the twelfth century and follows the tradition through Chancery, reporting, statute and nineteenth-century procedural reform."], "contrast": "This is not a comparison between a complete code and pure judicial improvisation. Both traditions combined legislation, adjudication, interpretation, custom and institutional practice.", "cautions": ["The medieval ius commune of Roman and canon law is not the same thing as the English common law.", "Modern civil-law systems are descendants and transformations of Roman learned law, not replicas of ancient Rome.", "English law was institutionally distinct but never intellectually sealed from Roman and canon law."], "sources": ["gaius", "justinian-institutes", "glanvill", "bracton"]}, {"id": "sources-law", "group": "foundations", "title": "Sources of law", "question": "Where could a rule obtain legal authority?", "roman": ["Roman lawyers identified statutes, plebiscites, senatorial resolutions, imperial constitutions, magistrates’ edicts, juristic responses and custom. Their relative importance changed sharply over time. In the classical period, elite jurists analysed concrete questions and supplied categories that later compilations preserved.", "The praetor did not simply legislate outside the civil law. Through the edict and procedural remedies, praetorian law could assist, supplement or correct the ius civile."], "english": ["English common law grew through royal commands and writs, customary rules recognised by central courts, statutes, judicial practice, pleadings and the accumulated learning of the profession. Reported cases became increasingly important, but a modern hierarchy of binding precedent developed gradually.", "Parliamentary statute was never foreign to the common law. Medieval statutes such as Westminster II altered remedies and property doctrine; later statutes reorganised courts and displaced common-law rules."], "contrast": "Roman juristic authority and English precedent are not equivalents. Roman jurists were authoritative legal experts whose writings could receive official weight; English judgments acquired authority within a court hierarchy and a profession organised around reports and argument.", "cautions": ["Justinian’s Digest edits and rearranges earlier juristic writing.", "Early English case reports are selective records of argument and pleading, not modern authorised law reports.", "Neither system can be reduced to one source: code in Rome, cases in England."], "sources": ["twelve-tables", "digest-justice", "westminster-ii", "blackstone"]}, {"id": "organisation", "group": "foundations", "title": "How law is organised", "question": "By abstract categories, or by the route to a remedy?", "roman": ["Gaius famously arranged private law around persons, things and actions. Justinian adopted a related institutional structure. Roman jurists also organised doctrine through legally recognised actions, contracts, delicts, modes of acquisition and status.", "The categories are conceptual, but they were formed in dialogue with procedure. An actio was not merely a modern cause of action; it was a legally recognised route by which a claim could be pursued."], "english": ["Medieval common law was strongly shaped by forms of action: debt, covenant, detinue, trespass, case and real actions. A claimant needed an available writ and had to plead within the form’s procedural requirements.", "Doctrinal fields such as contract and tort later emerged partly from the history of these forms. Blackstone imposed a more systematic architecture, but the older remedial history continued to affect substance."], "contrast": "Roman institutional classification starts from broad juristic categories; early common-law classification often starts from writs and procedural forms. Both, however, show that remedies and substantive rights develop together.", "cautions": ["The slogan “where there is a remedy, there is a right” is too crude for either tradition.", "A Roman actio and an English writ are comparable only at a high level.", "Modern textbook categories can conceal the historical pathways by which rules formed."], "sources": ["gaius", "justinian-institutes", "glanvill", "blackstone"]}, {"id": "procedure", "group": "courts", "title": "Procedure, pleading and proof", "question": "Who frames the dispute, and who decides fact and law?", "roman": ["Roman civil procedure moved through several systems. Under the formulary procedure, a magistrate framed a written formula and appointed a private judge to decide the facts and apply the formula. Under cognitio extraordinaria, imperial officials increasingly heard and decided cases within an administrative hierarchy.", "Roman procedure relied on party allegation, formal actions, proof and juristic classification; it did not use an English-style civil jury."], "english": ["The king’s writ initiated many actions in the royal courts. Pleading narrowed the dispute, often through highly technical sequences. Juries evolved from bodies of local informants into triers of evidence, while judges directed legal questions.", "The common-law courts were not the whole jurisdictional landscape: local, manorial, ecclesiastical, mercantile, admiralty and Chancery jurisdictions applied different procedures."], "contrast": "The Roman formula and English writ each channelled claims, but the institutions differed: magistrate and private judge on one side; royal court, pleadings and jury on the other.", "cautions": ["Roman procedure changed substantially from Republic to late Empire.", "The medieval jury was not originally the passive fact-finder familiar from modern trials.", "Procedural technicality could generate substantive doctrine in both systems."], "sources": ["twelve-tables", "gaius", "glanvill", "westminster-ii"]}, {"id": "property", "group": "private", "title": "Property, possession and land", "question": "Ownership, possession, seisin and estates", "roman": ["Roman lawyers distinguished ownership (dominium) from possession (possessio). Possession could receive interdictal protection even where the possessor was not owner. Ownership could pass through recognised modes, and long possession under specified conditions could mature through usucapio.", "Roman property doctrine also distinguished kinds of things and developed servitudes, usufruct and security rights. The conceptual emphasis is on a person’s right in a thing."], "english": ["English land law formed within tenure: land was held of a lord, ultimately of the Crown. Seisin described a protected relationship to freehold land and was central to possessory remedies. Estates divided duration and succession—fee simple, fee tail and life estate—rather than reproducing Roman dominium.", "Uses and trusts later split legal title from equitable benefit. Possession remained powerful, but the language and architecture of landholding were feudal and remedial."], "contrast": "Roman dominium and English ownership of land should not be treated as direct synonyms. English law historically asks what estate a person holds and by what tenure; Roman law more readily asks who is owner and who possesses.", "cautions": ["Roman ownership was not socially or legally unlimited.", "Modern English lawyers often use “ownership,” but historical land law remains structured by estates.", "Possession is a legal relation, not simply physical control, in both traditions."], "sources": ["gaius", "justinian-institutes", "bracton", "westminster-ii"]}, {"id": "obligations", "group": "private", "title": "Contract and obligation", "question": "Which promises or transactions create enforceable duties?", "roman": ["Roman obligations arose from recognised contracts, delicts and other categories. Contract was not a single rule that every serious agreement is enforceable. Formal stipulation, delivery-based contracts and consensual contracts such as sale, hire, partnership and mandate each had their own requirements and actions.", "Some actions were judged in good faith, allowing the judge to consider the parties’ reciprocal duties more flexibly than in strict-law actions."], "english": ["Common-law contract emerged from distinct forms: covenant protected promises under seal; debt pursued fixed sums; assumpsit grew from actions on the case and eventually supported a broad law of informal promises.", "Consideration became a characteristic requirement, while equity supplied doctrines and remedies—such as specific performance—where common-law damages were inadequate."], "contrast": "Roman contract law is typological: recognised transaction types carry actions. English contract law becomes more general through assumpsit and consideration, but retains formal and remedial distinctions.", "cautions": ["Roman causa is not the same as English consideration.", "Neither system historically enforced every voluntary promise.", "Good faith in Roman actions and equitable conscience in England overlap in vocabulary, not institutional identity."], "sources": ["justinian-institutes", "digest-justice", "glanvill", "earl-oxford"]}, {"id": "wrongs", "group": "private", "title": "Delict, trespass and tort", "question": "How does private law respond to wrongful harm?", "roman": ["Roman private delicts included theft, robbery, insult and wrongful damage under the Lex Aquilia. The Aquilian action generated detailed analysis of unlawfulness, causation, fault, the claimant’s interest and valuation.", "Actions could be penal, compensatory or mixed. Roman delict did not form a single general law of negligence equivalent to modern tort."], "english": ["English wrongs developed through forms such as trespass and action on the case. Direct forcible injury and consequential harm followed different procedural routes. Over time, case supported doctrines of negligence, nuisance, defamation and economic wrongs.", "Donoghue v Stevenson did not invent negligence, but its speeches helped state a broader duty of care beyond pre-existing contractual relationships."], "contrast": "Lex Aquilia and negligence both examine wrongful damage, but they belong to different remedial structures. Similar fact patterns do not prove direct doctrinal descent.", "cautions": ["Damnum iniuria datum is not simply “Roman tort law.”", "English tort is a collection of causes of action, not one unified wrong.", "Historical liability rules often depended on status and ownership in ways modern summaries obscure."], "sources": ["digest-aquilia", "entick", "donoghue"]}, {"id": "persons", "group": "private", "title": "Persons, family and legal status", "question": "Who can hold rights, act, inherit and appear in law?", "roman": ["Roman private law classified people by freedom, citizenship and family position. Slavery was foundational. A paterfamilias held extensive authority over descendants in power, though that authority and family property arrangements changed over time.", "Marriage, guardianship, emancipation, adoption and succession were tied to status. Roman legal personality was neither equal nor universal."], "english": ["English law distinguished free and unfree status, legitimate and illegitimate birth, married and unmarried women, minors, corporations and other legally constituted persons. Coverture constrained a married woman’s separate common-law capacity, while equity sometimes protected separate property.", "Feudal incidents, inheritance rules and household authority shaped legal capacity differently from Roman patria potestas."], "contrast": "Both systems used status to allocate capacity, but the statuses and institutions differ. Neither provides a neutral baseline of modern individual legal equality.", "cautions": ["The Roman category of persona does not automatically mean a rights-bearing person in the modern sense.", "Slavery and dependency must not be treated as marginal exceptions.", "Equity’s separate estate did not amount to general equality for married women."], "sources": ["gaius", "justinian-institutes", "bracton", "blackstone"]}, {"id": "equity", "group": "courts", "title": "Praetorian law, good faith and English equity", "question": "How can a legal system correct the rigidity of its own rules?", "roman": ["The praetor’s edict announced actions, exceptions and interdicts. Praetorian law could assist, supplement or correct the civil law. Bona fides also gave judges room within specified actions to assess reciprocal conduct.", "These were parts of Roman legal administration, not a separate Court of Equity resembling Chancery."], "english": ["Chancery developed a jurisdiction associated with conscience, fraud, confidence, uses and remedies such as injunction and specific performance. Its doctrines became increasingly regular and precedent-conscious.", "The Earl of Oxford’s Case symbolises equity’s priority in conflict. The Judicature Acts later enabled one court structure to administer both bodies of doctrine."], "contrast": "The praetor and the Chancellor each supplied flexibility, but the analogy has limits. Their constitutional positions, procedures, sources and characteristic doctrines were different.", "cautions": ["English equity is not simply Roman aequitas transplanted.", "Equity became a rule-governed body of law, not personal discretion without doctrine.", "The Judicature reforms fused administration, not all substantive distinctions."], "sources": ["digest-justice", "earl-oxford", "judicature"]}, {"id": "authority", "group": "authority", "title": "Jurists, judges and precedent", "question": "Whose reasoning counts beyond the immediate dispute?", "roman": ["Roman jurists advised magistrates, litigants and judges, wrote commentaries and responsa, and refined legal categories. Some juristic opinions received official authority; later imperial rules controlled which jurists could be cited.", "The Digest transformed selected juristic writings into imperial law. This is different from a court treating an earlier judgment as binding precedent."], "english": ["English legal reasoning developed through courtroom argument, judicial decision, professional memory and reports. Earlier cases were used as examples and authorities long before a strict modern doctrine of stare decisis took shape.", "By Blackstone’s period, precedent was presented as strong evidence of established custom. Hierarchical binding rules became more formal with reliable reporting and modern court organisation."], "contrast": "Both traditions reasoned from accumulated expert materials. Roman juristic texts became authoritative through professional and imperial structures; common-law cases operate through courts, reports and precedent.", "cautions": ["Roman law was not a code-only system.", "Early common law was not governed by today’s precise ratio/obiter vocabulary.", "Judges both preserve and develop law, despite declaratory rhetoric."], "sources": ["digest-justice", "bracton", "blackstone", "entick"]}, {"id": "codification", "group": "authority", "title": "Compilation, codification and survival", "question": "How did each tradition preserve and export itself?", "roman": ["Justinian’s project produced an authorised body of imperial constitutions, juristic extracts and an introductory textbook. It suppressed competing texts as legal authorities within the empire. Medieval scholars later glossed and taught these materials as part of the ius commune.", "Modern continental codes drew on Roman law as transformed by medieval, early-modern and natural-law scholarship. They are not merely abridged versions of Justinian."], "english": ["English common law remained dispersed across statutes, reports, treatises and procedural institutions. Blackstone offered exposition rather than binding codification. Major fields were repeatedly altered or consolidated by statute.", "The common law spread through conquest, colonisation, settlement and imperial administration, interacting with local, Indigenous, religious and other imported laws."], "contrast": "Roman law’s survival depended heavily on authoritative texts and learned interpretation; common law’s continuity depended heavily on courts, profession, procedure and reporting. Both were repeatedly reconstructed.", "cautions": ["Justinian’s Corpus Juris Civilis is a later collective label, not the title of one ancient codebook.", "“Uncodified” does not mean “unwritten” or “unchanged by statute.”", "Legal transplantation was political and uneven, not the neutral diffusion of superior ideas."], "sources": ["justinian-institutes", "digest-justice", "blackstone", "judicature"]}];
+    const TIMELINE = [{"year": -450, "label": "451–450 BCE", "side": "roman", "title": "Twelve Tables", "text": "Traditional date of Rome’s first public statutory compilation; surviving only in later fragments."}, {"year": -287, "label": "c. 287 BCE", "side": "roman", "title": "Lex Aquilia", "text": "Plebiscite on wrongful damage that became a centre of classical juristic analysis."}, {"year": 160, "label": "c. 160 CE", "side": "roman", "title": "Gaius writes the Institutes", "text": "A systematic textbook organised around persons, things and actions."}, {"year": 212, "label": "212 CE", "side": "roman", "title": "Constitutio Antoniniana", "text": "Roman citizenship was extended to most free inhabitants of the empire, changing the field of the ius civile."}, {"year": 426, "label": "426", "side": "roman", "title": "Law of Citations", "text": "Imperial legislation regulated the courtroom authority of named jurists’ writings."}, {"year": 533, "label": "529–534", "side": "roman", "title": "Justinian’s compilation", "text": "Code, Digest and Institutes were promulgated; later constitutions became the Novels."}, {"year": 1154, "label": "1154–1189", "side": "english", "title": "Henry II and central royal justice", "text": "Royal writs, itinerant justices and possessory assizes helped make law common across much of England."}, {"year": 1188, "label": "c. 1187–1189", "side": "english", "title": "Glanvill", "text": "The first substantial treatise on the law and procedure of the English royal courts."}, {"year": 1215, "label": "1215", "side": "english", "title": "Magna Carta", "text": "A negotiated charter of feudal grievances whose later reissues and reinterpretations acquired constitutional importance."}, {"year": 1250, "label": "c. 1220s–1260s", "side": "bridge", "title": "Bracton", "text": "English cases and procedures were explained partly through the vocabulary of the learned Roman-canon ius commune."}, {"year": 1285, "label": "1285", "side": "english", "title": "Westminster II", "text": "Statutory intervention in writs, landholding and remedies, including in consimili casu and De Donis."}, {"year": 1300, "label": "late 13th century onward", "side": "english", "title": "Year Books", "text": "Reports of pleading and oral argument became a distinctive record of common-law professional reasoning."}, {"year": 1615, "label": "1615", "side": "english", "title": "Earl of Oxford’s Case", "text": "A conventional landmark in the relationship between common law and Chancery equity."}, {"year": 1765, "label": "1765", "side": "english", "title": "Entick and Blackstone", "text": "A major judgment on lawful authority appeared as Blackstone began publishing his systematic Commentaries."}, {"year": 1873, "label": "1873–1875", "side": "english", "title": "Judicature reforms", "text": "The superior common-law and equity jurisdictions were reorganised within one court structure."}, {"year": 1932, "label": "1932", "side": "english", "title": "Donoghue v Stevenson", "text": "The House of Lords articulated an influential general approach to duty of care in negligence."}];
+    const GLOSSARY = [["actio", "A Roman legally recognised action or procedural claim; not simply a modern abstract right."], ["assumpsit", "A common-law form of action that became central to enforcing informal promises and recovering for negligent undertakings."], ["bona fides", "Good faith; especially important in specified Roman actions where the judge assessed reciprocal duties."], ["dominium", "Roman ownership, distinguished from possession and from limited rights in another’s thing."], ["equity", "English doctrines and remedies historically administered by Chancery; not a synonym for general fairness."], ["estate", "In English land law, the duration and quality of a person’s interest in land."], ["interdict", "A praetorian Roman order, especially important in protecting possession."], ["ius civile", "Law particular to a civic community; in Roman sources, commonly the law of Roman citizens."], ["ius commune", "The learned medieval and early-modern European law formed principally from Roman and canon law."], ["ius gentium", "A Roman category associated with rules thought common among peoples; not identical to modern international law."], ["ius honorarium", "Law associated with magistrates’ offices, especially praetorian remedies that aided or corrected the civil law."], ["obligatio", "A Roman legal bond requiring one person to perform toward another under a recognised legal ground."], ["possessio", "Roman legally significant possession, capable of protection apart from ownership."], ["precedent", "An earlier judicial decision used as authority; the degree of binding force varies by court, period and legal system."], ["seisin", "A historically central common-law relationship to freehold land, protected through specialised remedies."], ["stare decisis", "The doctrine of adhering to decided cases, especially within a hierarchy of courts."], ["tenure", "The English structure by which land was held of a lord, ultimately of the Crown."], ["writ", "A formal royal command initiating or controlling legal process; many common-law actions depended on an available writ."]];
+
+    const SOURCE_INDEX = Object.fromEntries(SOURCES.map(source => [source.id, source]));
+    let conceptGroup = "all";
+    let conceptQuery = "";
+    let sourceTradition = "all";
+    let sourceQuery = "";
+    let returnFocus = null;
+
+    function esc(value) {
+      return String(value == null ? "" : value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function sourceCard(source, includeLink = true) {
+      return `
+        <article class="source-card ${esc(source.tradition)}">
+          <div class="source-meta">
+            <span>${source.tradition === "roman" ? "Roman" : "English"}</span>
+            <span>${esc(source.date)}</span>
+            <span>${esc(source.type)}</span>
+          </div>
+          <h3>${esc(source.title)}</h3>
+          <blockquote>“${esc(source.excerpt)}”</blockquote>
+          <p>${esc(source.note)}</p>
+          ${includeLink ? `<a href="${esc(source.url)}" target="_blank" rel="noopener noreferrer">Read the full source ↗</a>` : ""}
+        </article>`;
+    }
+
+    function renderConcepts() {
+      const query = conceptQuery.trim().toLowerCase();
+      const visible = CONCEPTS.filter(concept => {
+        const groupMatch = conceptGroup === "all" || concept.group === conceptGroup;
+        const haystack = [
+          concept.title,
+          concept.question,
+          concept.roman.join(" "),
+          concept.english.join(" "),
+          concept.contrast,
+          concept.cautions.join(" ")
+        ].join(" ").toLowerCase();
+        return groupMatch && (!query || haystack.includes(query));
+      });
+
+      const list = document.getElementById("conceptList");
+      if (!visible.length) {
+        list.innerHTML = `<div class="empty">No matching concepts.</div>`;
+        return;
+      }
+
+      list.innerHTML = visible.map((concept, index) => `
+        <details class="concept" id="${esc(concept.id)}">
+          <summary>
+            <span class="concept-no">${String(CONCEPTS.indexOf(concept) + 1).padStart(2, "0")}</span>
+            <span>
+              <span class="concept-title">${esc(concept.title)}</span>
+              <span class="concept-question">${esc(concept.question)}</span>
+            </span>
+            <span class="concept-mark" aria-hidden="true">+</span>
+          </summary>
+          <div class="concept-body">
+            <div class="comparison">
+              <section class="column roman">
+                <h3>Roman law</h3>
+                ${concept.roman.map(p => `<p>${esc(p)}</p>`).join("")}
+              </section>
+              <section class="column english">
+                <h3>English common law</h3>
+                ${concept.english.map(p => `<p>${esc(p)}</p>`).join("")}
+              </section>
+            </div>
+            <p class="contrast"><strong>Useful contrast</strong>${esc(concept.contrast)}</p>
+            <ul class="cautions">
+              ${concept.cautions.map(item => `<li>${esc(item)}</li>`).join("")}
+            </ul>
+            <div class="source-buttons" aria-label="Primary texts for this concept">
+              ${concept.sources.map(id => {
+                const source = SOURCE_INDEX[id];
+                return `<button class="source-button" type="button" data-source="${esc(id)}">${esc(source.title)}</button>`;
+              }).join("")}
+            </div>
+          </div>
+        </details>
+      `).join("");
+
+      list.querySelectorAll("[data-source]").forEach(button => {
+        button.addEventListener("click", () => openSource(button.dataset.source, button));
+      });
+    }
+
+    function renderTimeline() {
+      document.getElementById("timelineList").innerHTML = TIMELINE
+        .slice()
+        .sort((a, b) => a.year - b.year)
+        .map(entry => `
+          <div class="tl-row ${esc(entry.side)}">
+            <article class="tl-card">
+              <span class="tl-date">${esc(entry.label)}</span>
+              <h3>${esc(entry.title)}</h3>
+              <p>${esc(entry.text)}</p>
+            </article>
+          </div>
+        `).join("");
+    }
+
+    function renderSources() {
+      const query = sourceQuery.trim().toLowerCase();
+      const visible = SOURCES.filter(source => {
+        const traditionMatch = sourceTradition === "all" || source.tradition === sourceTradition;
+        const haystack = [source.title, source.date, source.type, source.excerpt, source.note].join(" ").toLowerCase();
+        return traditionMatch && (!query || haystack.includes(query));
+      });
+
+      document.getElementById("sourcesGrid").innerHTML = visible.length
+        ? visible.map(source => sourceCard(source)).join("")
+        : `<div class="empty">No matching sources.</div>`;
+    }
+
+    function renderGlossary() {
+      document.getElementById("glossaryList").innerHTML = GLOSSARY
+        .slice()
+        .sort((a, b) => a[0].localeCompare(b[0]))
+        .map(([term, definition]) => `
+          <div class="term">
+            <dt>${esc(term)}</dt>
+            <dd>${esc(definition)}</dd>
+          </div>
+        `).join("");
+    }
+
+    function openSource(id, trigger) {
+      const source = SOURCE_INDEX[id];
+      if (!source) return;
+      returnFocus = trigger || null;
+      document.getElementById("drawerLabel").textContent =
+        source.tradition === "roman" ? "Roman primary text" : "English primary text";
+      document.getElementById("drawerBody").innerHTML = `
+        <h2>${esc(source.title)}</h2>
+        ${sourceCard(source)}
+      `;
+      document.body.classList.add("drawer-open");
+      document.getElementById("backdrop").classList.add("open");
+      document.getElementById("drawer").classList.add("open");
+      document.getElementById("drawer").setAttribute("aria-hidden", "false");
+      document.getElementById("drawerClose").focus();
+    }
+
+    function closeSource() {
+      document.body.classList.remove("drawer-open");
+      document.getElementById("backdrop").classList.remove("open");
+      document.getElementById("drawer").classList.remove("open");
+      document.getElementById("drawer").setAttribute("aria-hidden", "true");
+      if (returnFocus && document.contains(returnFocus)) returnFocus.focus();
+      returnFocus = null;
+    }
+
+    function updateThemeButton() {
+      const button = document.getElementById("themeBtn");
+      const dark = document.documentElement.getAttribute("data-theme") === "dark";
+      button.textContent = dark ? "Light" : "Dark";
+      button.setAttribute("aria-pressed", String(dark));
+      button.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+    }
+
+    document.querySelectorAll(".concept-filter").forEach(button => {
+      button.addEventListener("click", () => {
+        conceptGroup = button.dataset.group;
+        document.querySelectorAll(".concept-filter").forEach(item =>
+          item.setAttribute("aria-pressed", String(item === button))
+        );
+        renderConcepts();
+      });
+    });
+
+    document.getElementById("conceptSearch").addEventListener("input", event => {
+      conceptQuery = event.target.value;
+      renderConcepts();
+    });
+
+    document.querySelectorAll(".source-filter").forEach(button => {
+      button.addEventListener("click", () => {
+        sourceTradition = button.dataset.tradition;
+        document.querySelectorAll(".source-filter").forEach(item =>
+          item.setAttribute("aria-pressed", String(item === button))
+        );
+        renderSources();
+      });
+    });
+
+    document.getElementById("sourceSearch").addEventListener("input", event => {
+      sourceQuery = event.target.value;
+      renderSources();
+    });
+
+    document.getElementById("themeBtn").addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      try { localStorage.setItem("law-theme", next); } catch (e) {}
+      updateThemeButton();
+    });
+
+    document.getElementById("drawerClose").addEventListener("click", closeSource);
+    document.getElementById("backdrop").addEventListener("click", closeSource);
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeSource();
+    });
+
+    renderConcepts();
+    renderTimeline();
+    renderSources();
+    renderGlossary();
+    updateThemeButton();
+
+    const initial = location.hash.slice(1);
+    if (initial && document.getElementById(initial)?.classList.contains("concept")) {
+      document.getElementById(initial).open = true;
+    }
+  </script>
+</body>
+</html>

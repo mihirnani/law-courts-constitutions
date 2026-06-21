@@ -1,0 +1,1829 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="color-scheme" content="light dark" />
+        <meta
+            name="description"
+            content="Fundamental Rights in the Supreme Court of India: constitutional text, doctrines, amendments, leading cases, and primary judgments."
+        />
+        <title>
+            Fundamental Rights in the Supreme Court of India · Law, Courts, and
+            Constitutions
+        </title>
+        <script>
+            (function () {
+                var theme = "dark";
+                try {
+                    var saved = localStorage.getItem("law-theme");
+                    if (saved === "light" || saved === "dark") theme = saved;
+                } catch (e) {}
+                document.documentElement.setAttribute("data-theme", theme);
+            })();
+        </script>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:ital,wght@0,300;0,400;0,500;1,400&display=swap");
+            :root,
+            [data-theme="light"] {
+                --bg: #f3eee3;
+                --bg2: #e8dfd0;
+                --panel: rgba(255, 255, 255, 0.34);
+                --text: #28231e;
+                --text2: #4e463d;
+                --muted: #7d7264;
+                --line: rgba(57, 45, 33, 0.18);
+                --saffron: #a46d24;
+                --blue: #315d78;
+                --green: #3d6d55;
+                --bar: rgba(243, 238, 227, 0.9);
+                --focus: #7a501b;
+            }
+            [data-theme="dark"] {
+                --bg: #101113;
+                --bg2: #18191c;
+                --panel: rgba(255, 250, 240, 0.035);
+                --text: #ece5d8;
+                --text2: #c9c0b1;
+                --muted: #989080;
+                --line: rgba(236, 229, 216, 0.15);
+                --saffron: #d2ad63;
+                --blue: #8cb5cf;
+                --green: #86b59b;
+                --bar: rgba(16, 17, 19, 0.88);
+                --focus: #f1c88d;
+            }
+            * {
+                box-sizing: border-box;
+            }
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                margin: 0;
+                min-height: 100vh;
+                color: var(--text);
+                background:
+                    radial-gradient(
+                        100% 55% at 50% -10%,
+                        var(--bg2),
+                        transparent 70%
+                    ),
+                    var(--bg);
+                font-family: "Spectral", Georgia, serif;
+                font-size: 1.02rem;
+                line-height: 1.68;
+                -webkit-font-smoothing: antialiased;
+            }
+            body.reader-open {
+                overflow: hidden;
+            }
+            a {
+                color: inherit;
+                text-underline-offset: 0.18em;
+            }
+            button,
+            input {
+                font: inherit;
+            }
+            button {
+                color: inherit;
+            }
+            :focus-visible {
+                outline: 2px solid var(--focus);
+                outline-offset: 3px;
+            }
+            .masthead {
+                position: sticky;
+                top: 0;
+                z-index: 30;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                padding: 0.72rem clamp(1rem, 4vw, 3rem);
+                border-bottom: 1px solid var(--line);
+                background: var(--bar);
+                backdrop-filter: blur(10px);
+            }
+            .brand {
+                font-family: "Cormorant Garamond", serif;
+                font-size: 1.4rem;
+                font-weight: 600;
+                text-decoration: none;
+                line-height: 1;
+            }
+            .nav {
+                display: flex;
+                align-items: center;
+                gap: 0.9rem;
+                margin-left: auto;
+            }
+            .nav a {
+                color: var(--muted);
+                font-size: 0.63rem;
+                letter-spacing: 0.15em;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+            .nav a:hover {
+                color: var(--text);
+            }
+            .theme-toggle {
+                border: 1px solid var(--line);
+                background: none;
+                padding: 0.42rem 0.7rem;
+                cursor: pointer;
+                color: var(--saffron);
+                font-size: 0.63rem;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+            }
+            .wrap {
+                width: min(100%, 1180px);
+                margin: 0 auto;
+                padding: clamp(2rem, 5vw, 4.6rem) clamp(1rem, 5vw, 4rem);
+            }
+            .eyebrow {
+                margin: 0 0 0.85rem;
+                color: var(--saffron);
+                font-size: 0.68rem;
+                letter-spacing: 0.27em;
+                text-transform: uppercase;
+            }
+            h1,
+            h2,
+            h3 {
+                font-family: "Cormorant Garamond", serif;
+                font-weight: 500;
+            }
+            .hero h1 {
+                max-width: 960px;
+                margin: 0;
+                font-size: clamp(2.75rem, 7vw, 5.15rem);
+                line-height: 0.98;
+            }
+            .hero-line {
+                width: 68px;
+                height: 2px;
+                margin: 2rem 0;
+                background: linear-gradient(
+                    90deg,
+                    var(--saffron) 0 33%,
+                    #ddd 33% 66%,
+                    var(--green) 66%
+                );
+            }
+            .lede {
+                max-width: 37em;
+                margin: 0;
+                color: var(--text2);
+                font-family: "Cormorant Garamond", serif;
+                font-size: clamp(1.3rem, 2.4vw, 1.68rem);
+                font-style: italic;
+                line-height: 1.44;
+            }
+            .lede em {
+                font-style: normal;
+            }
+            .scope {
+                max-width: 63rem;
+                margin-top: 2.4rem;
+                padding: 1rem 1.1rem;
+                border: 1px solid var(--line);
+                background: var(--panel);
+                color: var(--text2);
+                font-size: 0.9rem;
+            }
+            .scope strong {
+                color: var(--text);
+                font-weight: 500;
+            }
+            .section {
+                border-top: 1px solid var(--line);
+                scroll-margin-top: 5rem;
+            }
+            .section-head {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) minmax(260px, 36rem);
+                gap: 2rem;
+                align-items: end;
+                margin-bottom: 2rem;
+            }
+            .section-head h2 {
+                margin: 0;
+                font-size: clamp(2rem, 4.8vw, 3.4rem);
+                line-height: 1;
+            }
+            .section-head p {
+                margin: 0;
+                color: var(--muted);
+                font-size: 0.92rem;
+            }
+            .article-grid {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 1rem;
+            }
+            .article {
+                padding: 1rem;
+                border: 1px solid var(--line);
+                background: var(--panel);
+            }
+            .article .articles {
+                color: var(--saffron);
+                font-size: 0.62rem;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+            }
+            .article h3 {
+                margin: 0.15rem 0 0.4rem;
+                font-size: 1.35rem;
+                line-height: 1.08;
+            }
+            .article p {
+                margin: 0 0 0.65rem;
+                color: var(--text2);
+                font-size: 0.84rem;
+            }
+            .article ul {
+                margin: 0;
+                padding-left: 1rem;
+                color: var(--muted);
+                font-size: 0.77rem;
+            }
+            .doctrine-grid {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1px;
+                border: 1px solid var(--line);
+                background: var(--line);
+            }
+            .doctrine {
+                padding: 1rem;
+                background: var(--bg);
+            }
+            .doctrine h3 {
+                margin: 0 0 0.3rem;
+                font-size: 1.25rem;
+            }
+            .doctrine p {
+                margin: 0;
+                color: var(--muted);
+                font-size: 0.84rem;
+            }
+            .toolbar {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                align-items: center;
+                margin-bottom: 1.3rem;
+            }
+            .filter {
+                border: 1px solid var(--line);
+                background: none;
+                padding: 0.42rem 0.66rem;
+                cursor: pointer;
+                color: var(--muted);
+                font-size: 0.61rem;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+            }
+            .filter[aria-pressed="true"] {
+                color: var(--text);
+                border-color: currentColor;
+                background: var(--panel);
+            }
+            .search {
+                margin-left: auto;
+                width: min(100%, 320px);
+                border: 1px solid var(--line);
+                background: var(--panel);
+                padding: 0.48rem 0.7rem;
+                color: var(--text);
+            }
+            .case-layout {
+                display: grid;
+                grid-template-columns: minmax(0, 1.08fr) minmax(350px, 0.92fr);
+                border: 1px solid var(--line);
+                min-height: 720px;
+            }
+            .case-list {
+                padding: 1rem;
+                max-height: 78vh;
+                overflow: auto;
+                border-right: 1px solid var(--line);
+            }
+            .era {
+                margin: 1.1rem 0.3rem 0.65rem;
+                color: var(--muted);
+                font-family: "Cormorant Garamond", serif;
+                font-size: 1.13rem;
+                font-style: italic;
+            }
+            .case-card {
+                display: block;
+                width: 100%;
+                margin: 0 0 0.65rem;
+                padding: 0.8rem 0.9rem;
+                border: 1px solid var(--line);
+                background: var(--panel);
+                cursor: pointer;
+                text-align: left;
+            }
+            .case-card:hover,
+            .case-card.active {
+                border-color: var(--saffron);
+                background: color-mix(in srgb, var(--saffron) 8%, transparent);
+            }
+            .case-meta {
+                display: flex;
+                justify-content: space-between;
+                gap: 0.7rem;
+                color: var(--muted);
+                font-size: 0.6rem;
+                letter-spacing: 0.11em;
+                text-transform: uppercase;
+            }
+            .case-card h3 {
+                margin: 0.15rem 0;
+                font-size: 1.3rem;
+                line-height: 1.08;
+            }
+            .case-card p {
+                margin: 0;
+                color: var(--muted);
+                font-size: 0.8rem;
+                line-height: 1.45;
+            }
+            .reader {
+                position: sticky;
+                top: 4.3rem;
+                align-self: start;
+                max-height: calc(100vh - 5.2rem);
+                overflow: auto;
+                padding: 1.5rem;
+            }
+            .reader-empty {
+                height: 100%;
+                display: grid;
+                place-items: center;
+                color: var(--muted);
+                text-align: center;
+            }
+            .r-year {
+                color: var(--saffron);
+                font-size: 0.63rem;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+            }
+            .reader h2 {
+                margin: 0.15rem 0 0.15rem;
+                font-size: 2.2rem;
+                line-height: 1;
+            }
+            .r-citation {
+                display: block;
+                color: var(--muted);
+                font-size: 0.84rem;
+                font-style: italic;
+                margin-bottom: 1.3rem;
+            }
+            .r-section {
+                margin: 1.18rem 0;
+            }
+            .r-label {
+                display: block;
+                margin-bottom: 0.25rem;
+                color: var(--saffron);
+                font-size: 0.6rem;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+            }
+            .r-section p {
+                margin: 0;
+                color: var(--text2);
+                font-size: 0.89rem;
+            }
+            .r-later {
+                padding: 0.82rem 0.9rem;
+                border-left: 3px solid var(--blue);
+                background: var(--panel);
+                color: var(--muted);
+                font-size: 0.84rem;
+            }
+            .source-link {
+                display: inline-block;
+                margin-top: 1rem;
+                font-size: 0.74rem;
+            }
+            .reader-nav {
+                display: flex;
+                justify-content: space-between;
+                gap: 1rem;
+                margin-top: 1.5rem;
+                padding-top: 1rem;
+                border-top: 1px solid var(--line);
+            }
+            .reader-nav button {
+                max-width: 48%;
+                border: 0;
+                background: none;
+                padding: 0;
+                cursor: pointer;
+                color: var(--saffron);
+                font-family: "Cormorant Garamond", serif;
+                font-size: 1rem;
+                text-align: left;
+            }
+            .reader-nav .next {
+                margin-left: auto;
+                text-align: right;
+            }
+            .reader-nav button:disabled {
+                opacity: 0.3;
+                cursor: default;
+            }
+            .direction {
+                display: block;
+                color: var(--muted);
+                font-family: "Spectral", serif;
+                font-size: 0.58rem;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+            }
+            .amendments {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1rem;
+            }
+            .amendment {
+                padding: 1rem;
+                border: 1px solid var(--line);
+                background: var(--panel);
+            }
+            .amendment .year {
+                color: var(--saffron);
+                font-size: 0.63rem;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+            }
+            .amendment h3 {
+                margin: 0.12rem 0 0.3rem;
+                font-size: 1.28rem;
+            }
+            .amendment p {
+                margin: 0;
+                color: var(--muted);
+                font-size: 0.83rem;
+            }
+            .sources {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 1rem;
+            }
+            .source-card {
+                padding: 1rem;
+                border: 1px solid var(--line);
+                background: var(--panel);
+            }
+            .source-card h3 {
+                margin: 0 0 0.35rem;
+                font-size: 1.3rem;
+            }
+            .source-card p {
+                margin: 0 0 0.65rem;
+                color: var(--muted);
+                font-size: 0.82rem;
+            }
+            .source-card a {
+                font-size: 0.73rem;
+            }
+            .reader-close {
+                display: none;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                border: 1px solid var(--line);
+                background: none;
+                padding: 0.42rem 0.65rem;
+                color: var(--muted);
+                cursor: pointer;
+                font-size: 0.61rem;
+                letter-spacing: 0.13em;
+                text-transform: uppercase;
+            }
+            footer {
+                border-top: 1px solid var(--line);
+                padding: 2rem 1rem 3rem;
+                color: var(--muted);
+                font-size: 0.78rem;
+                text-align: center;
+            }
+            @media (max-width: 950px) {
+                .article-grid {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+                .case-layout {
+                    grid-template-columns: 1fr;
+                }
+                .case-list {
+                    max-height: none;
+                    border-right: 0;
+                }
+                .reader {
+                    position: fixed;
+                    inset: 0;
+                    z-index: 50;
+                    max-height: none;
+                    background: var(--bg);
+                    transform: translateX(100%);
+                    transition: transform 0.22s ease;
+                    padding: 4.5rem 1rem 2rem;
+                }
+                .reader.open {
+                    transform: translateX(0);
+                }
+                .reader-close {
+                    display: block;
+                }
+            }
+            @media (max-width: 720px) {
+                .nav a {
+                    display: none;
+                }
+                .brand {
+                    font-size: 1.2rem;
+                }
+                .wrap {
+                    padding: 2.2rem 0.9rem 3rem;
+                }
+                .section-head {
+                    grid-template-columns: 1fr;
+                    gap: 0.8rem;
+                }
+                .article-grid,
+                .doctrine-grid,
+                .amendments,
+                .sources {
+                    grid-template-columns: 1fr;
+                }
+                .toolbar {
+                    align-items: stretch;
+                }
+                .filter {
+                    flex: 1 1 auto;
+                    min-height: 2.5rem;
+                }
+                .search {
+                    width: 100%;
+                    margin-left: 0;
+                }
+            }
+            @media (prefers-reduced-motion: reduce) {
+                html {
+                    scroll-behavior: auto;
+                }
+                .reader {
+                    transition: none;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header class="masthead">
+            <a class="brand" href="index.html"
+                >Law, Courts, and Constitutions</a
+            >
+            <nav class="nav" aria-label="Main navigation">
+                <a href="index.html">Studies</a>
+                <a href="roman-law-common-law.html">Legal traditions</a>
+                <a href="english-contract-law.html">Contract</a>
+                <a href="#articles">Articles</a>
+                <a href="#cases">Cases</a>
+                <a href="#sources">Sources</a>
+                <a href="https://naniwadekar.com/">All projects</a>
+                <button class="theme-toggle" id="themeBtn" type="button">
+                    Light
+                </button>
+            </nav>
+        </header>
+
+        <main>
+            <section class="wrap hero">
+                <p class="eyebrow">Part III · doctrine · leading decisions</p>
+                <h1>Fundamental Rights in the<br />Supreme Court of India</h1>
+                <div class="hero-line"></div>
+                <p class="lede">
+                    A constitutional right is not only an article number.
+                    <em
+                        >It is a text interpreted through institutions,
+                        emergencies, amendments, remedies, dissents, and
+                        changing accounts of equality, liberty, and dignity.</em
+                    >
+                </p>
+                <div class="scope">
+                    <strong>Scope and method.</strong> This is a selective
+                    doctrinal map, not an exhaustive digest. Each case entry
+                    separates the original holding from later treatment. The
+                    page was reviewed in June 2026. Citations and links should
+                    be checked against the official Constitution, Supreme Court
+                    Reports, and judgment PDFs before professional use.
+                </div>
+            </section>
+
+            <section class="wrap section" id="articles">
+                <div class="section-head">
+                    <h2>Part III by function</h2>
+                    <p>
+                        The articles are grouped by the constitutional problems
+                        they organise. These summaries paraphrase rather than
+                        replace the enacted text.
+                    </p>
+                </div>
+                <div class="article-grid" id="articleGrid"></div>
+            </section>
+
+            <section class="wrap section">
+                <div class="section-head">
+                    <h2>Doctrinal instruments</h2>
+                    <p>
+                        These ideas recur across rights. They are not
+                        free-standing constitutional clauses, and their
+                        formulation varies between judgments.
+                    </p>
+                </div>
+                <div class="doctrine-grid" id="doctrineGrid"></div>
+            </section>
+
+            <section class="wrap section" id="cases">
+                <div class="section-head">
+                    <h2>Cases and constitutional turning points</h2>
+                    <p>
+                        Read each entry through four questions: what was
+                        decided, why it mattered, what later law changed, and
+                        which proposition remains safe to state.
+                    </p>
+                </div>
+                <div class="toolbar">
+                    <button
+                        class="filter case-filter"
+                        data-filter="all"
+                        aria-pressed="true"
+                    >
+                        All
+                    </button>
+                    <button
+                        class="filter case-filter"
+                        data-filter="equality"
+                        aria-pressed="false"
+                    >
+                        Equality
+                    </button>
+                    <button
+                        class="filter case-filter"
+                        data-filter="speech"
+                        aria-pressed="false"
+                    >
+                        Speech
+                    </button>
+                    <button
+                        class="filter case-filter"
+                        data-filter="liberty"
+                        aria-pressed="false"
+                    >
+                        Liberty
+                    </button>
+                    <button
+                        class="filter case-filter"
+                        data-filter="life"
+                        aria-pressed="false"
+                    >
+                        Life & dignity
+                    </button>
+                    <button
+                        class="filter case-filter"
+                        data-filter="architecture"
+                        aria-pressed="false"
+                    >
+                        Rights architecture
+                    </button>
+                    <button
+                        class="filter case-filter"
+                        data-filter="privacy"
+                        aria-pressed="false"
+                    >
+                        Privacy
+                    </button>
+                    <button
+                        class="filter case-filter"
+                        data-filter="process"
+                        aria-pressed="false"
+                    >
+                        Criminal process
+                    </button>
+                    <button
+                        class="filter case-filter"
+                        data-filter="structure"
+                        aria-pressed="false"
+                    >
+                        Amendment
+                    </button>
+                    <button
+                        class="filter case-filter"
+                        data-filter="religion"
+                        aria-pressed="false"
+                    >
+                        Religion
+                    </button>
+                    <button
+                        class="filter case-filter"
+                        data-filter="minority"
+                        aria-pressed="false"
+                    >
+                        Minority institutions
+                    </button>
+                    <input
+                        class="search"
+                        id="caseSearch"
+                        type="search"
+                        placeholder="Search cases, articles, doctrines…"
+                        aria-label="Search cases"
+                    />
+                </div>
+                <div class="case-layout">
+                    <div class="case-list" id="caseList"></div>
+                    <aside class="reader" id="reader" aria-live="polite">
+                        <button
+                            class="reader-close"
+                            id="readerClose"
+                            type="button"
+                        >
+                            Back to cases
+                        </button>
+                        <div id="readerBody" class="reader-empty">
+                            Select a case to read its facts, holding,
+                            significance, and later treatment.
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="wrap section">
+                <div class="section-head">
+                    <h2>Amendments that changed the field</h2>
+                    <p>
+                        Fundamental-rights doctrine cannot be reconstructed from
+                        judgments alone. Parliament’s constituent power
+                        repeatedly changed the operative text.
+                    </p>
+                </div>
+                <div class="amendments" id="amendmentGrid"></div>
+            </section>
+
+            <section class="wrap section" id="sources">
+                <div class="section-head"><h2>Primary Sources</h2></div>
+                <div class="sources">
+                    <article class="source-card">
+                        <h3>Constitution of India</h3>
+                        <p>
+                            Current consolidated text hosted by India Code.
+                            Check amendment footnotes and commencement details.
+                        </p>
+                        <a
+                            href="https://www.indiacode.nic.in/bitstream/123456789/19150/1/constitution_of_india.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            >Official Constitution PDF ↗</a
+                        >
+                    </article>
+                    <article class="source-card">
+                        <h3>Supreme Court Reports</h3>
+                        <p>
+                            The official searchable repository for SCR citations
+                            and historical judgments.
+                        </p>
+                        <a
+                            href="https://scr.sci.gov.in/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            >Search Supreme Court Reports ↗</a
+                        >
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            Part of <a href="index.html">Law, Courts, and Constitutions</a>.
+            This is a historical and educational study, not legal advice.
+        </footer>
+
+        <script>
+            const ARTICLE_GROUPS = [
+                {
+                    articles: "Articles 12–13",
+                    title: "Application and constitutional invalidity",
+                    summary:
+                        "Article 12 identifies the State for Part III. Article 13 controls inconsistent law and supplies the textual setting for severability, eclipse, reading down, and the constitutional-amendment controversy.",
+                    questions: [
+                        "Is the respondent the State, an instrumentality, or a private body reached through another constitutional route?",
+                        "Can the offending portion be severed or read down?",
+                        "Does the dispute concern ordinary law or Parliament’s constituent power?",
+                    ],
+                },
+                {
+                    articles: "Articles 14–18",
+                    title: "The equality code",
+                    summary:
+                        "Equality before law, non-discrimination, public-employment equality, abolition of untouchability, and abolition of titles form a connected but textually differentiated group.",
+                    questions: [
+                        "Is a classification intelligible and rationally connected to its object?",
+                        "Is the measure arbitrary, exclusionary, stereotyped, or structurally discriminatory?",
+                        "Does substantive equality justify differentiation or affirmative action?",
+                    ],
+                },
+                {
+                    articles: "Article 19",
+                    title: "The six freedoms",
+                    summary:
+                        "Citizens receive freedoms of speech, assembly, association, movement, residence, and profession or occupation, each subject to specifically enumerated grounds of restriction.",
+                    questions: [
+                        "Which freedom is burdened in purpose or effect?",
+                        "Is the restriction traceable to a listed constitutional ground?",
+                        "Is it lawful, reasonable, proportionate, and procedurally reviewable?",
+                    ],
+                },
+                {
+                    articles: "Articles 20 and 22",
+                    title: "Criminal process and detention",
+                    summary:
+                        "Article 20 protects against retrospective penal law, double jeopardy, and compelled self-incrimination. Article 22 regulates arrest and preventive detention, with important exceptions.",
+                    questions: [
+                        "Is the material testimonial and compelled?",
+                        "Was detention authorised and reviewed through the required procedure?",
+                        "Do Article 21, legal-aid, and fair-trial principles add safeguards?",
+                    ],
+                },
+                {
+                    articles: "Articles 21 and 21A",
+                    title: "Life, liberty, dignity, and education",
+                    summary:
+                        "Article 21 has become the principal source of protections connected to fair procedure, dignity, autonomy, bodily integrity, livelihood, privacy, and criminal justice. Article 21A separately protects elementary education.",
+                    questions: [
+                        "Is there valid law authorising the deprivation?",
+                        "Is the law and its application fair, just, non-arbitrary, and proportionate?",
+                        "Is the asserted interest integral to life, liberty, dignity, or autonomy?",
+                    ],
+                },
+                {
+                    articles: "Articles 23–24",
+                    title: "Exploitation and forced labour",
+                    summary:
+                        "The Constitution prohibits trafficking, begar and other forced labour, and restricts child labour in hazardous employment. These provisions can reach conduct beyond conventional State action.",
+                    questions: [
+                        "Does economic or social compulsion amount to forced labour?",
+                        "What positive duties of prevention and rehabilitation arise?",
+                        "How do labour statutes and dignity reinforce the constitutional prohibition?",
+                    ],
+                },
+                {
+                    articles: "Articles 25–28",
+                    title: "Freedom of conscience and religion",
+                    summary:
+                        "Religious freedom is protected subject to public order, morality, health, other fundamental rights, and the State’s power to regulate secular activity and pursue social reform.",
+                    questions: [
+                        "Is the claim individual, denominational, institutional, or regulatory?",
+                        "Is the disputed practice religious, secular, essential, or harmful to other rights?",
+                        "How should autonomy, equality, and constitutional morality interact?",
+                    ],
+                },
+                {
+                    articles: "Articles 29–30",
+                    title: "Culture and educational institutions",
+                    summary:
+                        "Article 29 protects cultural and linguistic interests and non-discriminatory admission. Article 30 protects minority educational institutions while permitting regulation consistent with their minority character.",
+                    questions: [
+                        "Who is the relevant minority and at what territorial level?",
+                        "Does regulation preserve standards or destroy institutional choice?",
+                        "How do Articles 19, 29, 30, and reservation provisions interact?",
+                    ],
+                },
+                {
+                    articles: "Articles 32–35",
+                    title: "Constitutional remedies",
+                    summary:
+                        "Article 32 guarantees access to the Supreme Court for enforcement of fundamental rights and authorises constitutional writs. High Courts possess broader jurisdiction under Article 226.",
+                    questions: [
+                        "What is the precise violation and appropriate respondent?",
+                        "Which writ, declaration, compensation, guideline, or supervisory remedy is justified?",
+                        "Should the Court invalidate, sever, read down, suspend, or defer?",
+                    ],
+                },
+            ];
+            const DOCTRINES = [
+                [
+                    "Integrated rights",
+                    "After R.C. Cooper and Maneka Gandhi, Articles 14, 19 and 21 are not sealed compartments. One measure may have to satisfy several guarantees.",
+                ],
+                [
+                    "Reasonable classification",
+                    "Article 14 permits differentiation where the classification is intelligible and rationally connected to a legitimate statutory object.",
+                ],
+                [
+                    "Arbitrariness",
+                    "Royappa connected equality and arbitrariness. Later cases use arbitrariness in administrative review and manifest arbitrariness in reviewing some legislation.",
+                ],
+                [
+                    "Proportionality",
+                    "Modern review asks about legitimate aim, rational connection, necessity, and balancing, although formulations and intensity vary by right and context.",
+                ],
+                [
+                    "Basic structure",
+                    "Kesavananda permits constitutional amendment while preventing destruction of the Constitution’s basic structure. Fundamental rights matter to that inquiry without becoming absolutely unamendable.",
+                ],
+                [
+                    "Constitutional morality",
+                    "The expression distinguishes constitutional commitments from majoritarian social morality, especially in equality, sexuality, gender, and institutional cases.",
+                ],
+                [
+                    "Positive obligations",
+                    "Some rights require legal aid, protection, investigation, workplace safeguards, publication of orders, or other affirmative State measures.",
+                ],
+                [
+                    "Horizontal effect",
+                    "Part III is mainly directed at the State, but some provisions expressly reach private conduct and other rights influence private law through statutes, duties, and remedies.",
+                ],
+            ];
+            const CASES = [
+                {
+                    id: "gopalan",
+                    year: 1950,
+                    era: "The founding decade",
+                    category: "liberty",
+                    title: "A.K. Gopalan v State of Madras",
+                    citation: "1950 SCR 88",
+                    bench: "Six judges",
+                    articles: "Articles 19, 21 and 22",
+                    teaser: "The early Court treated fundamental rights as largely separate guarantees and read “procedure established by law” narrowly.",
+                    facts: "A communist leader detained under the Preventive Detention Act 1950 petitioned directly under Article 32.",
+                    holding:
+                        "Most of the Act survived. The majority treated Article 21 as requiring a legislatively prescribed procedure and resisted importing American substantive due process. It also approached Articles 19, 21 and 22 as operating in distinct fields.",
+                    importance:
+                        "Gopalan supplied the starting architecture for liberty review.",
+                    later: "Its compartmental approach was displaced by R.C. Cooper and Maneka Gandhi. Its restrictive privacy assumptions were rejected in Puttaswamy.",
+                    source: "https://scr.sci.gov.in/",
+                    sourceLabel: "Search the official Supreme Court Reports",
+                },
+                {
+                    id: "romesh",
+                    year: 1950.1,
+                    era: "The founding decade",
+                    category: "speech",
+                    title: "Romesh Thappar v State of Madras",
+                    citation: "1950 SCR 594",
+                    bench: "Constitution Bench",
+                    articles: "Article 19(1)(a)",
+                    teaser: "A ban on circulation of a political journal failed under the Constitution’s original, narrower speech-restriction clause.",
+                    facts: "Madras prohibited entry and circulation of the journal Cross Roads on public-safety grounds.",
+                    holding:
+                        "The restriction was struck down because public order, as distinct from security of the State, was not then an enumerated ground under Article 19(2).",
+                    importance:
+                        "The judgment established strong early protection for political speech and the rule that restrictions must fit the Constitution’s listed grounds.",
+                    later: "The First Amendment expanded Article 19(2). The case must therefore be read against the constitutional text in force in 1950.",
+                    source: "https://scr.sci.gov.in/",
+                    sourceLabel: "Search the official Supreme Court Reports",
+                },
+                {
+                    id: "champakam",
+                    year: 1951,
+                    era: "The founding decade",
+                    category: "equality",
+                    title: "State of Madras v Champakam Dorairajan",
+                    citation: "1951 SCR 525",
+                    bench: "Seven judges",
+                    articles: "Articles 15(1), 29(2), and Part IV",
+                    teaser: "A communal allocation of educational seats was invalidated, prompting the First Amendment’s affirmative-action clause.",
+                    facts: "A government order distributed medical and engineering seats among caste and religious communities.",
+                    holding:
+                        "The allocation violated the non-discrimination guarantees. Directive Principles could not override enforceable fundamental rights.",
+                    importance:
+                        "The case immediately shaped constitutional amendment: Article 15(4) was inserted to authorise special provisions for backward classes and Scheduled Castes and Tribes.",
+                    later: "Modern affirmative-action doctrine rests on amended text and later cases. Champakam is historically central but not the current whole of reservation law.",
+                    source: "https://scr.sci.gov.in/",
+                    sourceLabel: "Search the official Supreme Court Reports",
+                },
+                {
+                    id: "anwar",
+                    year: 1952,
+                    era: "The founding decade",
+                    category: "equality",
+                    title: "State of West Bengal v Anwar Ali Sarkar",
+                    citation: "1952 SCR 284",
+                    bench: "Seven judges",
+                    articles: "Article 14",
+                    teaser: "Unguided selection of cases for a special criminal procedure failed equality review.",
+                    facts: "A statute allowed the State to send selected cases to special courts using an accelerated procedure.",
+                    holding:
+                        "The impugned classification and discretion lacked adequate standards and violated Article 14.",
+                    importance:
+                        "The case developed the reasonable-classification framework and showed that procedural inequality can be unconstitutional.",
+                    later: "Classification remains important, but equality doctrine later expanded through arbitrariness, substantive equality, and anti-stereotyping.",
+                    source: "https://scr.sci.gov.in/",
+                    sourceLabel: "Search the official Supreme Court Reports",
+                },
+                {
+                    id: "mp-sharma",
+                    year: 1954,
+                    era: "The founding decade",
+                    category: "privacy",
+                    title: "M.P. Sharma v Satish Chandra",
+                    citation: "1954 SCR 1077",
+                    bench: "Eight judges",
+                    articles: "Articles 20(3) and 21",
+                    teaser: "Search and seizure were not treated as compelled testimony, and the Court made broad observations against an American-style privacy right.",
+                    facts: "Company records were seized during an investigation and the affected parties invoked self-incrimination and privacy.",
+                    holding:
+                        "Compulsory production through search was not testimonial compulsion within Article 20(3). The judgment also rejected importing the Fourth Amendment as such.",
+                    importance:
+                        "Its observations influenced privacy argument for decades.",
+                    later: "Puttaswamy overruled M.P. Sharma to the extent it suggested that the Constitution protects no privacy right. The self-incrimination holding is analytically separate.",
+                    source: "https://scr.sci.gov.in/",
+                    sourceLabel: "Search the official Supreme Court Reports",
+                },
+                {
+                    id: "kharak",
+                    year: 1962,
+                    era: "The founding decade",
+                    category: "privacy",
+                    title: "Kharak Singh v State of Uttar Pradesh",
+                    citation: "1964 1 SCR 332; judgment delivered 1962",
+                    bench: "Six judges",
+                    articles: "Articles 19 and 21",
+                    teaser: "Night-time domiciliary visits were invalid, while the majority stopped short of recognising a general privacy right.",
+                    facts: "Police regulations authorised surveillance of a person listed as a habitual offender, including domiciliary visits.",
+                    holding:
+                        "Domiciliary visits violated personal liberty. Other surveillance measures survived under the majority’s narrower approach; Subba Rao J dissented more broadly.",
+                    importance:
+                        "The dissent anticipated later understandings of privacy, movement, and dignity.",
+                    later: "Puttaswamy overruled the majority to the extent it denied privacy and treated the dissent as prescient.",
+                    source: "https://scr.sci.gov.in/",
+                    sourceLabel: "Search the official Supreme Court Reports",
+                },
+                {
+                    id: "golaknath",
+                    year: 1967,
+                    era: "Amendment and emergency",
+                    category: "structure",
+                    title: "I.C. Golaknath v State of Punjab",
+                    citation: "1967 2 SCR 762",
+                    bench: "Eleven judges",
+                    articles: "Articles 13 and 368",
+                    teaser: "A narrow majority denied Parliament power to amend fundamental rights and used prospective overruling.",
+                    facts: "Land reform measures protected by constitutional amendments were challenged by affected landholders.",
+                    holding:
+                        "The majority treated a constitutional amendment as law within Article 13 and barred future amendments abridging Part III, while preserving past amendments prospectively.",
+                    importance:
+                        "The decision triggered the Twenty-fourth Amendment and the later basic-structure settlement.",
+                    later: "Kesavananda rejected Golaknath’s absolute limitation but retained judicially enforceable limits through basic structure.",
+                    source: "https://scr.sci.gov.in/",
+                    sourceLabel: "Search the official Supreme Court Reports",
+                },
+                {
+                    id: "cooper",
+                    year: 1970,
+                    era: "Amendment and emergency",
+                    category: "architecture",
+                    title: "R.C. Cooper v Union of India",
+                    citation: "1970 3 SCR 530; (1970) 1 SCC 248",
+                    bench: "Eleven judges",
+                    articles: "Articles 14, 19, and former 31",
+                    teaser: "The Bank Nationalisation case shifted review from legislative object to the effect of State action on protected rights.",
+                    facts: "A shareholder challenged bank nationalisation and the compensation framework.",
+                    holding:
+                        "The Court rejected rigid compartmentalisation and examined the direct effect of State action on the claimant’s guarantees.",
+                    importance:
+                        "Cooper prepared the doctrinal ground for Maneka Gandhi’s integrated reading of Articles 14, 19, and 21.",
+                    later: "Its overlapping-rights and effects-based approach remains foundational, although property later ceased to be a fundamental right.",
+                    source: "https://scr.sci.gov.in/",
+                    sourceLabel: "Search the official Supreme Court Reports",
+                },
+                {
+                    id: "kesavananda",
+                    year: 1973,
+                    era: "Amendment and emergency",
+                    category: "structure",
+                    title: "Kesavananda Bharati v State of Kerala",
+                    citation: "1973 Supp SCR 1; (1973) 4 SCC 225",
+                    bench: "Thirteen judges",
+                    articles: "Article 368 and Part III",
+                    teaser: "Parliament may amend every part of the Constitution but may not destroy its basic structure.",
+                    facts: "A religious institution challenged land-reform laws and constitutional amendments expanding Parliament’s amending power.",
+                    holding:
+                        "By seven to six, the Court recognised a substantive limitation on amendment: basic structure cannot be damaged or destroyed.",
+                    importance:
+                        "The doctrine mediates between constitutional change and constitutional identity.",
+                    later: "There is no closed canonical list of basic features. The doctrine is applied through later cases rather than a single formula.",
+                    source: "https://www.sci.gov.in/aor-examination/",
+                    sourceLabel: "Official Supreme Court leading-cases archive",
+                },
+                {
+                    id: "royappa",
+                    year: 1974,
+                    era: "Amendment and emergency",
+                    category: "equality",
+                    title: "E.P. Royappa v State of Tamil Nadu",
+                    citation: "(1974) 4 SCC 3",
+                    bench: "Constitution Bench",
+                    articles: "Articles 14 and 16",
+                    teaser: "Equality was described as antithetical to arbitrariness rather than confined to formal classification.",
+                    facts: "A senior civil servant challenged his transfer and treatment by the State.",
+                    holding:
+                        "The claim failed on the facts, but the judgments articulated a broader relationship between equality and arbitrary State action.",
+                    importance:
+                        "Royappa became a bridge from reasonable classification to arbitrariness review.",
+                    later: "The scope of arbitrariness differs across administrative action and legislation; later cases address manifest arbitrariness separately.",
+                    source: "https://scr.sci.gov.in/",
+                    sourceLabel: "Search the official Supreme Court Reports",
+                },
+                {
+                    id: "adm-jabalpur",
+                    year: 1976,
+                    era: "Amendment and emergency",
+                    category: "liberty",
+                    title: "ADM Jabalpur v Shivkant Shukla",
+                    citation: "1976 Supp SCR 172; (1976) 2 SCC 521",
+                    bench: "Five judges",
+                    articles: "Articles 21, 32, and emergency provisions",
+                    teaser: "During the Emergency, the majority denied judicial enforcement of personal liberty after suspension of the right to move courts.",
+                    facts: "Detained persons sought habeas corpus despite a Presidential order suspending enforcement of specified rights.",
+                    holding:
+                        "The majority held that no person had locus to seek habeas corpus on the pleaded grounds during the suspension. H.R. Khanna J dissented.",
+                    importance:
+                        "The decision is a central constitutional failure and the dissent an enduring defence of legality and liberty.",
+                    later: "Puttaswamy expressly overruled the majority. The Forty-fourth Amendment also prevents suspension of enforcement of Articles 20 and 21.",
+                    source: "https://scr.sci.gov.in/",
+                    sourceLabel: "Search the official Supreme Court Reports",
+                },
+                {
+                    id: "maneka",
+                    year: 1978,
+                    era: "Amendment and emergency",
+                    category: "liberty",
+                    title: "Maneka Gandhi v Union of India",
+                    citation: "1978 2 SCR 621; (1978) 1 SCC 248",
+                    bench: "Seven judges",
+                    articles: "Articles 14, 19, and 21",
+                    teaser: "Procedure under Article 21 must be fair, just, and reasonable, and laws affecting liberty may have to satisfy several rights.",
+                    facts: "The government impounded the petitioner’s passport in the public interest and initially withheld reasons.",
+                    holding:
+                        "The Court read Articles 14, 19, and 21 together, applied natural justice, and rejected arbitrary procedure. The government’s undertaking affected the ultimate relief.",
+                    importance:
+                        "Maneka transformed Article 21 from a narrow procedural guarantee into a source of substantive and procedural fairness.",
+                    later: "Its integrated-rights approach remains foundational, while later proportionality doctrine refines the intensity of review.",
+                    source: "https://cdnbbsr.s3waas.gov.in/s3ec0490f1f4972d133619a60c30f3559e/documents/aor_notice_circular/2.pdf",
+                    sourceLabel: "Official Supreme Court Reports PDF",
+                },
+                {
+                    id: "hussainara",
+                    year: 1979,
+                    era: "Rights made effective",
+                    category: "process",
+                    title: "Hussainara Khatoon v State of Bihar",
+                    citation: "(1980) 1 SCC 81 and connected orders",
+                    bench: "Two judges",
+                    articles: "Article 21 and legal aid",
+                    teaser: "The Court treated speedy trial and meaningful legal assistance as components of fair procedure.",
+                    facts: "Public-interest proceedings exposed undertrial prisoners held for periods longer than potential sentences.",
+                    holding:
+                        "The Court ordered releases and linked Article 21 to speedy trial and the State’s responsibility to provide legal services.",
+                    importance:
+                        "The litigation helped establish public-interest procedure and an affirmative conception of criminal-process rights.",
+                    later: "Delay claims remain fact-sensitive; later benches rejected rigid universal time limits while retaining the constitutional right.",
+                    source: "https://scr.sci.gov.in/",
+                    sourceLabel: "Search the official Supreme Court Reports",
+                },
+                {
+                    id: "minerva",
+                    year: 1980,
+                    era: "Rights made effective",
+                    category: "structure",
+                    title: "Minerva Mills v Union of India",
+                    citation: "1981 1 SCR 206; (1980) 3 SCC 625",
+                    bench: "Five judges",
+                    articles: "Articles 31C and 368",
+                    teaser: "Limited amending power and harmony between Fundamental Rights and Directive Principles were treated as basic features.",
+                    facts: "The validity of provisions of the Forty-second Amendment and nationalisation measures was challenged.",
+                    holding:
+                        "The Court invalidated clauses that purported to exclude review of amendments and to give sweeping priority to Directive Principles over rights.",
+                    importance:
+                        "Minerva Mills reinforced Kesavananda and rejected absolute parliamentary amending power.",
+                    later: "The judgment protects constitutional balance; it does not make every legislative preference for a Directive Principle invalid.",
+                    source: "https://cdnbbsr.s3waas.gov.in/s3ec0490f1f4972d133619a60c30f3559e/documents/aor_notice_circular/3.pdf",
+                    sourceLabel: "Official Supreme Court Reports PDF",
+                },
+                {
+                    id: "bachan",
+                    year: 1980.1,
+                    era: "Rights made effective",
+                    category: "life",
+                    title: "Bachan Singh v State of Punjab",
+                    citation: "(1980) 2 SCC 684",
+                    bench: "Five judges",
+                    articles: "Articles 14, 19, and 21",
+                    teaser: "The death penalty survived constitutional challenge but was confined to the rarest of rare cases after individualised sentencing.",
+                    facts: "A person sentenced to death challenged capital punishment and the sentencing framework.",
+                    holding:
+                        "The majority upheld the penalty while treating life imprisonment as the norm and death as exceptional.",
+                    importance:
+                        "The decision governs capital sentencing and insists on aggravating and mitigating circumstances.",
+                    later: "Application has generated persistent inconsistency concerns. Later cases require fuller mitigation investigation and procedural safeguards.",
+                    source: "https://scr.sci.gov.in/",
+                    sourceLabel: "Search the official Supreme Court Reports",
+                },
+                {
+                    id: "olga",
+                    year: 1985,
+                    era: "Rights made effective",
+                    category: "life",
+                    title: "Olga Tellis v Bombay Municipal Corporation",
+                    citation: "(1985) 3 SCC 545",
+                    bench: "Five judges",
+                    articles: "Article 21",
+                    teaser: "Livelihood was recognised as part of life, while pavement clearance remained possible through lawful and fair procedure.",
+                    facts: "Pavement and slum dwellers challenged eviction and demolition measures in Bombay.",
+                    holding:
+                        "The Court held that deprivation of livelihood affects life under Article 21, but upheld the statutory power subject to procedural protections and the circumstances recorded.",
+                    importance:
+                        "The case illustrates the expansion of Article 21 and the difficulty of converting recognition into an absolute entitlement.",
+                    later: "It is not an unconditional constitutional right to occupy public land; its procedural and remedial qualifications are essential.",
+                    source: "https://scr.sci.gov.in/",
+                    sourceLabel: "Search the official Supreme Court Reports",
+                },
+                {
+                    id: "indra",
+                    year: 1992,
+                    era: "Equality, dignity, and institutions",
+                    category: "equality",
+                    title: "Indra Sawhney v Union of India",
+                    citation: "1992 Supp 2 SCR 454; 1992 Supp (3) SCC 217",
+                    bench: "Nine judges",
+                    articles: "Articles 14 and 16",
+                    teaser: "The Court upheld OBC reservation, required exclusion of the creamy layer, and set major structural rules for public-employment reservations.",
+                    facts: "The Mandal Commission programme reserving central services for Other Backward Classes was challenged.",
+                    holding:
+                        "A 27 per cent OBC reservation survived, subject to exclusion of the creamy layer. The Court generally maintained a 50 per cent ceiling and read Article 16(4) as not then authorising promotion reservations.",
+                    importance:
+                        "Indra Sawhney remains the central reservation case, although amendments and later judgments changed parts of the field.",
+                    later: "Promotion reservations now rest on amended text and separate doctrine. EWS reservation was addressed in Janhit Abhiyan.",
+                    source: "https://www.sci.gov.in/aor-examination/",
+                    sourceLabel: "Official Supreme Court leading-cases archive",
+                },
+                {
+                    id: "bommai",
+                    year: 1994,
+                    era: "Equality, dignity, and institutions",
+                    category: "religion",
+                    title: "S.R. Bommai v Union of India",
+                    citation: "1994 2 SCR 644; (1994) 3 SCC 1",
+                    bench: "Nine judges",
+                    articles: "Secularism, federalism, and Article 356",
+                    teaser: "Secularism was treated as a basic feature and proclamations of President’s Rule became judicially reviewable.",
+                    facts: "Dismissals of State governments under Article 356 were challenged.",
+                    holding:
+                        "The Court limited executive discretion, emphasised floor tests, and permitted judicial review of proclamations. Several opinions connected secular government to constitutional structure.",
+                    importance:
+                        "Bommai links institutional federalism with equality and religious freedom.",
+                    later: "It is not a Part III case alone, but it is indispensable to understanding the constitutional setting of religious rights.",
+                    source: "https://www.sci.gov.in/aor-examination/",
+                    sourceLabel: "Official Supreme Court leading-cases archive",
+                },
+                {
+                    id: "vishaka",
+                    year: 1997,
+                    era: "Equality, dignity, and institutions",
+                    category: "equality",
+                    title: "Vishaka v State of Rajasthan",
+                    citation: "1997 Supp 3 SCR 404; (1997) 6 SCC 241",
+                    bench: "Three judges",
+                    articles: "Articles 14, 15, 19, and 21",
+                    teaser: "The Court issued binding workplace sexual-harassment guidelines until Parliament enacted legislation.",
+                    facts: "Public-interest petitioners sought safeguards after the gang rape of a social worker and the absence of a specific statutory regime.",
+                    holding:
+                        "Sexual harassment was connected to equality, dignity, occupational freedom, and life. International norms consistent with domestic rights informed detailed guidelines.",
+                    importance:
+                        "Vishaka is a leading example of positive obligations and judicial guidelines filling a legislative vacuum.",
+                    later: "The Sexual Harassment of Women at Workplace Act 2013 now supplies the statutory framework; Vishaka remains interpretively important.",
+                    source: "https://cdnbbsr.s3waas.gov.in/s3ec0490f1f4972d133619a60c30f3559e/documents/aor_notice_circular/13.pdf",
+                    sourceLabel: "Official Supreme Court Reports PDF",
+                },
+                {
+                    id: "tma-pai",
+                    year: 2002,
+                    era: "Equality, dignity, and institutions",
+                    category: "minority",
+                    title: "T.M.A. Pai Foundation v State of Karnataka",
+                    citation: "2002 Supp 3 SCR 587; (2002) 8 SCC 481",
+                    bench: "Eleven judges",
+                    articles: "Articles 19(1)(g), 29, and 30",
+                    teaser: "The Court reorganised doctrine on private and minority educational institutions, admissions, fees, and regulation.",
+                    facts: "A large group of petitions challenged regulation of aided and unaided professional and minority institutions.",
+                    holding:
+                        "The opinions recognised institutional autonomy while permitting regulation to maintain standards, prevent maladministration, and structure admissions.",
+                    importance:
+                        "It is the central modern source for Article 30 and the relation between minority rights and general educational regulation.",
+                    later: "Its multiple opinions required later clarification; propositions should be tied to the controlling majority rather than attributed to the case generically.",
+                    source: "https://www.sci.gov.in/aor-examination/",
+                    sourceLabel: "Official Supreme Court leading-cases archive",
+                },
+                {
+                    id: "coelho",
+                    year: 2007,
+                    era: "Equality, dignity, and institutions",
+                    category: "structure",
+                    title: "I.R. Coelho v State of Tamil Nadu",
+                    citation: "2007 1 SCR 706; (2007) 2 SCC 1",
+                    bench: "Nine judges",
+                    articles:
+                        "Article 31B, Ninth Schedule, and basic structure",
+                    teaser: "Post-Kesavananda additions to the Ninth Schedule remain reviewable if their impact on rights damages basic structure.",
+                    facts: "The Court considered whether placing legislation in the Ninth Schedule could immunise it from fundamental-rights review.",
+                    holding:
+                        "Laws inserted after 24 April 1973 can be examined for damage to basic structure, assessed through the rights and principles affected.",
+                    importance:
+                        "Coelho prevents constitutional immunisation from becoming a route around Kesavananda.",
+                    later: "An ordinary Part III violation does not automatically invalidate a Ninth Schedule law; the required damage is to basic structure.",
+                    source: "https://www.sci.gov.in/aor-examination/",
+                    sourceLabel: "Official Supreme Court leading-cases archive",
+                },
+                {
+                    id: "selvi",
+                    year: 2010,
+                    era: "Autonomy, speech, and privacy",
+                    category: "process",
+                    title: "Selvi v State of Karnataka",
+                    citation: "2010 5 SCR 381; (2010) 7 SCC 263",
+                    bench: "Three judges",
+                    articles: "Articles 20(3) and 21",
+                    teaser: "Involuntary narcoanalysis, polygraph tests, and brain-mapping techniques violated self-incrimination and mental privacy.",
+                    facts: "The Court considered compulsory administration of investigative techniques intended to elicit or detect responses.",
+                    holding:
+                        "Non-consensual administration was unconstitutional. The Court protected testimonial autonomy, bodily integrity, and mental privacy, while permitting limited voluntary use under safeguards.",
+                    importance:
+                        "Selvi joins criminal procedure with dignity, privacy, and the reliability of forensic techniques.",
+                    later: "Voluntary testing does not make every result substantive evidence; evidentiary rules and safeguards continue to apply.",
+                    source: "https://cdnbbsr.s3waas.gov.in/s3ec0490f1f4972d133619a60c30f3559e/documents/aor_notice_circular/26.pdf",
+                    sourceLabel: "Official Supreme Court Reports PDF",
+                },
+                {
+                    id: "nalsa",
+                    year: 2014,
+                    era: "Autonomy, speech, and privacy",
+                    category: "equality",
+                    title: "National Legal Services Authority v Union of India",
+                    citation: "2014 5 SCR 119; (2014) 5 SCC 438",
+                    bench: "Two judges",
+                    articles: "Articles 14, 15, 16, 19, and 21",
+                    teaser: "Gender identity and self-identification were protected through equality, expression, dignity, and autonomy.",
+                    facts: "Petitioners sought legal recognition and protection for transgender persons and communities.",
+                    holding:
+                        "The Court recognised the right to self-identified gender, applied sex-discrimination guarantees to gender identity, and directed affirmative governmental measures.",
+                    importance:
+                        "NALSA constitutionalised gender identity and linked formal recognition to social and economic inclusion.",
+                    later: "The Transgender Persons Act 2019 supplies a statutory framework whose operation must remain consistent with constitutional principles.",
+                    source: "https://cdnbbsr.s3waas.gov.in/s3ec0490f1f4972d133619a60c30f3559e/documents/aor_notice_circular/32.pdf",
+                    sourceLabel: "Official Supreme Court Reports PDF",
+                },
+                {
+                    id: "shreya",
+                    year: 2015,
+                    era: "Autonomy, speech, and privacy",
+                    category: "speech",
+                    title: "Shreya Singhal v Union of India",
+                    citation: "2015 5 SCR 963; (2015) 5 SCC 1",
+                    bench: "Two judges",
+                    articles: "Article 19(1)(a) and 19(2)",
+                    teaser: "Section 66A of the Information Technology Act was struck down for vagueness and overbreadth.",
+                    facts: "Petitions challenged online-speech offences, blocking powers, and intermediary rules.",
+                    holding:
+                        "Section 66A was invalid. The Court distinguished discussion, advocacy, and incitement, and read down intermediary takedown obligations to specified legal processes.",
+                    importance:
+                        "The case is the leading Indian decision on vague speech offences and online expression.",
+                    later: "The blocking provision survived with safeguards. Continued use of the invalidated section has required later judicial and administrative correction.",
+                    source: "https://cdnbbsr.s3waas.gov.in/s3ec0490f1f4972d133619a60c30f3559e/documents/aor_notice_circular/35.pdf",
+                    sourceLabel: "Official Supreme Court Reports PDF",
+                },
+                {
+                    id: "privacy",
+                    year: 2017,
+                    era: "Autonomy, speech, and privacy",
+                    category: "privacy",
+                    title: "Justice K.S. Puttaswamy (Retd.) v Union of India",
+                    citation: "(2017) 10 SCC 1",
+                    bench: "Nine judges",
+                    articles: "Articles 14, 19, and 21",
+                    teaser: "A unanimous Court recognised privacy as a fundamental right grounded in liberty, dignity, and autonomy.",
+                    facts: "A constitutional reference arose during the Aadhaar litigation because earlier cases were said to deny a protected privacy right.",
+                    holding:
+                        "Privacy was recognised across bodily, informational, and decisional domains. M.P. Sharma and Kharak Singh were overruled to the extent inconsistent; ADM Jabalpur was repudiated.",
+                    importance:
+                        "Puttaswamy supplies the modern framework for autonomy, data, sexuality, family, bodily integrity, and proportionality.",
+                    later: "The judgment established the right but left its application to later cases. The appropriate proportionality formulation remains context-dependent.",
+                    source: "https://uidai.gov.in/en/about-uidai/legal-framework/judgements/13584-justice-k-s-puttaswamy-retd-and-anr-vs-uoi-and-ors-dated-24-08-2017-nine-judges-constitutional-bench.html",
+                    sourceLabel: "Official nine-judge judgment page",
+                },
+                {
+                    id: "shayara",
+                    year: 2017.1,
+                    era: "Autonomy, speech, and privacy",
+                    category: "equality",
+                    title: "Shayara Bano v Union of India",
+                    citation: "2017 9 SCR 797; (2017) 9 SCC 1",
+                    bench: "Five judges",
+                    articles: "Articles 14, 15, 21, and 25",
+                    teaser: "Instant triple talaq was invalidated by a fractured majority using different constitutional and legal routes.",
+                    facts: "Muslim women challenged talaq-e-biddat and related personal-law practices.",
+                    holding:
+                        "By three to two, instant triple talaq was set aside. Two judges treated the statutorily recognised practice as manifestly arbitrary; a third relied on Islamic-law reasoning.",
+                    importance:
+                        "The case is central to gender equality, personal law, and manifest arbitrariness.",
+                    later: "No single majority rationale supports every broad proposition attributed to the case. Parliament later enacted legislation in 2019.",
+                    source: "https://cdnbbsr.s3waas.gov.in/s3ec0490f1f4972d133619a60c30f3559e/documents/aor_notice_circular/42.pdf",
+                    sourceLabel: "Official Supreme Court Reports PDF",
+                },
+                {
+                    id: "navtej",
+                    year: 2018,
+                    era: "Autonomy, speech, and privacy",
+                    category: "equality",
+                    title: "Navtej Singh Johar v Union of India",
+                    citation: "2018 7 SCR 379; (2018) 10 SCC 1",
+                    bench: "Five judges",
+                    articles: "Articles 14, 15, 19, and 21",
+                    teaser: "Consensual same-sex intimacy between adults was decriminalised through equality, dignity, privacy, and expression.",
+                    facts: "Petitioners challenged Section 377 of the Penal Code insofar as it criminalised consensual adult same-sex conduct.",
+                    holding:
+                        "The provision was read down for consenting adults. The opinions rejected majoritarian morality and emphasised constitutional morality, identity, and autonomy.",
+                    importance:
+                        "Navtej is a leading transformative-constitutionalism judgment and corrected the Court’s earlier ruling in Suresh Koushal.",
+                    later: "The decision did not itself create marriage or family-status rights; those questions were addressed differently in Supriyo.",
+                    source: "https://cdnbbsr.s3waas.gov.in/s3ec0490f1f4972d133619a60c30f3559e/documents/aor_notice_circular/47.pdf",
+                    sourceLabel: "Official Supreme Court Reports PDF",
+                },
+                {
+                    id: "joseph",
+                    year: 2018.1,
+                    era: "Autonomy, speech, and privacy",
+                    category: "equality",
+                    title: "Joseph Shine v Union of India",
+                    citation: "Judgment delivered 2018; (2019) 3 SCC 39",
+                    bench: "Five judges",
+                    articles: "Articles 14, 15, and 21",
+                    teaser: "The adultery offence was struck down as patriarchal, unequal, and incompatible with autonomy.",
+                    facts: "Section 497 of the Penal Code punished a man for relations with another man’s wife while treating the woman through a proprietary and paternalistic framework.",
+                    holding:
+                        "The Court unanimously invalidated the offence, although adultery may remain relevant in civil matrimonial law.",
+                    importance:
+                        "The opinions connected anti-stereotyping, dignity, privacy, and equal citizenship.",
+                    later: "The judgment concerns criminal punishment; it does not eliminate civil consequences within matrimonial law.",
+                    source: "https://cdnbbsr.s3waas.gov.in/s3ec0490f1f4972d133619a60c30f3559e/documents/aor_notice_circular/50.pdf",
+                    sourceLabel: "Official Supreme Court Reports PDF",
+                },
+                {
+                    id: "anuradha",
+                    year: 2020,
+                    era: "Proportionality and current controversies",
+                    category: "speech",
+                    title: "Anuradha Bhasin v Union of India",
+                    citation: "(2020) 3 SCC 637",
+                    bench: "Three judges",
+                    articles:
+                        "Articles 19(1)(a), 19(1)(g), and proportionality",
+                    teaser: "Speech and trade through the internet receive constitutional protection, and indefinite suspension orders are impermissible.",
+                    facts: "Journalists and others challenged communications shutdowns and movement restrictions imposed in Jammu and Kashmir in 2019.",
+                    holding:
+                        "The Court required publication and periodic review of orders, held indefinite suspension impermissible, and applied proportionality, but did not itself restore all services.",
+                    importance:
+                        "The case constitutionalises the use of the internet as a medium for protected activities and insists on reviewable legal orders.",
+                    later: "It did not recognise a freestanding fundamental right to internet access. The adequacy of its remedial response remains debated.",
+                    source: "https://api.sci.gov.in/supremecourt/2019/28817/28817_2019_2_1501_19350_Judgement_10-Jan-2020.pdf",
+                    sourceLabel: "Official Supreme Court judgment",
+                },
+                {
+                    id: "janhit",
+                    year: 2022,
+                    era: "Proportionality and current controversies",
+                    category: "equality",
+                    title: "Janhit Abhiyan v Union of India",
+                    citation: "Judgment delivered 2022; (2023) 5 SCC 1",
+                    bench: "Five judges",
+                    articles: "Articles 15(6), 16(6), and basic structure",
+                    teaser: "The One Hundred and Third Amendment creating EWS reservation was upheld by three to two.",
+                    facts: "Petitioners challenged ten per cent reservation for economically weaker sections outside existing SC, ST, and OBC reservation categories.",
+                    holding:
+                        "The majority held that economic criteria, exclusion of groups already covered by other reservations, and the additional quota did not damage basic structure. The dissent disagreed particularly with exclusion.",
+                    importance:
+                        "The judgment marks a major development in substantive equality and the constitutional design of reservations.",
+                    later: "It does not erase Indra Sawhney outside the new constitutional text; future classification and implementation remain reviewable.",
+                    source: "https://scr.sci.gov.in/",
+                    sourceLabel: "Search the official Supreme Court Reports",
+                },
+                {
+                    id: "supriyo",
+                    year: 2023,
+                    era: "Proportionality and current controversies",
+                    category: "equality",
+                    title: "Supriyo v Union of India",
+                    citation: "2023 INSC 920; (2024) 3 SCC 1",
+                    bench: "Five judges",
+                    articles: "Articles 14, 15, 19, and 21",
+                    teaser: "The Court declined to create a right to civil marriage or rewrite the Special Marriage Act, while recognising constitutional protection for queer identity and relationships.",
+                    facts: "Queer couples sought marriage equality and associated legal recognition under existing marriage statutes.",
+                    holding:
+                        "The majority held that there was no judicially enforceable fundamental right to marry under the existing framework and declined statutory reconstruction. The opinions differed on positive obligations and relationship entitlements.",
+                    importance:
+                        "Supriyo defines the present boundary between recognised autonomy and judicial creation of family status.",
+                    later: "The case must be read opinion by opinion; there was no majority for every proposition advanced in the separate judgments.",
+                    source: "https://api.sci.gov.in/supremecourt/2022/36593/36593_2022_1_1501_47792_Judgement_17-Oct-2023.pdf",
+                    sourceLabel: "Official Supreme Court judgment",
+                },
+                {
+                    id: "adr",
+                    year: 2024,
+                    era: "Proportionality and current controversies",
+                    category: "speech",
+                    title: "Association for Democratic Reforms v Union of India",
+                    citation: "2024 INSC 113; (2024) 2 SCR 420",
+                    bench: "Five judges",
+                    articles: "Articles 14 and 19(1)(a)",
+                    teaser: "The Electoral Bond Scheme and associated amendments were invalidated for violating voters’ information rights and equality constraints.",
+                    facts: "Petitioners challenged anonymous electoral bonds, non-disclosure provisions, and removal of limits affecting corporate political contributions.",
+                    holding:
+                        "The Court struck the scheme and amendments. It rejected the claimed balance between donor privacy and political-finance transparency and held unlimited corporate contributions manifestly arbitrary.",
+                    importance:
+                        "The judgment links electoral integrity, the right to information, privacy balancing, and review of economic legislation.",
+                    later: "The judgment does not prohibit every form of donor privacy or political funding; it invalidated the challenged statutory design.",
+                    source: "https://api.sci.gov.in/supremecourt/2017/27935/27935_2017_1_1501_50573_Judgement_15-Feb-2024.pdf",
+                    sourceLabel: "Official Supreme Court judgment",
+                },
+                {
+                    id: "davinder",
+                    year: 2024.1,
+                    era: "Proportionality and current controversies",
+                    category: "equality",
+                    title: "State of Punjab v Davinder Singh",
+                    citation:
+                        "2024 SCC OnLine SC 1860; reported subsequently in SCC",
+                    bench: "Seven judges",
+                    articles: "Articles 14, 15, 16, and 341",
+                    teaser: "States may make evidence-based sub-classifications within Scheduled Castes for distribution of reservation benefits.",
+                    facts: "A statutory preference for specified Scheduled Caste communities led to reconsideration of E.V. Chinnaiah.",
+                    holding:
+                        "The Court overruled Chinnaiah and held that sub-classification does not alter the Presidential list if it rationally distributes benefits among listed communities.",
+                    importance:
+                        "The judgment materially changes the equality framework for internal distribution of Scheduled Caste reservation benefits.",
+                    later: "A State must justify sub-classification with relevant material. Separate opinions on a creamy layer should not be collapsed into one simple operative rule.",
+                    source: "https://scr.sci.gov.in/",
+                    sourceLabel: "Search the official Supreme Court Reports",
+                },
+            ];
+            const AMENDMENTS = [
+                [
+                    "1951",
+                    "First Amendment",
+                    "Expanded Article 19(2), inserted Article 15(4), and created Articles 31A, 31B, and the Ninth Schedule.",
+                ],
+                [
+                    "1971",
+                    "Twenty-fourth Amendment",
+                    "Expressly affirmed Parliament’s constituent power and sought to reverse Golaknath.",
+                ],
+                [
+                    "1976",
+                    "Forty-second Amendment",
+                    "Expanded central and parliamentary power, amended Article 31C, and attempted to insulate amendments from review; important parts were invalidated in Minerva Mills.",
+                ],
+                [
+                    "1978",
+                    "Forty-fourth Amendment",
+                    "Removed property from Part III, revised emergency provisions, and protected enforcement of Articles 20 and 21 during an Emergency.",
+                ],
+                [
+                    "2002",
+                    "Eighty-sixth Amendment",
+                    "Inserted Article 21A on free and compulsory education for children aged six to fourteen.",
+                ],
+                [
+                    "2005",
+                    "Ninety-third Amendment",
+                    "Inserted Article 15(5) concerning admissions and special provisions, with an exception for minority institutions.",
+                ],
+                [
+                    "2019",
+                    "One Hundred and Third Amendment",
+                    "Inserted Articles 15(6) and 16(6) for economically weaker sections; upheld in Janhit Abhiyan.",
+                ],
+            ];
+
+            let activeFilter = "all";
+            let query = "";
+            let currentId = null;
+
+            function esc(value) {
+                return String(value == null ? "" : value)
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;");
+            }
+
+            function renderArticles() {
+                document.getElementById("articleGrid").innerHTML =
+                    ARTICLE_GROUPS.map(
+                        (a) => `
+        <article class="article">
+          <span class="articles">${esc(a.articles)}</span>
+          <h3>${esc(a.title)}</h3>
+          <p>${esc(a.summary)}</p>
+          <ul>${a.questions.map((q) => `<li>${esc(q)}</li>`).join("")}</ul>
+        </article>`,
+                    ).join("");
+            }
+
+            function renderDoctrines() {
+                document.getElementById("doctrineGrid").innerHTML =
+                    DOCTRINES.map(
+                        (d) => `
+        <article class="doctrine"><h3>${esc(d[0])}</h3><p>${esc(d[1])}</p></article>`,
+                    ).join("");
+            }
+
+            function visibleCases() {
+                const q = query.trim().toLowerCase();
+                return CASES.slice()
+                    .sort((a, b) => a.year - b.year)
+                    .filter((c) => {
+                        const filterOK =
+                            activeFilter === "all" ||
+                            c.category === activeFilter;
+                        const haystack = [
+                            c.title,
+                            c.citation,
+                            c.articles,
+                            c.teaser,
+                            c.facts,
+                            c.holding,
+                            c.importance,
+                            c.later,
+                        ]
+                            .join(" ")
+                            .toLowerCase();
+                        return filterOK && (!q || haystack.includes(q));
+                    });
+            }
+
+            function renderCases() {
+                const list = document.getElementById("caseList");
+                const items = visibleCases();
+                if (!items.length) {
+                    list.innerHTML =
+                        '<div class="reader-empty">No matching cases.</div>';
+                    document.getElementById("readerBody").innerHTML =
+                        '<div class="reader-empty">No matching cases.</div>';
+                    currentId = null;
+                    return;
+                }
+                let era = "";
+                let html = "";
+                for (const c of items) {
+                    if (c.era !== era) {
+                        era = c.era;
+                        html += `<div class="era">${esc(era)}</div>`;
+                    }
+                    html += `<button class="case-card ${currentId === c.id ? "active" : ""}" data-id="${esc(c.id)}">
+          <div class="case-meta"><span>${Math.floor(c.year)}</span><span>${esc(c.category)}</span></div>
+          <h3>${esc(c.title)}</h3><p>${esc(c.teaser)}</p></button>`;
+                }
+                list.innerHTML = html;
+                list.querySelectorAll(".case-card").forEach((b) =>
+                    b.addEventListener("click", () => selectCase(b.dataset.id)),
+                );
+                if (!currentId || !items.some((c) => c.id === currentId))
+                    selectCase(items[0].id);
+            }
+
+            function selectCase(id) {
+                const c = CASES.find((x) => x.id === id);
+                if (!c) return;
+                currentId = id;
+                document
+                    .querySelectorAll(".case-card")
+                    .forEach((card) =>
+                        card.classList.toggle("active", card.dataset.id === id),
+                    );
+                const ordered = CASES.slice().sort((a, b) => a.year - b.year);
+                const i = ordered.findIndex((x) => x.id === id);
+                const prev = i > 0 ? ordered[i - 1] : null;
+                const next = i < ordered.length - 1 ? ordered[i + 1] : null;
+                const body = document.getElementById("readerBody");
+                body.className = "";
+                body.innerHTML = `
+        <div class="r-year">${Math.floor(c.year)} · ${esc(c.bench)} · ${esc(c.articles)}</div>
+        <h2>${esc(c.title)}</h2><span class="r-citation">${esc(c.citation)}</span>
+        <div class="r-section"><span class="r-label">Facts and posture</span><p>${esc(c.facts)}</p></div>
+        <div class="r-section"><span class="r-label">Holding</span><p>${esc(c.holding)}</p></div>
+        <div class="r-section"><span class="r-label">Why it matters</span><p>${esc(c.importance)}</p></div>
+        <div class="r-later"><strong>Later treatment and caution.</strong> ${esc(c.later)}</div>
+        <a class="source-link" href="${esc(c.source)}" target="_blank" rel="noopener noreferrer">${esc(c.sourceLabel)} ↗</a>
+        <div class="reader-nav">
+          <button ${prev ? `data-go="${esc(prev.id)}"` : "disabled"}><span class="direction">Earlier</span>${prev ? esc(prev.title) : "—"}</button>
+          <button class="next" ${next ? `data-go="${esc(next.id)}"` : "disabled"}><span class="direction">Later</span>${next ? esc(next.title) : "—"}</button>
+        </div>`;
+                document
+                    .querySelectorAll("[data-go]")
+                    .forEach((b) =>
+                        b.addEventListener("click", () =>
+                            selectCase(b.dataset.go),
+                        ),
+                    );
+                if (window.innerWidth <= 950)
+                    document.getElementById("reader").classList.add("open");
+                try {
+                    history.replaceState(
+                        null,
+                        "",
+                        "#" + encodeURIComponent(id),
+                    );
+                } catch (e) {}
+            }
+
+            function renderAmendments() {
+                document.getElementById("amendmentGrid").innerHTML =
+                    AMENDMENTS.map(
+                        (a) => `
+        <article class="amendment"><span class="year">${esc(a[0])}</span><h3>${esc(a[1])}</h3><p>${esc(a[2])}</p></article>`,
+                    ).join("");
+            }
+
+            function updateTheme() {
+                const b = document.getElementById("themeBtn");
+                const dark =
+                    document.documentElement.getAttribute("data-theme") ===
+                    "dark";
+                b.textContent = dark ? "Light" : "Dark";
+                b.setAttribute("aria-pressed", String(dark));
+            }
+
+            document.querySelectorAll(".case-filter").forEach((b) =>
+                b.addEventListener("click", () => {
+                    activeFilter = b.dataset.filter;
+                    document
+                        .querySelectorAll(".case-filter")
+                        .forEach((x) =>
+                            x.setAttribute("aria-pressed", String(x === b)),
+                        );
+                    renderCases();
+                }),
+            );
+            document
+                .getElementById("caseSearch")
+                .addEventListener("input", (e) => {
+                    query = e.target.value;
+                    renderCases();
+                });
+            document
+                .getElementById("themeBtn")
+                .addEventListener("click", () => {
+                    const next =
+                        document.documentElement.getAttribute("data-theme") ===
+                        "dark"
+                            ? "light"
+                            : "dark";
+                    document.documentElement.setAttribute("data-theme", next);
+                    try {
+                        localStorage.setItem("law-theme", next);
+                    } catch (e) {}
+                    updateTheme();
+                });
+            document
+                .getElementById("readerClose")
+                .addEventListener("click", () =>
+                    document.getElementById("reader").classList.remove("open"),
+                );
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape")
+                    document.getElementById("reader").classList.remove("open");
+            });
+
+            renderArticles();
+            renderDoctrines();
+            renderCases();
+            renderAmendments();
+            updateTheme();
+
+            const initial = decodeURIComponent(location.hash.slice(1));
+            if (initial && CASES.some((c) => c.id === initial))
+                selectCase(initial);
+        </script>
+    </body>
+</html>

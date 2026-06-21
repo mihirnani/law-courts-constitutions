@@ -1,0 +1,1981 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="color-scheme" content="light dark" />
+        <meta
+            name="description"
+            content="The Common Law of Bargain: a sourced history and doctrinal map of English contract law."
+        />
+        <title>
+            The Common Law of Bargain · Law, Courts, and Constitutions
+        </title>
+        <script>
+            (function () {
+                var theme = "dark";
+                try {
+                    var saved = localStorage.getItem("law-theme");
+                    if (saved === "light" || saved === "dark") theme = saved;
+                } catch (e) {}
+                document.documentElement.setAttribute("data-theme", theme);
+            })();
+        </script>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:ital,wght@0,300;0,400;0,500;1,400&display=swap");
+
+            :root,
+            [data-theme="light"] {
+                --bg: #f3eee3;
+                --bg2: #e8dfd0;
+                --panel: rgba(255, 255, 255, 0.34);
+                --text: #28231e;
+                --text2: #4e463d;
+                --muted: #7d7264;
+                --line: rgba(57, 45, 33, 0.18);
+                --accent: #8b3f50;
+                --accent2: #aa5367;
+                --blue: #315d78;
+                --gold: #7b6843;
+                --bar: rgba(243, 238, 227, 0.9);
+                --shadow: rgba(45, 33, 20, 0.15);
+                --focus: #743346;
+            }
+            [data-theme="dark"] {
+                --bg: #101113;
+                --bg2: #18191c;
+                --panel: rgba(255, 250, 240, 0.035);
+                --text: #ece5d8;
+                --text2: #c9c0b1;
+                --muted: #989080;
+                --line: rgba(236, 229, 216, 0.15);
+                --accent: #d78398;
+                --accent2: #f0a1b4;
+                --blue: #8cb5cf;
+                --gold: #b7a373;
+                --bar: rgba(16, 17, 19, 0.88);
+                --shadow: rgba(0, 0, 0, 0.65);
+                --focus: #f1c88d;
+            }
+            * {
+                box-sizing: border-box;
+            }
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                margin: 0;
+                min-height: 100vh;
+                color: var(--text);
+                background:
+                    radial-gradient(
+                        100% 55% at 50% -10%,
+                        var(--bg2),
+                        transparent 70%
+                    ),
+                    var(--bg);
+                font-family: "Spectral", Georgia, serif;
+                font-size: 1.02rem;
+                line-height: 1.68;
+                -webkit-font-smoothing: antialiased;
+            }
+            body.reader-open {
+                overflow: hidden;
+            }
+            a {
+                color: inherit;
+                text-underline-offset: 0.18em;
+            }
+            button,
+            input {
+                font: inherit;
+            }
+            button {
+                color: inherit;
+            }
+            :focus-visible {
+                outline: 2px solid var(--focus);
+                outline-offset: 3px;
+            }
+            .masthead {
+                position: sticky;
+                top: 0;
+                z-index: 30;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                padding: 0.72rem clamp(1rem, 4vw, 3rem);
+                border-bottom: 1px solid var(--line);
+                background: var(--bar);
+                backdrop-filter: blur(10px);
+            }
+            .brand {
+                font-family: "Cormorant Garamond", serif;
+                font-size: 1.4rem;
+                font-weight: 600;
+                text-decoration: none;
+                line-height: 1;
+            }
+            .nav {
+                display: flex;
+                align-items: center;
+                gap: 0.9rem;
+                margin-left: auto;
+            }
+            .nav a {
+                color: var(--muted);
+                font-size: 0.64rem;
+                letter-spacing: 0.16em;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+            .nav a:hover {
+                color: var(--text);
+            }
+            .theme-toggle {
+                border: 1px solid var(--line);
+                background: none;
+                padding: 0.42rem 0.7rem;
+                cursor: pointer;
+                color: var(--accent);
+                font-size: 0.63rem;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+            }
+            .wrap {
+                width: min(100%, 1180px);
+                margin: 0 auto;
+                padding: clamp(2rem, 5vw, 4.6rem) clamp(1rem, 5vw, 4rem);
+            }
+            .eyebrow {
+                margin: 0 0 0.85rem;
+                color: var(--accent);
+                font-size: 0.68rem;
+                letter-spacing: 0.27em;
+                text-transform: uppercase;
+            }
+            h1,
+            h2,
+            h3 {
+                font-family: "Cormorant Garamond", serif;
+                font-weight: 500;
+            }
+            .hero h1 {
+                max-width: 900px;
+                margin: 0;
+                font-size: clamp(3rem, 7vw, 5.4rem);
+                line-height: 0.98;
+            }
+            .hero-line {
+                width: 66px;
+                height: 1px;
+                margin: 2rem 0;
+                background: var(--accent);
+            }
+            .lede {
+                max-width: 35em;
+                margin: 0;
+                color: var(--text2);
+                font-family: "Cormorant Garamond", serif;
+                font-size: clamp(1.3rem, 2.4vw, 1.67rem);
+                font-style: italic;
+                line-height: 1.45;
+            }
+            .lede em {
+                font-style: normal;
+            }
+            .scope {
+                max-width: 58rem;
+                margin-top: 2.3rem;
+                padding: 1rem 1.1rem;
+                border: 1px solid var(--line);
+                background: var(--panel);
+                color: var(--text2);
+                font-size: 0.91rem;
+            }
+            .scope strong {
+                color: var(--text);
+                font-weight: 500;
+            }
+            .section {
+                border-top: 1px solid var(--line);
+                scroll-margin-top: 5rem;
+            }
+            .section-head {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) minmax(240px, 34rem);
+                gap: 2rem;
+                align-items: end;
+                margin-bottom: 2rem;
+            }
+            .section-head h2 {
+                margin: 0;
+                font-size: clamp(2rem, 4.8vw, 3.35rem);
+                line-height: 1;
+            }
+            .section-head p {
+                margin: 0;
+                color: var(--muted);
+                font-size: 0.92rem;
+            }
+            .module-grid {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1rem;
+            }
+            .module {
+                border: 1px solid var(--line);
+                background: var(--panel);
+            }
+            .module summary {
+                cursor: pointer;
+                list-style: none;
+                padding: 1rem 1.1rem;
+            }
+            .module summary::-webkit-details-marker {
+                display: none;
+            }
+            .module h3 {
+                margin: 0;
+                font-size: 1.55rem;
+                line-height: 1.08;
+            }
+            .module .sub {
+                display: block;
+                margin-top: 0.2rem;
+                color: var(--muted);
+                font-size: 0.79rem;
+            }
+            .module-body {
+                padding: 0 1.1rem 1.1rem;
+                border-top: 1px solid var(--line);
+            }
+            .module-body p {
+                color: var(--text2);
+                font-size: 0.9rem;
+            }
+            .module-body ul {
+                padding-left: 1.1rem;
+                color: var(--muted);
+                font-size: 0.84rem;
+            }
+            .module-cases {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.4rem;
+                margin-top: 0.8rem;
+            }
+            .case-jump {
+                border: 1px solid var(--line);
+                background: none;
+                padding: 0.35rem 0.52rem;
+                cursor: pointer;
+                color: var(--muted);
+                font-size: 0.61rem;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+            }
+            .case-jump:hover {
+                color: var(--text);
+                border-color: currentColor;
+            }
+            .toolbar {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                align-items: center;
+                margin-bottom: 1.3rem;
+            }
+            .filter {
+                border: 1px solid var(--line);
+                background: none;
+                padding: 0.42rem 0.66rem;
+                cursor: pointer;
+                color: var(--muted);
+                font-size: 0.62rem;
+                letter-spacing: 0.13em;
+                text-transform: uppercase;
+            }
+            .filter[aria-pressed="true"] {
+                color: var(--text);
+                border-color: currentColor;
+                background: var(--panel);
+            }
+            .search {
+                margin-left: auto;
+                width: min(100%, 310px);
+                border: 1px solid var(--line);
+                background: var(--panel);
+                padding: 0.48rem 0.7rem;
+                color: var(--text);
+            }
+            .case-layout {
+                display: grid;
+                grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
+                border: 1px solid var(--line);
+                min-height: 660px;
+            }
+            .case-list {
+                padding: 1rem;
+                max-height: 75vh;
+                overflow: auto;
+                border-right: 1px solid var(--line);
+            }
+            .era {
+                margin: 1.1rem 0.3rem 0.65rem;
+                color: var(--muted);
+                font-family: "Cormorant Garamond", serif;
+                font-size: 1.1rem;
+                font-style: italic;
+            }
+            .case-card {
+                display: block;
+                width: 100%;
+                margin: 0 0 0.65rem;
+                padding: 0.8rem 0.9rem;
+                border: 1px solid var(--line);
+                background: var(--panel);
+                cursor: pointer;
+                text-align: left;
+            }
+            .case-card:hover,
+            .case-card.active {
+                border-color: var(--accent);
+                background: color-mix(in srgb, var(--accent) 8%, transparent);
+            }
+            .case-meta {
+                display: flex;
+                justify-content: space-between;
+                gap: 0.7rem;
+                color: var(--muted);
+                font-size: 0.61rem;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+            }
+            .case-card h3 {
+                margin: 0.15rem 0 0.15rem;
+                font-size: 1.32rem;
+                line-height: 1.08;
+            }
+            .case-card p {
+                margin: 0;
+                color: var(--muted);
+                font-size: 0.81rem;
+                line-height: 1.46;
+            }
+            .reader {
+                position: sticky;
+                top: 4.3rem;
+                align-self: start;
+                max-height: calc(100vh - 5.2rem);
+                overflow: auto;
+                padding: 1.5rem;
+            }
+            .reader-empty {
+                height: 100%;
+                display: grid;
+                place-items: center;
+                color: var(--muted);
+                text-align: center;
+            }
+            .r-year {
+                color: var(--accent);
+                font-size: 0.64rem;
+                letter-spacing: 0.17em;
+                text-transform: uppercase;
+            }
+            .reader h2 {
+                margin: 0.15rem 0 0.15rem;
+                font-size: 2.2rem;
+                line-height: 1;
+            }
+            .r-citation {
+                display: block;
+                color: var(--muted);
+                font-size: 0.84rem;
+                font-style: italic;
+                margin-bottom: 1.3rem;
+            }
+            .r-section {
+                margin: 1.25rem 0;
+            }
+            .r-label {
+                display: block;
+                margin-bottom: 0.25rem;
+                color: var(--accent);
+                font-size: 0.61rem;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+            }
+            .r-section p {
+                margin: 0;
+                color: var(--text2);
+                font-size: 0.9rem;
+            }
+            .r-caution {
+                padding: 0.8rem 0.9rem;
+                border-left: 3px solid var(--gold);
+                background: var(--panel);
+                color: var(--muted);
+                font-size: 0.84rem;
+            }
+            .source-link {
+                display: inline-block;
+                margin-top: 1rem;
+                color: var(--text);
+                font-size: 0.75rem;
+            }
+            .reader-nav {
+                display: flex;
+                justify-content: space-between;
+                gap: 1rem;
+                margin-top: 1.5rem;
+                padding-top: 1rem;
+                border-top: 1px solid var(--line);
+            }
+            .reader-nav button {
+                max-width: 48%;
+                border: 0;
+                background: none;
+                padding: 0;
+                cursor: pointer;
+                color: var(--accent);
+                font-family: "Cormorant Garamond", serif;
+                font-size: 1rem;
+                text-align: left;
+            }
+            .reader-nav .next {
+                margin-left: auto;
+                text-align: right;
+            }
+            .reader-nav button:disabled {
+                opacity: 0.3;
+                cursor: default;
+            }
+            .direction {
+                display: block;
+                color: var(--muted);
+                font-family: "Spectral", serif;
+                font-size: 0.58rem;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+            }
+            .statute-grid {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1rem;
+            }
+            .statute {
+                padding: 1rem;
+                border: 1px solid var(--line);
+                background: var(--panel);
+            }
+            .statute .year {
+                color: var(--accent);
+                font-size: 0.65rem;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+            }
+            .statute h3 {
+                margin: 0.15rem 0 0.35rem;
+                font-size: 1.35rem;
+                line-height: 1.08;
+            }
+            .statute p {
+                margin: 0 0 0.7rem;
+                color: var(--muted);
+                font-size: 0.85rem;
+            }
+            .statute a {
+                font-size: 0.73rem;
+            }
+            .method {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+            .method div {
+                padding: 1rem;
+                border: 1px solid var(--line);
+                background: var(--panel);
+                color: var(--muted);
+                font-size: 0.86rem;
+            }
+            .method strong {
+                display: block;
+                color: var(--text);
+                margin-bottom: 0.3rem;
+                font-weight: 500;
+            }
+            footer {
+                border-top: 1px solid var(--line);
+                padding: 2rem 1rem 3rem;
+                color: var(--muted);
+                font-size: 0.78rem;
+                text-align: center;
+            }
+            @media (max-width: 900px) {
+                .nav a {
+                    display: none;
+                }
+                .section-head {
+                    grid-template-columns: 1fr;
+                    gap: 0.8rem;
+                }
+                .case-layout {
+                    grid-template-columns: 1fr;
+                }
+                .case-list {
+                    max-height: none;
+                    border-right: 0;
+                }
+                .reader {
+                    position: fixed;
+                    inset: 0;
+                    z-index: 50;
+                    max-height: none;
+                    background: var(--bg);
+                    transform: translateX(100%);
+                    transition: transform 0.22s ease;
+                    padding: 4.5rem 1rem 2rem;
+                }
+                .reader.open {
+                    transform: translateX(0);
+                }
+                .reader-close {
+                    display: block;
+                }
+                .module-grid,
+                .statute-grid,
+                .method {
+                    grid-template-columns: 1fr;
+                }
+            }
+            .reader-close {
+                display: none;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                border: 1px solid var(--line);
+                background: none;
+                padding: 0.42rem 0.65rem;
+                color: var(--muted);
+                cursor: pointer;
+                font-size: 0.62rem;
+                letter-spacing: 0.13em;
+                text-transform: uppercase;
+            }
+            @media (max-width: 650px) {
+                .masthead {
+                    flex-wrap: wrap;
+                }
+                .brand {
+                    flex: 1 1 auto;
+                    font-size: 1.2rem;
+                }
+                .wrap {
+                    padding: 2.2rem 0.9rem 3rem;
+                }
+                .toolbar {
+                    align-items: stretch;
+                }
+                .filter {
+                    flex: 1 1 auto;
+                    min-height: 2.5rem;
+                }
+                .search {
+                    width: 100%;
+                    margin-left: 0;
+                }
+                .hero h1 {
+                    font-size: clamp(2.7rem, 15vw, 4rem);
+                }
+                .reader-close {
+                    display: block;
+                }
+            }
+            @media (prefers-reduced-motion: reduce) {
+                html {
+                    scroll-behavior: auto;
+                }
+                .reader {
+                    transition: none;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header class="masthead">
+            <a class="brand" href="index.html"
+                >Law, Courts, and Constitutions</a
+            >
+            <nav class="nav" aria-label="Main navigation">
+                <a href="index.html">Studies</a>
+                <a href="roman-law-common-law.html">Legal traditions</a>
+                <a href="fundamental-rights-india.html">Fundamental rights</a>
+                <a href="#doctrines">Doctrines</a>
+                <a href="#cases">Cases</a>
+                <a href="#statutes">Statutes</a>
+                <a href="https://naniwadekar.com/">All projects</a>
+                <button class="theme-toggle" id="themeBtn" type="button">
+                    Light
+                </button>
+            </nav>
+        </header>
+
+        <main>
+            <section class="wrap hero">
+                <p class="eyebrow">A doctrinal and historical reader</p>
+                <h1>The Common Law<br />of Bargain</h1>
+                <div class="hero-line"></div>
+                <p class="lede">
+                    English contract law was not made by a single theory of
+                    promise.
+                    <em
+                        >It grew through forms of action, commercial practice,
+                        equity, legislation and repeated judicial
+                        reconstruction.</em
+                    >
+                </p>
+                <div class="scope">
+                    <strong>Scope and date.</strong> This page concerns the law
+                    of England and Wales and was reviewed against primary
+                    legislation and appellate judgments in June 2026. It
+                    combines historical explanation with present doctrinal
+                    orientation. Case summaries are not legal advice; use the
+                    linked judgments, reports and legislation for authoritative
+                    text.
+                </div>
+            </section>
+
+            <section class="wrap section" id="doctrines">
+                <div class="section-head">
+                    <h2>Doctrinal map</h2>
+                    <p>
+                        Eight modules show how the cases fit together. Open a
+                        module, then jump directly to a case in the chronology.
+                    </p>
+                </div>
+                <div class="module-grid" id="moduleGrid"></div>
+            </section>
+
+            <section class="wrap section" id="cases">
+                <div class="section-head">
+                    <h2>Cases and turning points</h2>
+                    <p>
+                        The chronology is selective, not a canon. It includes
+                        procedural foundations, leading authorities and current
+                        Supreme Court decisions through 2026.
+                    </p>
+                </div>
+                <div class="toolbar">
+                    <button
+                        class="filter case-filter"
+                        data-filter="all"
+                        aria-pressed="true"
+                    >
+                        All
+                    </button>
+                    <button
+                        class="filter case-filter"
+                        data-filter="formation"
+                        aria-pressed="false"
+                    >
+                        Formation
+                    </button>
+                    <button
+                        class="filter case-filter"
+                        data-filter="consideration"
+                        aria-pressed="false"
+                    >
+                        Consideration
+                    </button>
+                    <button
+                        class="filter case-filter"
+                        data-filter="variation"
+                        aria-pressed="false"
+                    >
+                        Variation
+                    </button>
+                    <button
+                        class="filter case-filter"
+                        data-filter="terms"
+                        aria-pressed="false"
+                    >
+                        Terms
+                    </button>
+                    <button
+                        class="filter case-filter"
+                        data-filter="vitiating"
+                        aria-pressed="false"
+                    >
+                        Vitiating factors
+                    </button>
+                    <button
+                        class="filter case-filter"
+                        data-filter="third-parties"
+                        aria-pressed="false"
+                    >
+                        Third parties
+                    </button>
+                    <button
+                        class="filter case-filter"
+                        data-filter="discharge"
+                        aria-pressed="false"
+                    >
+                        Discharge
+                    </button>
+                    <button
+                        class="filter case-filter"
+                        data-filter="remedies"
+                        aria-pressed="false"
+                    >
+                        Remedies
+                    </button>
+                    <input
+                        class="search"
+                        id="caseSearch"
+                        type="search"
+                        placeholder="Search cases, courts or principles…"
+                        aria-label="Search cases"
+                    />
+                </div>
+                <div class="case-layout">
+                    <div class="case-list" id="caseList"></div>
+                    <aside class="reader" id="reader" aria-live="polite">
+                        <button
+                            class="reader-close"
+                            id="readerClose"
+                            type="button"
+                        >
+                            Back to cases
+                        </button>
+                        <div id="readerBody" class="reader-empty">
+                            Select a case to read the facts, issue, holding,
+                            significance and current limits.
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="wrap section" id="statutes">
+                <div class="section-head">
+                    <h2>Legislative framework</h2>
+                    <p>
+                        English contract law is not case law alone. These
+                        statutes materially qualify formation, remedies,
+                        third-party rights and contractual freedom.
+                    </p>
+                </div>
+                <div class="statute-grid" id="statuteGrid"></div>
+            </section>
+        </main>
+
+        <footer>
+            Part of <a href="index.html">Law, Courts, and Constitutions</a>. See
+            also
+            <a href="roman-law-common-law.html"
+                >Roman and common-law comparison</a
+            >
+            and
+            <a href="fundamental-rights-india.html">Indian fundamental rights</a
+            >.
+        </footer>
+
+        <script>
+            const MODULES = [
+                {
+                    id: "formation",
+                    title: "Formation",
+                    subtitle:
+                        "Offer, acceptance, intention, certainty and conduct",
+                    text: "English law asks objectively whether the parties manifested agreement on sufficiently certain terms and intended legal consequences. Offer-and-acceptance remains a useful analytic model, but conduct and commercial context may establish a contract even where no single moment of formation is obvious.",
+                    points: [
+                        "Advertisements are usually invitations to treat, but a sufficiently definite unilateral promise can be an offer.",
+                        "Acceptance generally must be communicated; the postal rule is a historically specific exception where post is contemplated.",
+                        "Domestic or social context may indicate no intention to create legal relations, but the inquiry is contextual rather than a rigid status rule.",
+                        "Work begun before formal execution can still produce a contract if the objective evidence shows agreement.",
+                    ],
+                    caseIds: ["adams", "carlill", "balfour", "rts"],
+                },
+                {
+                    id: "consideration",
+                    title: "Consideration and form",
+                    subtitle: "Bargain, deed, past acts and existing duties",
+                    text: "A promise not made by deed ordinarily requires consideration. The doctrine developed through assumpsit and older forms of action; it is not a general moral test of whether a promise deserves enforcement.",
+                    points: [
+                        "Consideration must move from the promisee, but need not be economically adequate.",
+                        "A past act is generally not consideration unless performed at the promisor’s request in circumstances implying payment.",
+                        "Performance of an existing duty creates difficult boundary questions, including the modern doctrine of practical benefit.",
+                        "A deed remains the principal formal route for making a gratuitous promise enforceable without consideration.",
+                    ],
+                    caseIds: [
+                        "slade",
+                        "lampleigh",
+                        "pillans",
+                        "rann",
+                        "stilk",
+                        "currie",
+                        "roffey",
+                    ],
+                },
+                {
+                    id: "variation",
+                    title: "Variation, debt and estoppel",
+                    subtitle:
+                        "Part payment, practical benefit and no-oral-modification clauses",
+                    text: "Contract modification exposes tensions between formal doctrine and commercial adjustment. The debt rule in Foakes remains authoritative, practical benefit applies to promises of extra payment in some circumstances, and promissory estoppel can restrain insistence on strict rights without generally creating a new cause of action.",
+                    points: [
+                        "Part-payment of an undisputed debt is not ordinarily consideration for a promise to discharge the balance.",
+                        "Promissory estoppel is equitable, reliance-sensitive and normally defensive.",
+                        "No-oral-modification clauses are generally effective, although estoppel may prevent reliance on one in sufficiently clear circumstances.",
+                        "Economic duress can invalidate a variation; lawful-act duress is exceptional.",
+                    ],
+                    caseIds: [
+                        "pinnel",
+                        "foakes",
+                        "high-trees",
+                        "roffey",
+                        "rock",
+                        "times-travel",
+                    ],
+                },
+                {
+                    id: "terms",
+                    title: "Terms and interpretation",
+                    subtitle:
+                        "Incorporation, construction, implication and classification",
+                    text: "The court identifies the express terms, asks whether external terms were incorporated, interprets the language objectively in context, and only then considers whether a term must be implied. Conditions, warranties and innominate terms determine the consequences of breach.",
+                    points: [
+                        "Signing a contractual document usually binds the signer, subject to fraud, misrepresentation, non est factum and statutory controls.",
+                        "Interpretation is textual and contextual; commercial common sense cannot be used retrospectively to rescue a bad bargain.",
+                        "Implication is a distinct and stringent process, not a licence to improve the contract.",
+                        "For an innominate term, termination depends on the seriousness of the consequences of breach.",
+                    ],
+                    caseIds: [
+                        "moor-cock",
+                        "lestrange",
+                        "hong-kong-fir",
+                        "photo-production",
+                        "arnold",
+                        "marks-spencer",
+                        "wood",
+                        "barton",
+                        "providence",
+                        "hopcraft",
+                        "gatwick",
+                    ],
+                },
+                {
+                    id: "vitiating",
+                    title: "Vitiating factors",
+                    subtitle:
+                        "Misrepresentation, mistake, duress, undue influence and illegality",
+                    text: "A formally valid agreement may be avoided or denied effect because consent was improperly obtained, assumptions failed, or enforcement would conflict with legal policy. The doctrines have different elements and remedies and should not be collapsed into a general fairness jurisdiction.",
+                    points: [
+                        "Fraudulent misrepresentation requires dishonesty in the Derry sense; negligent and statutory routes are broader.",
+                        "Common mistake has a narrow operation after modern appellate authority.",
+                        "Economic duress requires illegitimate pressure and causation; lawful pressure rarely suffices.",
+                        "Illegality now involves a structured policy and proportionality analysis rather than a single mechanical formula.",
+                    ],
+                    caseIds: ["derry", "times-travel", "hopcraft"],
+                },
+                {
+                    id: "third-parties",
+                    title: "Third parties",
+                    subtitle:
+                        "Privity, consideration, agency, trust and statutory rights",
+                    text: "The classical privity rule denied contractual enforcement to a non-party even where the contract was intended to benefit that person. Common-law and equitable devices softened the rule before Parliament created a direct statutory right in defined circumstances.",
+                    points: [
+                        "Tweddle linked privity with the requirement that consideration move from the promisee.",
+                        "Agency, trust, assignment and collateral contracts provide distinct routes around privity.",
+                        "The Contracts (Rights of Third Parties) Act 1999 permits enforcement where the contract expressly provides or purports to confer a benefit, subject to its terms and exceptions.",
+                        "The parties can usually exclude the 1999 Act expressly.",
+                    ],
+                    caseIds: ["tweddle"],
+                },
+                {
+                    id: "discharge",
+                    title: "Performance, breach and frustration",
+                    subtitle: "Discharge, termination and supervening events",
+                    text: "Contractual obligations may end by performance, agreement, accepted repudiation or frustration. Frustration is not a general escape from hardship: the supervening event must make performance radically different from the obligation undertaken.",
+                    points: [
+                        "Destruction of an essential subject matter was the historical gateway to frustration.",
+                        "The doctrine is narrow and sensitive to contractual allocation of risk and fault.",
+                        "Termination for breach depends on classification or seriousness; it does not automatically erase accrued rights.",
+                        "The Law Reform (Frustrated Contracts) Act 1943 adjusts financial consequences after frustration.",
+                    ],
+                    caseIds: [
+                        "taylor",
+                        "fibrosa",
+                        "davis",
+                        "hong-kong-fir",
+                        "king-crude",
+                        "providence",
+                    ],
+                },
+                {
+                    id: "remedies",
+                    title: "Remedies and agreed consequences",
+                    subtitle:
+                        "Expectation, remoteness, restitution, profits and penalties",
+                    text: "The ordinary measure protects the claimant’s expectation, subject to causation, remoteness, mitigation and proof. Other responses include reliance loss, restitution, specific relief and, exceptionally, an account of profits.",
+                    points: [
+                        "Hadley’s two branches address ordinary loss and special circumstances communicated at formation.",
+                        "The Achilleas reopened attention to the scope of responsibility assumed under the contract.",
+                        "An account of profits for breach is exceptional, not a general response to deliberate breach.",
+                        "The penalty doctrine concerns secondary obligations imposing disproportionate detriment relative to a legitimate interest.",
+                    ],
+                    caseIds: [
+                        "hadley",
+                        "blake",
+                        "achilleas",
+                        "cavendish",
+                        "gatwick",
+                    ],
+                },
+                {
+                    id: "consumer-control",
+                    title: "Standard forms, consumers, and statutory control",
+                    subtitle:
+                        "Signature, exclusions, commissions, fairness, and credit relationships",
+                    text: "The common law generally begins with incorporation and interpretation, but modern contractual freedom is qualified by legislation governing exclusion clauses, consumer terms, credit relationships, and unfair commercial structures.",
+                    points: [
+                        "Signature ordinarily incorporates terms, but fraud, misrepresentation, non est factum, and statutory controls may prevent enforcement.",
+                        "UCTA 1977 regulates specified exclusions and limitations, frequently through a reasonableness test.",
+                        "The Consumer Rights Act 2015 requires consumer terms and notices to be fair and transparent.",
+                        "Consumer credit disputes may turn on the statutory unfair-relationship jurisdiction rather than a general common-law duty.",
+                    ],
+                    caseIds: ["lestrange", "photo-production", "hopcraft"],
+                },
+            ];
+            const CASES = [
+                {
+                    id: "slade",
+                    year: 1602,
+                    era: "Forms of action and the bargain",
+                    categories: ["consideration"],
+                    title: "Slade’s Case",
+                    citation: "(1602) 4 Co Rep 92b; 76 ER 1074",
+                    court: "Exchequer Chamber",
+                    teaser: "Assumpsit becomes available to recover a debt arising from an executory bargain.",
+                    facts: "Slade sold grain to Morley. The litigation concerned whether the seller could sue in assumpsit on an implied promise to pay rather than use the older action of debt.",
+                    issue: "Could a contractual debt be pursued through assumpsit on the basis of an implied undertaking to pay?",
+                    holding:
+                        "The judges accepted that every executory contract imported a promise capable of supporting assumpsit. The decision helped make assumpsit the procedural foundation of a more general law of contract.",
+                    significance:
+                        "The case did not create contract law at a stroke. It was a major procedural consolidation that allowed jury trial and avoided some disadvantages of debt.",
+                    caution:
+                        "The report reflects the language of forms of action. Modern concepts such as offer, acceptance and breach should not be projected backwards without qualification.",
+                    source: "",
+                    sourceLabel: "Primary report: 4 Co Rep 92b",
+                },
+                {
+                    id: "pinnel",
+                    year: 1602,
+                    era: "Forms of action and the bargain",
+                    categories: ["variation"],
+                    title: "Pinnel’s Case",
+                    citation: "(1602) 5 Co Rep 117a; 77 ER 237",
+                    court: "Common Pleas",
+                    teaser: "Part-payment of an existing debt is ordinarily not satisfaction of the whole.",
+                    facts: "The report addressed whether payment of a smaller sum could satisfy a larger liquidated debt.",
+                    issue: "What fresh element is needed to make a creditor’s promise to accept less binding?",
+                    holding:
+                        "Payment of a lesser sum on the due date was not sufficient satisfaction, although earlier payment, payment at another place, or something different could supply fresh value.",
+                    significance:
+                        "The rule became the historical basis of Foakes v Beer and remains controversial because nominal changes can count while substantial practical benefits may not.",
+                    caution:
+                        "The doctrine is affected by deed, composition agreements, disputed claims, third-party payment and promissory estoppel.",
+                    source: "",
+                    sourceLabel: "Primary report: 5 Co Rep 117a",
+                },
+                {
+                    id: "lampleigh",
+                    year: 1615,
+                    era: "Forms of action and the bargain",
+                    categories: ["consideration"],
+                    title: "Lampleigh v Brathwait",
+                    citation: "(1615) Hob 105; 80 ER 255",
+                    court: "King’s Bench",
+                    teaser: "A requested act followed by a promise may be treated as one transaction.",
+                    facts: "Brathwait asked Lampleigh to secure a royal pardon after killing a man. After the service was performed, Brathwait promised payment but did not pay.",
+                    issue: "Could the completed service support a later express promise despite the rule against past consideration?",
+                    holding:
+                        "Because the service had been performed at Brathwait’s request in circumstances implying remuneration, the request and later promise could be connected.",
+                    significance:
+                        "The case supports the narrow requested-act exception to the rule that past consideration is no consideration.",
+                    caution:
+                        "A merely voluntary past act does not become consideration because the recipient later promises to pay.",
+                    source: "",
+                    sourceLabel: "Primary report: Hob 105",
+                },
+                {
+                    id: "pillans",
+                    year: 1765,
+                    era: "Mansfield and commercial law",
+                    categories: ["consideration"],
+                    title: "Pillans & Rose v Van Mierop & Hopkins",
+                    citation: "(1765) 3 Burr 1663; 97 ER 1035",
+                    court: "King’s Bench",
+                    teaser: "Lord Mansfield questions consideration where a commercial undertaking is deliberate and written.",
+                    facts: "London merchants confirmed that they would honour a draft after Dutch merchants extended credit in reliance on the confirmation.",
+                    issue: "Was the written commercial undertaking enforceable despite an asserted absence of consideration moving between the immediate parties?",
+                    holding:
+                        "The court enforced the undertaking. Mansfield suggested that consideration was principally evidentiary and that writing in a merchant transaction could answer the concern.",
+                    significance:
+                        "The reasoning represented an unsuccessful attempt to narrow the consideration requirement in commercial cases.",
+                    caution:
+                        "Rann v Hughes later rejected a general third category of written but unsealed promises. Pillans should not be described as current law.",
+                    source: "",
+                    sourceLabel: "Primary report: 3 Burr 1663",
+                },
+                {
+                    id: "rann",
+                    year: 1778,
+                    era: "Mansfield and commercial law",
+                    categories: ["consideration"],
+                    title: "Rann v Hughes",
+                    citation: "(1778) 7 TR 350n; 101 ER 1014",
+                    court: "House of Lords",
+                    teaser: "Writing alone does not replace consideration unless the promise is made by deed.",
+                    facts: "An executrix promised in writing to answer personally for a debt of the deceased. The promise was not under seal and lacked fresh consideration.",
+                    issue: "Did a written promise form a separate enforceable class between deed and simple contract?",
+                    holding:
+                        "The judges advised that English law distinguished specialties from parol contracts; a merely written simple contract still required consideration.",
+                    significance:
+                        "The opinion displaced the broadest reading of Pillans and confirmed the deed/simple-contract division.",
+                    caution:
+                        "The familiar passage is an opinion of the judges delivered in connection with proceedings in the House of Lords.",
+                    source: "",
+                    sourceLabel: "Primary report: 7 TR 350n",
+                },
+                {
+                    id: "stilk",
+                    year: 1809,
+                    era: "Nineteenth-century doctrine",
+                    categories: ["consideration", "variation"],
+                    title: "Stilk v Myrick",
+                    citation: "(1809) 2 Camp 317; 170 ER 1168",
+                    court: "King’s Bench",
+                    teaser: "Performance of an existing contractual duty was treated as no fresh consideration.",
+                    facts: "After two sailors deserted, the master promised extra wages to the remaining crew if they worked the ship home. The additional wages were not paid.",
+                    issue: "Did doing what the sailors were already contractually bound to do support the promise of extra payment?",
+                    holding:
+                        "The claim failed on the conventional report because the crew had undertaken the ordinary emergencies of the voyage.",
+                    significance:
+                        "The case became the standard authority on existing contractual duties until the practical-benefit analysis in Williams v Roffey.",
+                    caution:
+                        "Contemporary reports differ, and modern scholarship questions whether public-policy concerns or consideration best explain the decision.",
+                    source: "",
+                    sourceLabel: "Primary report: 2 Camp 317",
+                },
+                {
+                    id: "adams",
+                    year: 1818,
+                    era: "Nineteenth-century doctrine",
+                    categories: ["formation"],
+                    title: "Adams v Lindsell",
+                    citation: "(1818) 1 B & Ald 681; 106 ER 250",
+                    court: "King’s Bench",
+                    teaser: "Acceptance by post was effective on posting where the postal method was contemplated.",
+                    facts: "A misaddressed offer to sell wool arrived late. The offeree posted an immediate acceptance, but the offeror sold the wool before receiving it.",
+                    issue: "Was acceptance effective when posted or only when received?",
+                    holding:
+                        "The contract was treated as complete when the acceptance was posted.",
+                    significance:
+                        "The postal rule allocates transmission risk to the offeror when its conditions are met.",
+                    caution:
+                        "The rule can be excluded and does not govern instantaneous communications. It should not be applied mechanically to email.",
+                    source: "https://law.justia.com/cases/foreign/united-kingdom/106-eng-rep-250-1818.html",
+                    sourceLabel: "Full report transcription",
+                },
+                {
+                    id: "hadley",
+                    year: 1854,
+                    era: "Nineteenth-century doctrine",
+                    categories: ["remedies"],
+                    title: "Hadley v Baxendale",
+                    citation: "(1854) 9 Exch 341; 156 ER 145",
+                    court: "Court of Exchequer",
+                    teaser: "Contract damages are limited by ordinary consequences and communicated special circumstances.",
+                    facts: "A carrier delayed delivery of a broken mill shaft needed as a pattern for a replacement. The mill remained stopped, but the carrier had not been told that no spare shaft was available.",
+                    issue: "Were the lost profits sufficiently within the parties’ contemplation when they contracted?",
+                    holding:
+                        "The claimed profits were too remote on the facts. Recoverable loss was framed as loss arising naturally or from special circumstances communicated to both parties.",
+                    significance:
+                        "The formulation remains the starting point for contractual remoteness.",
+                    caution:
+                        "Later cases refine knowledge, probability and the scope of responsibility. The two limbs are not watertight compartments.",
+                    source: "https://lawlibrarycollections.umn.edu/classic-cases-contract-hadley-v-baxendale",
+                    sourceLabel: "Case report and historical materials",
+                },
+                {
+                    id: "tweddle",
+                    year: 1861,
+                    era: "Nineteenth-century doctrine",
+                    categories: ["third-parties"],
+                    title: "Tweddle v Atkinson",
+                    citation: "(1861) 1 B & S 393; 121 ER 762",
+                    court: "Queen’s Bench",
+                    teaser: "A person intended to benefit could not enforce a contract to which he was not party.",
+                    facts: "The fathers of a bride and groom agreed to pay sums to the groom. After one father died without paying, the groom sued the executor.",
+                    issue: "Could the groom enforce the promise despite not providing consideration and not being a contracting party?",
+                    holding:
+                        "The action failed. The court treated consideration and contractual party status as barriers.",
+                    significance:
+                        "Tweddle became a leading statement of privity before statutory reform.",
+                    caution:
+                        "The 1999 Act now gives some third parties direct rights, while trusts, agency, assignment and collateral contracts remain distinct routes.",
+                    source: "",
+                    sourceLabel: "Primary report: 1 B & S 393",
+                },
+                {
+                    id: "taylor",
+                    year: 1863,
+                    era: "Nineteenth-century doctrine",
+                    categories: ["discharge"],
+                    title: "Taylor v Caldwell",
+                    citation: "(1863) 3 B & S 826; 122 ER 309",
+                    court: "Queen’s Bench",
+                    teaser: "Destruction of an essential subject matter excused future performance.",
+                    facts: "A music hall hired for concerts burned down without fault before the first event.",
+                    issue: "Did the apparently absolute promise to provide the hall remain enforceable?",
+                    holding:
+                        "The contract was discharged because continued existence of the hall was an implied foundation of performance.",
+                    significance:
+                        "The decision is a foundational step in the modern doctrine of frustration.",
+                    caution:
+                        "Modern law does not depend solely on implying a term and frustration remains narrow.",
+                    source: "https://lawlibrarycollections.umn.edu/classic-cases-contract-taylor-v-caldwell",
+                    sourceLabel: "Case report and historical materials",
+                },
+                {
+                    id: "currie",
+                    year: 1875,
+                    era: "Nineteenth-century doctrine",
+                    categories: ["consideration"],
+                    title: "Currie v Misa",
+                    citation: "(1875) LR 10 Ex 153; (1876) 1 App Cas 554",
+                    court: "Exchequer Chamber / House of Lords",
+                    teaser: "A durable formulation describes consideration as benefit, detriment or forbearance.",
+                    facts: "The dispute arose from bills of exchange and whether value had been given in the underlying transactions.",
+                    issue: "What counts as legal value sufficient to support a simple contract?",
+                    holding:
+                        "Lush J gave the influential formulation of consideration as a right, interest, profit or benefit to one party, or a forbearance, detriment, loss or responsibility undertaken by the other.",
+                    significance:
+                        "The language is frequently quoted as a definition of consideration.",
+                    caution:
+                        "It is an explanatory formulation, not a complete modern test; bargain, request and doctrinal context remain important.",
+                    source: "",
+                    sourceLabel: "Primary reports: LR 10 Ex 153; 1 App Cas 554",
+                },
+                {
+                    id: "foakes",
+                    year: 1884,
+                    era: "Nineteenth-century doctrine",
+                    categories: ["variation"],
+                    title: "Foakes v Beer",
+                    citation: "(1884) 9 App Cas 605",
+                    court: "House of Lords",
+                    teaser: "Part-payment of a judgment debt did not discharge the creditor’s right to interest.",
+                    facts: "Mrs Beer agreed not to enforce a judgment if Dr Foakes paid by instalments. After he paid the principal, she claimed statutory interest.",
+                    issue: "Was the promise to forgo interest supported by fresh consideration?",
+                    holding:
+                        "No. Payment of what was already due did not support the promise to accept less.",
+                    significance:
+                        "Foakes confirmed Pinnel’s rule at the highest level and remains binding.",
+                    caution:
+                        "Promissory estoppel may restrain enforcement in some circumstances, but it has not abolished Foakes.",
+                    source: "",
+                    sourceLabel: "Primary report: 9 App Cas 605",
+                },
+                {
+                    id: "moor-cock",
+                    year: 1889,
+                    era: "Nineteenth-century doctrine",
+                    categories: ["terms"],
+                    title: "The Moorcock",
+                    citation: "(1889) 14 PD 64",
+                    court: "Court of Appeal",
+                    teaser: "A term was implied to give business efficacy to a wharfage arrangement.",
+                    facts: "A ship was damaged when the tide fell and it settled on an unsafe riverbed beside a jetty.",
+                    issue: "Was there an implied obligation that reasonable care had been taken to ensure the berth was safe?",
+                    holding:
+                        "The court implied a term necessary to make the transaction work in the circumstances.",
+                    significance:
+                        "The case supplied the phrase “business efficacy,” later integrated into the stringent modern test for terms implied in fact.",
+                    caution:
+                        "The court does not imply a term merely because it would be reasonable or improve the bargain.",
+                    source: "",
+                    sourceLabel: "Primary report: 14 PD 64",
+                },
+                {
+                    id: "derry",
+                    year: 1889,
+                    era: "Nineteenth-century doctrine",
+                    categories: ["vitiating"],
+                    title: "Derry v Peek",
+                    citation: "(1889) 14 App Cas 337",
+                    court: "House of Lords",
+                    teaser: "Fraud requires knowledge of falsity, absence of honest belief, or recklessness.",
+                    facts: "A company prospectus stated that steam power could be used, although official consent was required and later refused.",
+                    issue: "When does an inaccurate pre-contractual statement amount to fraudulent misrepresentation?",
+                    holding:
+                        "The directors were not fraudulent because they honestly believed the statement. Fraud was defined by dishonesty, not mere lack of reasonable grounds.",
+                    significance: "The case remains central to deceit.",
+                    caution:
+                        "Negligent misstatement and the Misrepresentation Act 1967 provide broader routes than fraud.",
+                    source: "",
+                    sourceLabel: "Primary report: 14 App Cas 337",
+                },
+                {
+                    id: "carlill",
+                    year: 1892,
+                    era: "Nineteenth-century doctrine",
+                    categories: ["formation"],
+                    title: "Carlill v Carbolic Smoke Ball Co",
+                    citation: "[1893] 1 QB 256; decision 1892",
+                    court: "Court of Appeal",
+                    teaser: "A sufficiently definite advertisement was a unilateral offer accepted by performance.",
+                    facts: "The company promised £100 to anyone who used its product as directed and nevertheless contracted influenza, stating that money had been deposited to show sincerity.",
+                    issue: "Was the advertisement an enforceable offer rather than sales puff, and was notice of acceptance required?",
+                    holding:
+                        "The advertisement was a unilateral offer to the world, accepted by performing its conditions. Separate advance notification was unnecessary.",
+                    significance:
+                        "Carlill remains the classic illustration of unilateral formation, certainty and objective intention.",
+                    caution:
+                        "Not every advertisement is an offer; definiteness, commitment and construction are decisive.",
+                    source: "https://lawlibrarycollections.umn.edu/classic-cases-contract-carlill-v-carbolic-smoke-ball-co",
+                    sourceLabel: "Case report and historical materials",
+                },
+                {
+                    id: "balfour",
+                    year: 1919,
+                    era: "The modern law takes shape",
+                    categories: ["formation"],
+                    title: "Balfour v Balfour",
+                    citation: "[1919] 2 KB 571",
+                    court: "Court of Appeal",
+                    teaser: "An ordinary domestic arrangement was not intended to create legal relations.",
+                    facts: "A husband working abroad promised an allowance to his wife while they were living apart for health reasons. Their relationship later broke down.",
+                    issue: "Was the arrangement a legally enforceable contract?",
+                    holding:
+                        "The court held that the arrangement, made in the ordinary domestic context while the relationship was amicable, lacked contractual intention.",
+                    significance:
+                        "The case became the conventional starting point for intention to create legal relations.",
+                    caution:
+                        "The inquiry is objective and contextual. Separation agreements, commercial arrangements between relatives and reliance may lead to a different result.",
+                    source: "",
+                    sourceLabel: "Primary report: [1919] 2 KB 571",
+                },
+                {
+                    id: "lestrange",
+                    year: 1934,
+                    era: "The modern law takes shape",
+                    categories: ["terms"],
+                    title: "L’Estrange v F Graucob Ltd",
+                    citation: "[1934] 2 KB 394",
+                    court: "Court of Appeal",
+                    teaser: "Signature ordinarily incorporates contractual terms whether or not they were read.",
+                    facts: "A purchaser signed an order form containing an exclusion clause for a defective vending machine.",
+                    issue: "Was the signed exclusion clause incorporated without proof that it had been read?",
+                    holding:
+                        "The signer was bound in the absence of fraud or misrepresentation.",
+                    significance:
+                        "The signature rule remains important for incorporation.",
+                    caution:
+                        "Modern statutory controls, misrepresentation, non est factum and questions about whether the document was contractual can alter the result.",
+                    source: "",
+                    sourceLabel: "Primary report: [1934] 2 KB 394",
+                },
+                {
+                    id: "fibrosa",
+                    year: 1943,
+                    era: "The modern law takes shape",
+                    categories: ["discharge"],
+                    title: "Fibrosa Spolka Akcyjna v Fairbairn Lawson Combe Barbour Ltd",
+                    citation: "[1943] AC 32",
+                    court: "House of Lords",
+                    teaser: "Money paid could be recovered after frustration where the basis for payment wholly failed.",
+                    facts: "A Polish buyer prepaid for machinery. War and occupation made delivery to Gdynia illegal and the contract was frustrated.",
+                    issue: "Could the prepayment be recovered despite older authority limiting restitution after frustration?",
+                    holding:
+                        "The buyer recovered the payment because there had been a total failure of the consideration for it.",
+                    significance:
+                        "The decision displaced Chandler v Webster and helped prompt the Law Reform (Frustrated Contracts) Act 1943.",
+                    caution:
+                        "The Act now governs many financial consequences of frustration; the old language of failure of consideration is context-sensitive.",
+                    source: "https://www.bailii.org/uk/cases/UKHL/1942/4.html",
+                    sourceLabel: "Judgment",
+                },
+                {
+                    id: "high-trees",
+                    year: 1947,
+                    era: "The modern law takes shape",
+                    categories: ["variation"],
+                    title: "Central London Property Trust Ltd v High Trees House Ltd",
+                    citation: "[1947] KB 130",
+                    court: "King’s Bench",
+                    teaser: "A relied-on promise to suspend strict rights may be enforceable in equity.",
+                    facts: "During wartime low occupancy, a landlord accepted reduced rent. When conditions changed, it claimed the full rent for a later period.",
+                    issue: "What effect did the unsupported promise to accept reduced rent have?",
+                    holding:
+                        "Full rent was payable after the wartime conditions ended. Denning J stated that the reduction would have bound the landlord during the relevant period despite lack of consideration.",
+                    significance:
+                        "The obiter reasoning became the foundation of modern promissory estoppel.",
+                    caution:
+                        "The case did not award arrears for the reduced period. Estoppel is generally a shield, is equitable and may be suspensory or extinctive depending on context.",
+                    source: "https://www.bailii.org/ew/cases/EWHC/KB/1947/1.html",
+                    sourceLabel: "Judgment",
+                },
+                {
+                    id: "davis",
+                    year: 1956,
+                    era: "The modern law takes shape",
+                    categories: ["discharge"],
+                    title: "Davis Contractors Ltd v Fareham UDC",
+                    citation: "[1956] AC 696",
+                    court: "House of Lords",
+                    teaser: "Expense and delay did not make a building contract radically different.",
+                    facts: "A construction contract became much slower and more expensive because of labour shortages and other difficulties.",
+                    issue: "Had the contract been frustrated by the changed circumstances?",
+                    holding:
+                        "No. Performance had become onerous, but not radically different from what was undertaken.",
+                    significance:
+                        "Lord Radcliffe’s “radically different” formulation remains central.",
+                    caution:
+                        "Frustration is not available merely because performance is unprofitable or difficult, especially where the contract allocates the risk.",
+                    source: "https://www.bailii.org/uk/cases/UKHL/1956/3.html",
+                    sourceLabel: "Judgment",
+                },
+                {
+                    id: "hong-kong-fir",
+                    year: 1962,
+                    era: "The modern law takes shape",
+                    categories: ["terms", "discharge"],
+                    title: "Hong Kong Fir Shipping Co Ltd v Kawasaki Kisen Kaisha Ltd",
+                    citation: "[1962] 2 QB 26",
+                    court: "Court of Appeal",
+                    teaser: "The consequences of breach determine termination for an innominate term.",
+                    facts: "A chartered vessel was unseaworthy because of machinery problems and an incompetent engine-room crew, causing a lengthy loss of use.",
+                    issue: "Did breach of the seaworthiness obligation entitle the charterer to terminate?",
+                    holding:
+                        "The term was not automatically a condition. The delay did not deprive the charterer of substantially the whole benefit of the charter.",
+                    significance:
+                        "The decision established the modern innominate-term analysis.",
+                    caution:
+                        "Parties and statutes can classify terms as conditions; not every term is assessed solely by consequences.",
+                    source: "https://www.bailii.org/ew/cases/EWCA/Civ/1961/7.html",
+                    sourceLabel: "Judgment",
+                },
+                {
+                    id: "photo-production",
+                    year: 1980,
+                    era: "Late twentieth-century reconstruction",
+                    categories: ["terms"],
+                    title: "Photo Production Ltd v Securicor Transport Ltd",
+                    citation: "[1980] AC 827",
+                    court: "House of Lords",
+                    teaser: "Fundamental breach is not an automatic rule invalidating an exclusion clause.",
+                    facts: "A security employee deliberately started a fire that destroyed the claimant’s factory. The contract contained broad exclusion language.",
+                    issue: "Was the exclusion ineffective merely because the breach was fundamental?",
+                    holding:
+                        "No independent rule of law invalidated the clause. Its effect depended on construction, subject to applicable legislation.",
+                    significance:
+                        "The case rejected the doctrine of fundamental breach as an automatic rule and restored emphasis on interpretation.",
+                    caution:
+                        "UCTA 1977 and the Consumer Rights Act 2015 impose statutory controls that can override contractual drafting.",
+                    source: "https://www.bailii.org/uk/cases/UKHL/1980/2.html",
+                    sourceLabel: "Judgment",
+                },
+                {
+                    id: "roffey",
+                    year: 1990,
+                    era: "Late twentieth-century reconstruction",
+                    categories: ["consideration", "variation"],
+                    title: "Williams v Roffey Bros & Nicholls (Contractors) Ltd",
+                    citation: "[1991] 1 QB 1; decision 1990",
+                    court: "Court of Appeal",
+                    teaser: "A practical benefit can support a promise of extra payment for existing performance.",
+                    facts: "A main contractor promised additional money to a subcontractor in financial difficulty to secure timely completion and avoid delay consequences.",
+                    issue: "Could the main contractor’s practical advantages amount to consideration?",
+                    holding:
+                        "Yes, where the promisor obtained practical benefits and the promise was not procured by fraud or economic duress.",
+                    significance:
+                        "The case softened Stilk for promises to pay more.",
+                    caution:
+                        "Its relationship with Foakes and promises to accept less remains unresolved at appellate level.",
+                    source: "https://www.bailii.org/ew/cases/EWCA/Civ/1989/5.html",
+                    sourceLabel: "Judgment",
+                },
+                {
+                    id: "blake",
+                    year: 2000,
+                    era: "Twenty-first-century limits",
+                    categories: ["remedies"],
+                    title: "Attorney General v Blake",
+                    citation: "[2000] UKHL 45; [2001] 1 AC 268",
+                    court: "House of Lords",
+                    teaser: "An account of profits was awarded for breach in exceptional circumstances.",
+                    facts: "A former intelligence officer breached a contractual undertaking by publishing memoirs and was due substantial royalties.",
+                    issue: "Could the Crown recover the profits despite difficulty proving ordinary compensatory loss?",
+                    holding:
+                        "An account of profits was available exceptionally because ordinary remedies were inadequate and the claimant had a legitimate interest in preventing the profit.",
+                    significance:
+                        "Blake recognised gain-based relief for breach at the outer edge of contract remedies.",
+                    caution:
+                        "The remedy is exceptional. Deliberate or profitable breach alone does not justify an account.",
+                    source: "https://www.bailii.org/uk/cases/UKHL/2000/45.html",
+                    sourceLabel: "Judgment",
+                },
+                {
+                    id: "achilleas",
+                    year: 2008,
+                    era: "Twenty-first-century limits",
+                    categories: ["remedies"],
+                    title: "Transfield Shipping Inc v Mercator Shipping Inc (The Achilleas)",
+                    citation: "[2008] UKHL 48",
+                    court: "House of Lords",
+                    teaser: "Remoteness may depend on the scope of contractual responsibility assumed.",
+                    facts: "A charterer returned a vessel late. Market rates fell before a follow-on charter could be renegotiated, causing a large loss over the later charter period.",
+                    issue: "Was the full loss within the charterer’s contractual responsibility?",
+                    holding:
+                        "The majority denied the full claim, though the speeches differed in reasoning. Assumption of responsibility played a central role.",
+                    significance:
+                        "The case complicated a purely probability-based reading of Hadley.",
+                    caution:
+                        "Its scope is debated. Hadley remains the ordinary framework and the contractual context is critical.",
+                    source: "https://www.bailii.org/uk/cases/UKHL/2008/48.html",
+                    sourceLabel: "Judgment",
+                },
+                {
+                    id: "rts",
+                    year: 2010,
+                    era: "Twenty-first-century limits",
+                    categories: ["formation"],
+                    title: "RTS Flexible Systems Ltd v Molkerei Alois Müller GmbH",
+                    citation: "[2010] UKSC 14",
+                    court: "Supreme Court",
+                    teaser: "A contract may arise objectively through words and conduct despite unfinished formal documentation.",
+                    facts: "Work on an automated packaging system proceeded while negotiations and draft terms continued, and a contemplated formal contract was never signed.",
+                    issue: "Had the parties formed a contract, and on what terms?",
+                    holding:
+                        "On the facts, they had reached a binding agreement despite the absence of the contemplated signature.",
+                    significance:
+                        "The court emphasised objective agreement and warned against forcing complex dealings into an artificial offer-and-acceptance sequence.",
+                    caution:
+                        "A “subject to contract” provision or an express signature condition may prevent formation; everything depends on the objective evidence.",
+                    source: "https://www.supremecourt.uk/cases/uksc-2009-0048",
+                    sourceLabel: "UK Supreme Court judgment",
+                },
+                {
+                    id: "arnold",
+                    year: 2015,
+                    era: "Twenty-first-century limits",
+                    categories: ["terms"],
+                    title: "Arnold v Britton",
+                    citation: "[2015] UKSC 36",
+                    court: "Supreme Court",
+                    teaser: "Clear contractual language is not displaced because its consequences become commercially severe.",
+                    facts: "Long leases contained service-charge clauses producing dramatically escalating liabilities.",
+                    issue: "Could commercial common sense justify reading down the natural meaning of the clauses?",
+                    holding:
+                        "The majority enforced the language. Commercial common sense cannot be invoked retrospectively to rescue a party from a bad bargain.",
+                    significance:
+                        "Arnold re-emphasised the primacy of the words used while retaining contextual interpretation.",
+                    caution:
+                        "The case does not establish literalism; language, document, context and available meanings remain part of one exercise.",
+                    source: "https://www.supremecourt.uk/cases/uksc-2013-0193",
+                    sourceLabel: "UK Supreme Court judgment",
+                },
+                {
+                    id: "marks-spencer",
+                    year: 2015.1,
+                    era: "Twenty-first-century limits",
+                    categories: ["terms"],
+                    title: "Marks and Spencer plc v BNP Paribas Securities Services Trust Co",
+                    citation: "[2015] UKSC 72",
+                    court: "Supreme Court",
+                    teaser: "Terms implied in fact remain subject to a strict necessity-based test.",
+                    facts: "A tenant exercised a break clause after paying rent in advance and sought repayment for the period after termination.",
+                    issue: "Should a term requiring repayment be implied into the lease?",
+                    holding:
+                        "No. The proposed term was not necessary for business efficacy and the express allocation did not justify implication.",
+                    significance:
+                        "The court restated the demanding test and separated implication from interpretation.",
+                    caution:
+                        "Reasonableness is insufficient. The term must be necessary or so obvious that it goes without saying, consistently with the express contract.",
+                    source: "https://supremecourt.uk/cases/uksc-2014-0158",
+                    sourceLabel: "UK Supreme Court judgment",
+                },
+                {
+                    id: "cavendish",
+                    year: 2015.2,
+                    era: "Twenty-first-century limits",
+                    categories: ["remedies"],
+                    title: "Cavendish Square Holding BV v Makdessi; ParkingEye Ltd v Beavis",
+                    citation: "[2015] UKSC 67",
+                    court: "Supreme Court",
+                    teaser: "The penalty rule focuses on secondary obligations and disproportionate detriment.",
+                    facts: "The conjoined appeals concerned contractual consequences of breach in a business sale and a parking charge imposed after overstaying.",
+                    issue: "When is a contractual consequence of breach an unenforceable penalty?",
+                    holding:
+                        "A secondary obligation is penal if it imposes a detriment out of all proportion to a legitimate interest in enforcement of the primary obligation.",
+                    significance:
+                        "The decision replaced the over-simple genuine-pre-estimate/deterrence dichotomy.",
+                    caution:
+                        "The rule generally applies to secondary obligations triggered by breach, not every onerous primary obligation.",
+                    source: "https://www.supremecourt.uk/cases/uksc-2013-0280",
+                    sourceLabel: "UK Supreme Court judgment",
+                },
+                {
+                    id: "wood",
+                    year: 2017,
+                    era: "Twenty-first-century limits",
+                    categories: ["terms"],
+                    title: "Wood v Capita Insurance Services Ltd",
+                    citation: "[2017] UKSC 24",
+                    court: "Supreme Court",
+                    teaser: "Text and commercial context operate in an iterative process of interpretation.",
+                    facts: "A share-purchase agreement contained an indemnity whose relationship to customer compensation liabilities was disputed.",
+                    issue: "How should the indemnity be construed within the agreement as a whole?",
+                    holding:
+                        "The court endorsed an iterative process checking rival readings against language, structure and commercial consequences.",
+                    significance:
+                        "Wood explains Arnold as part of a unitary contextual method rather than a turn to literalism.",
+                    caution:
+                        "The weight given to text and context varies with the quality and formality of the drafting.",
+                    source: "https://www.supremecourt.uk/cases/uksc-2015-0212",
+                    sourceLabel: "UK Supreme Court judgment",
+                },
+                {
+                    id: "rock",
+                    year: 2018,
+                    era: "Twenty-first-century limits",
+                    categories: ["variation"],
+                    title: "Rock Advertising Ltd v MWB Business Exchange Centres Ltd",
+                    citation: "[2018] UKSC 24",
+                    court: "Supreme Court",
+                    teaser: "A no-oral-modification clause was effective according to its terms.",
+                    facts: "A licence agreement required variations to be written and signed. The licensee alleged an oral rescheduling of arrears.",
+                    issue: "Could the alleged oral agreement vary the contract despite the clause?",
+                    holding:
+                        "No. The no-oral-modification clause was legally effective. The court did not need finally to resolve consideration.",
+                    significance:
+                        "The decision prioritises contractual form and commercial certainty.",
+                    caution:
+                        "Estoppel may operate where there are words or conduct unequivocally representing that the formal requirement need not be met, but the threshold is not low.",
+                    source: "https://www.supremecourt.uk/cases/docs/uksc-2016-0152-judgment.pdf",
+                    sourceLabel: "UK Supreme Court judgment",
+                },
+                {
+                    id: "times-travel",
+                    year: 2021,
+                    era: "Twenty-first-century limits",
+                    categories: ["vitiating", "variation"],
+                    title: "Pakistan International Airline Corp v Times Travel (UK) Ltd",
+                    citation: "[2021] UKSC 40",
+                    court: "Supreme Court",
+                    teaser: "Lawful-act economic duress exists, but only in exceptional circumstances.",
+                    facts: "An airline used its commercial leverage when offering a new agency contract containing a waiver of past commission claims.",
+                    issue: "Could lawful pressure supporting a demand genuinely believed to be valid amount to economic duress?",
+                    holding:
+                        "The appeal failed. The court recognised a narrow category of lawful-act duress but found it inapplicable.",
+                    significance:
+                        "The judgment clarifies illegitimate pressure, causation and the exceptional character of lawful-act duress.",
+                    caution:
+                        "Hard bargaining, monopoly power or a bad bargain is not by itself duress.",
+                    source: "https://www.supremecourt.uk/cases/uksc-2019-0142",
+                    sourceLabel: "UK Supreme Court judgment",
+                },
+                {
+                    id: "barton",
+                    year: 2023,
+                    era: "Recent Supreme Court decisions",
+                    categories: ["terms"],
+                    title: "Barton v Morris",
+                    citation: "[2023] UKSC 3",
+                    court: "Supreme Court",
+                    teaser: "Express conditional remuneration excluded an implied reasonable fee on the facts.",
+                    facts: "An introducer was promised £1.2 million if a property sold for £6.5 million. It sold to his buyer for £6 million.",
+                    issue: "Was he entitled to a reasonable fee through an implied term or unjust enrichment?",
+                    holding:
+                        "The majority held that the express bargain allocated the risk of no payment below the threshold and left no room for the proposed term or restitutionary claim.",
+                    significance:
+                        "The case reinforces the priority of the parties’ express allocation and the strictness of implication.",
+                    caution:
+                        "The reasoning was fact-sensitive and included disagreement on implication and unjust enrichment.",
+                    source: "https://www.supremecourt.uk/cases/uksc-2020-0002",
+                    sourceLabel: "UK Supreme Court judgment",
+                },
+                {
+                    id: "king-crude",
+                    year: 2025,
+                    era: "Recent Supreme Court decisions",
+                    categories: ["discharge", "terms"],
+                    title: "King Crude Carriers SA v Ridgebury November LLC",
+                    citation: "[2025] UKSC 39",
+                    court: "Supreme Court",
+                    teaser: "A party’s breach did not automatically deem an unsatisfied condition precedent fulfilled.",
+                    facts: "Buyers failed to provide documents needed to open deposit accounts under vessel-sale contracts. Sellers claimed the deposits as debts after termination.",
+                    issue: "Did English law contain a general Mackay v Dick principle deeming the conditions fulfilled because the buyers prevented fulfilment?",
+                    holding:
+                        "No general principle applied. Interpretation and implication did not eliminate the express preconditions; the sellers’ remedy was in damages, not debt.",
+                    significance:
+                        "The judgment clarifies prevention, conditions precedent, debt claims and the limits of broad maxims against profiting from one’s wrong.",
+                    caution:
+                        "An implied duty to co-operate remains possible, but its breach does not automatically produce deemed fulfilment of every condition.",
+                    source: "https://www.supremecourt.uk/cases/judgments/uksc-2024-0106",
+                    sourceLabel: "UK Supreme Court judgment",
+                },
+                {
+                    id: "providence",
+                    year: 2026,
+                    era: "Recent Supreme Court decisions",
+                    categories: ["terms", "discharge"],
+                    title: "Providence Building Services Ltd v Hexagon Housing Association Ltd",
+                    citation: "[2026] UKSC 1",
+                    court: "Supreme Court",
+                    teaser: "The court construed a widely used JCT termination clause as a whole and in its industry setting.",
+                    facts: "A construction contract incorporated the JCT Design and Build form. The parties disputed when the contractor’s right to issue a termination notice arose after employer default.",
+                    issue: "Could the contractor terminate under the repeated-default provision where the earlier right to give the further notice had never accrued?",
+                    holding:
+                        "The Supreme Court resolved the issue by objective and contextual interpretation of the clause within the contract as a whole.",
+                    significance:
+                        "The decision is a current illustration of Arnold and Wood applied to an industry standard form.",
+                    caution:
+                        "The exact result depends on the JCT wording and amendments; it is not a free-standing general rule about all termination clauses.",
+                    source: "https://supremecourt.uk/cases/judgments/uksc-2024-0130",
+                    sourceLabel: "UK Supreme Court judgment",
+                },
+                {
+                    id: "hopcraft",
+                    year: 2025.1,
+                    era: "Recent Supreme Court decisions",
+                    categories: ["vitiating", "terms"],
+                    title: "Hopcraft v Close Brothers; Johnson v FirstRand; Wrench v FirstRand",
+                    citation: "[2025] UKSC 33",
+                    court: "Supreme Court",
+                    teaser: "Motor dealers were not fiduciaries on the facts, but one credit relationship was unfair under the Consumer Credit Act.",
+                    facts: "The conjoined appeals concerned commissions paid by motor-finance lenders to dealers where the commissions were undisclosed or partly disclosed to customers.",
+                    issue: "Did the dealers owe fiduciary duties, did receipt of commission engage the tort of bribery or equitable relief, and was a relationship unfair under section 140A of the Consumer Credit Act 1974?",
+                    holding:
+                        "The dealers were not fiduciaries and the general bribery and equitable claims failed. Mr Johnson nevertheless succeeded because the size and non-disclosure of the commission and the concealed commercial tie made his credit relationship unfair.",
+                    significance:
+                        "The decision sharply limits broad fiduciary and secret-commission theories in ordinary motor-finance transactions while preserving powerful statutory relief under the Consumer Credit Act.",
+                    caution:
+                        "The statutory result was fact-sensitive. Non-disclosure does not automatically establish a fiduciary relationship or the tort of bribery.",
+                    source: "https://supremecourt.uk/cases/judgments/uksc-2024-0157",
+                    sourceLabel: "UK Supreme Court judgment",
+                },
+                {
+                    id: "gatwick",
+                    year: 2026.2,
+                    era: "Recent Supreme Court decisions",
+                    categories: ["terms", "remedies"],
+                    title: "Gatwick Investment Ltd v Liberty Mutual Insurance Europe SE",
+                    citation: "[2026] UKSC 14",
+                    court: "Supreme Court",
+                    teaser: "Furlough payments reduced insured business-interruption loss under the policies’ savings clauses.",
+                    facts: "Businesses with Covid-19 prevention-of-access cover received payments under the Coronavirus Job Retention Scheme and claimed business-interruption indemnities.",
+                    issue: "Did the savings clauses require furlough payments to be deducted, and were those payments proximately caused by the insured peril?",
+                    holding:
+                        "Yes. On the proper construction of the clauses, the payments reduced business expenses and did so in consequence of the insured peril; the appeals were dismissed.",
+                    significance:
+                        "The case links contractual construction, indemnity, proximate causation, and the treatment of third-party benefits.",
+                    caution:
+                        "The result turns on the particular insurance wording and indemnity context; it is not a universal rule that government payments reduce contractual damages.",
+                    source: "https://supremecourt.uk/cases/judgments/uksc-2025-0067",
+                    sourceLabel: "UK Supreme Court judgment",
+                },
+            ];
+            const STATUTES = [
+                {
+                    year: 1943,
+                    title: "Law Reform (Frustrated Contracts) Act 1943",
+                    summary:
+                        "Adjusts recovery of money paid, money payable, expenses and valuable benefits after a contract is frustrated.",
+                    url: "https://www.legislation.gov.uk/ukpga/Geo6/6-7/40/contents",
+                },
+                {
+                    year: 1974,
+                    title: "Consumer Credit Act 1974, sections 140A–140C",
+                    summary:
+                        "Gives courts a broad jurisdiction to remedy an unfair relationship between a creditor and debtor arising from a credit agreement.",
+                    url: "https://www.legislation.gov.uk/ukpga/1974/39/part/IX/crossheading/unfair-relationships",
+                },
+                {
+                    year: 1967,
+                    title: "Misrepresentation Act 1967",
+                    summary:
+                        "Provides damages for certain non-fraudulent misrepresentations, modifies bars to rescission and controls exclusion of misrepresentation liability.",
+                    url: "https://www.legislation.gov.uk/ukpga/1967/7/contents",
+                },
+                {
+                    year: 1977,
+                    title: "Unfair Contract Terms Act 1977",
+                    summary:
+                        "Controls exclusion and limitation of liability in business and negligence contexts, often through a reasonableness test.",
+                    url: "https://www.legislation.gov.uk/ukpga/1977/50/contents",
+                },
+                {
+                    year: 1979,
+                    title: "Sale of Goods Act 1979",
+                    summary:
+                        "Consolidates rules governing sale of goods, including implied terms and remedies; consumer sales are now substantially governed by the Consumer Rights Act 2015.",
+                    url: "https://www.legislation.gov.uk/ukpga/1979/54/contents",
+                },
+                {
+                    year: 1989,
+                    title: "Law of Property (Miscellaneous Provisions) Act 1989, section 2",
+                    summary:
+                        "Requires contracts for the sale or other disposition of an interest in land to be in writing, incorporating all expressly agreed terms and signed as required.",
+                    url: "https://www.legislation.gov.uk/ukpga/1989/34/section/2",
+                },
+                {
+                    year: 1999,
+                    title: "Contracts (Rights of Third Parties) Act 1999",
+                    summary:
+                        "Allows an identified third party to enforce a term where the contract expressly permits it or the term purports to confer a benefit, subject to the contract and statutory exceptions.",
+                    url: "https://www.legislation.gov.uk/ukpga/1999/31/contents",
+                },
+                {
+                    year: 2015,
+                    title: "Consumer Rights Act 2015",
+                    summary:
+                        "Consolidates key consumer rights and provides that unfair consumer terms and notices are not binding on the consumer.",
+                    url: "https://www.legislation.gov.uk/ukpga/2015/15/contents",
+                },
+            ];
+
+            let activeFilter = "all";
+            let query = "";
+            let currentId = null;
+
+            function esc(v) {
+                return String(v == null ? "" : v)
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;");
+            }
+
+            function renderModules() {
+                const names = Object.fromEntries(
+                    CASES.map((c) => [c.id, c.title]),
+                );
+                document.getElementById("moduleGrid").innerHTML = MODULES.map(
+                    (m) => `
+        <details class="module">
+          <summary>
+            <h3>${esc(m.title)}</h3>
+            <span class="sub">${esc(m.subtitle)}</span>
+          </summary>
+          <div class="module-body">
+            <p>${esc(m.text)}</p>
+            <ul>${m.points.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>
+            <div class="module-cases">
+              ${m.caseIds.map((id) => `<button class="case-jump" data-id="${esc(id)}">${esc(names[id])}</button>`).join("")}
+            </div>
+          </div>
+        </details>
+      `,
+                ).join("");
+                document.querySelectorAll(".case-jump").forEach((b) =>
+                    b.addEventListener("click", () => {
+                        document.getElementById("cases").scrollIntoView();
+                        setTimeout(() => selectCase(b.dataset.id, true), 100);
+                    }),
+                );
+            }
+
+            function visibleCases() {
+                const q = query.trim().toLowerCase();
+                return CASES.slice()
+                    .sort((a, b) => a.year - b.year)
+                    .filter((c) => {
+                        const filterOK =
+                            activeFilter === "all" ||
+                            c.categories.includes(activeFilter);
+                        const text = [
+                            c.title,
+                            c.citation,
+                            c.court,
+                            c.teaser,
+                            c.facts,
+                            c.issue,
+                            c.holding,
+                            c.significance,
+                            c.caution,
+                        ]
+                            .join(" ")
+                            .toLowerCase();
+                        return filterOK && (!q || text.includes(q));
+                    });
+            }
+
+            function renderCases() {
+                const list = document.getElementById("caseList");
+                const items = visibleCases();
+                if (!items.length) {
+                    list.innerHTML =
+                        '<div class="reader-empty">No matching cases.</div>';
+                    document.getElementById("readerBody").innerHTML =
+                        '<div class="reader-empty">No matching cases.</div>';
+                    currentId = null;
+                    return;
+                }
+                let era = "";
+                let html = "";
+                for (const c of items) {
+                    if (c.era !== era) {
+                        era = c.era;
+                        html += `<div class="era">${esc(era)}</div>`;
+                    }
+                    html += `
+          <button class="case-card ${currentId === c.id ? "active" : ""}" data-id="${esc(c.id)}">
+            <div class="case-meta"><span>${String(Math.floor(c.year))}</span><span>${esc(c.categories.join(" · "))}</span></div>
+            <h3>${esc(c.title)}</h3>
+            <p>${esc(c.teaser)}</p>
+          </button>`;
+                }
+                list.innerHTML = html;
+                list.querySelectorAll(".case-card").forEach((b) =>
+                    b.addEventListener("click", () =>
+                        selectCase(b.dataset.id, false),
+                    ),
+                );
+                if (!currentId || !items.some((c) => c.id === currentId))
+                    selectCase(items[0].id, false);
+            }
+
+            function selectCase(id, fromJump) {
+                const c = CASES.find((x) => x.id === id);
+                if (!c) return;
+                currentId = id;
+                document
+                    .querySelectorAll(".case-card")
+                    .forEach((card) =>
+                        card.classList.toggle("active", card.dataset.id === id),
+                    );
+                const ordered = CASES.slice().sort((a, b) => a.year - b.year);
+                const i = ordered.findIndex((x) => x.id === id);
+                const prev = i > 0 ? ordered[i - 1] : null;
+                const next = i < ordered.length - 1 ? ordered[i + 1] : null;
+                const source = c.source
+                    ? `<a class="source-link" href="${esc(c.source)}" target="_blank" rel="noopener noreferrer">${esc(c.sourceLabel)} ↗</a>`
+                    : `<span class="source-link">${esc(c.sourceLabel)}</span>`;
+                document.getElementById("readerBody").className = "";
+                document.getElementById("readerBody").innerHTML = `
+        <div class="r-year">${String(Math.floor(c.year))} · ${esc(c.court)}</div>
+        <h2>${esc(c.title)}</h2>
+        <span class="r-citation">${esc(c.citation)}</span>
+        <div class="r-section"><span class="r-label">Facts</span><p>${esc(c.facts)}</p></div>
+        <div class="r-section"><span class="r-label">Issue</span><p>${esc(c.issue)}</p></div>
+        <div class="r-section"><span class="r-label">Holding</span><p>${esc(c.holding)}</p></div>
+        <div class="r-section"><span class="r-label">Why it matters</span><p>${esc(c.significance)}</p></div>
+        <div class="r-caution"><strong>Limit or caution.</strong> ${esc(c.caution)}</div>
+        ${source}
+        <div class="reader-nav">
+          <button ${prev ? `data-go="${esc(prev.id)}"` : "disabled"}><span class="direction">Earlier</span>${prev ? esc(prev.title) : "—"}</button>
+          <button class="next" ${next ? `data-go="${esc(next.id)}"` : "disabled"}><span class="direction">Later</span>${next ? esc(next.title) : "—"}</button>
+        </div>`;
+                document
+                    .querySelectorAll("[data-go]")
+                    .forEach((b) =>
+                        b.addEventListener("click", () =>
+                            selectCase(b.dataset.go, false),
+                        ),
+                    );
+                if (window.innerWidth <= 900)
+                    document.getElementById("reader").classList.add("open");
+                try {
+                    history.replaceState(
+                        null,
+                        "",
+                        "#" + encodeURIComponent(id),
+                    );
+                } catch (e) {}
+                if (fromJump) {
+                    const card = document.querySelector(
+                        `.case-card[data-id="${CSS.escape(id)}"]`,
+                    );
+                    if (card) card.scrollIntoView({ block: "center" });
+                }
+            }
+
+            function renderStatutes() {
+                document.getElementById("statuteGrid").innerHTML = STATUTES.map(
+                    (s) => `
+        <article class="statute">
+          <span class="year">${s.year}</span>
+          <h3>${esc(s.title)}</h3>
+          <p>${esc(s.summary)}</p>
+          <a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">Official text ↗</a>
+        </article>
+      `,
+                ).join("");
+            }
+
+            function updateThemeButton() {
+                const b = document.getElementById("themeBtn");
+                const dark =
+                    document.documentElement.getAttribute("data-theme") ===
+                    "dark";
+                b.textContent = dark ? "Light" : "Dark";
+                b.setAttribute("aria-pressed", String(dark));
+            }
+
+            document.querySelectorAll(".case-filter").forEach((b) =>
+                b.addEventListener("click", () => {
+                    activeFilter = b.dataset.filter;
+                    document
+                        .querySelectorAll(".case-filter")
+                        .forEach((x) =>
+                            x.setAttribute("aria-pressed", String(x === b)),
+                        );
+                    renderCases();
+                }),
+            );
+            document
+                .getElementById("caseSearch")
+                .addEventListener("input", (e) => {
+                    query = e.target.value;
+                    renderCases();
+                });
+            document
+                .getElementById("themeBtn")
+                .addEventListener("click", () => {
+                    const next =
+                        document.documentElement.getAttribute("data-theme") ===
+                        "dark"
+                            ? "light"
+                            : "dark";
+                    document.documentElement.setAttribute("data-theme", next);
+                    try {
+                        localStorage.setItem("law-theme", next);
+                    } catch (e) {}
+                    updateThemeButton();
+                });
+            document
+                .getElementById("readerClose")
+                .addEventListener("click", () =>
+                    document.getElementById("reader").classList.remove("open"),
+                );
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape")
+                    document.getElementById("reader").classList.remove("open");
+            });
+
+            renderModules();
+            renderCases();
+            renderStatutes();
+            updateThemeButton();
+            const initial = decodeURIComponent(location.hash.slice(1));
+            if (initial && CASES.some((c) => c.id === initial))
+                selectCase(initial, true);
+        </script>
+    </body>
+</html>
